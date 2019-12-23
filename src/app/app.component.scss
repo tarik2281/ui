@@ -1,0 +1,20 @@
+
+@import 'src/theme.scss';
+
+.mat-toolbar {
+  position: fixed;
+  z-index: 10;
+}
+
+.app-content {
+  padding-top: 74px;
+}
+
+.app-logo {
+  margin: auto;
+  height: 64px;
+}
+
+.app-footer {
+  background-color: $light-bg-darker-20;
+}
