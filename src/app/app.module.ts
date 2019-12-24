@@ -20,12 +20,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import {ProductViewComponent} from 'src/app/product-view/product-view.component';
+import { OverviewAppComponent } from './pages/overview-app/overview-app.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutUsComponent,
-    ProductViewComponent
+    ProductViewComponent,
+    OverviewAppComponent
   ],
   imports: [
     BrowserModule,
