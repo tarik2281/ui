@@ -1,13 +1,13 @@
 
 <div class="app-container">
   <mat-toolbar color="primary" class="mat-elevation-z2">
-    <button mat-button routerLink="/products">SmartTub</button>
+    <button mat-button routerLink="/overview-smarttub">SmartTub</button>
     <button mat-button routerLink="/overview-app">SmarTIIS App</button>
     <button mat-button routerLink="/about-us">Über uns</button>
     <div class="flex-grow-1"></div>
     <img class="app-logo" src="assets/SmarTIIS_logo.png" routerLink="/">
     <div class="flex-grow-1"></div>
-    <button mat-button>Mein Konto</button>
+    <button mat-button (click)="openLoginDialog()">Anmelden</button>
     <button mat-button>Warenkorb</button>
   </mat-toolbar>
 

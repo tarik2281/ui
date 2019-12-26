@@ -21,13 +21,18 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import {ProductViewComponent} from 'src/app/product-view/product-view.component';
 import { OverviewAppComponent } from './pages/overview-app/overview-app.component';
+import { OverviewSmarttubComponent } from './pages/overview-smarttub/overview-smarttub.component';
+import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
+import {MatDialogModule} from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutUsComponent,
     ProductViewComponent,
-    OverviewAppComponent
+    OverviewAppComponent,
+    OverviewSmarttubComponent,
+    LoginDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -46,9 +51,13 @@ import { OverviewAppComponent } from './pages/overview-app/overview-app.componen
     MatSelectModule,
     MatRadioModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDialogModule
   ],
   providers: [],
+  entryComponents: [
+    LoginDialogComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
