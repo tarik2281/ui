@@ -24,6 +24,7 @@ import { OverviewAppComponent } from './pages/overview-app/overview-app.componen
 import { OverviewSmarttubComponent } from './pages/overview-smarttub/overview-smarttub.component';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 import {MatDialogModule} from '@angular/material';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {MatDialogModule} from '@angular/material';
     MatRadioModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule
   ],
   providers: [],
   entryComponents: [
