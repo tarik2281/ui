@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {AuthenticationService} from 'src/app/services/authentication.service';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-login-dialog',
@@ -10,8 +11,11 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class LoginDialogComponent implements OnInit {
 
   loginForm: FormGroup;
+  showError = false;
 
-  constructor(private http: HttpClient) {
+
+  constructor(private dialogRef: MatDialogRef<LoginDialogComponent>,
+              private authenticationService: AuthenticationService) {
   }
 
   ngOnInit() {
@@ -22,18 +26,25 @@ export class LoginDialogComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('submit');
+    if (this.loginForm.invalid) {
+      return;
+    }
 
-    const formData = new FormData();
-    formData.append('username', this.loginForm.controls.username.value);
-    formData.append('password', this.loginForm.controls.password.value);
+    this.loginForm.disable();
+    this.showError = false;
 
-    // const body = `username=${this.loginForm.controls.username.value}&password=${this.loginForm.controls.password.value}`;
+    const username = this.loginForm.controls.username.value;
+    const password = this.loginForm.controls.password.value;
 
-    this.http.post('/api/login', formData, ).subscribe(result => {
-      console.log(result);
+    this.authenticationService.login(username, password).subscribe(result => {
+      this.loginForm.enable();
+      this.dialogRef.close(result);
     }, error => {
       console.error(error);
+
+      this.showError = true;
+      this.loginForm.enable();
+      this.loginForm.reset();
     });
   }
 

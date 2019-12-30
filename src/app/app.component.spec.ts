@@ -1,7 +1,8 @@
 import {TestBed, async} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AppComponent} from './app.component';
-import {MatDialogModule, MatToolbarModule} from '@angular/material';
+import {MatDialogModule, MatMenuModule, MatSnackBarModule, MatToolbarModule} from '@angular/material';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -9,7 +10,10 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule,
         MatToolbarModule,
-        MatDialogModule
+        MatDialogModule,
+        MatMenuModule,
+        MatSnackBarModule,
+        HttpClientTestingModule
       ],
       declarations: [
         AppComponent

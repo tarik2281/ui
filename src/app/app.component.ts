@@ -1,16 +1,39 @@
-import { Component } from '@angular/core';
-import {MatDialog} from '@angular/material';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog, MatSnackBar} from '@angular/material';
 import {LoginDialogComponent} from 'src/app/components/login-dialog/login-dialog.component';
+import {AuthenticationService} from 'src/app/services/authentication.service';
+import {User} from 'src/app/model/user';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'ui';
 
-  constructor(private dialog: MatDialog) {
+  user: User;
+
+  constructor(private authenticationService: AuthenticationService,
+              private dialog: MatDialog,
+              private snackBar: MatSnackBar) {
+  }
+
+  ngOnInit() {
+    this.authenticationService.user.subscribe(user => {
+      console.log('setting user', user);
+      this.user = user;
+    });
+
+    this.authenticationService.me();
+  }
+
+  onLogout() {
+    this.authenticationService.logout().subscribe(result => {
+      this.snackBar.open('Erfolgreich abgemeldet!', null, {
+        duration: 2000
+      });
+    });
   }
 
   openLoginDialog() {

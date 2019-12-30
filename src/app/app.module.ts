@@ -23,7 +23,7 @@ import {ProductViewComponent} from 'src/app/product-view/product-view.component'
 import { OverviewAppComponent } from './pages/overview-app/overview-app.component';
 import { OverviewSmarttubComponent } from './pages/overview-smarttub/overview-smarttub.component';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
-import {MatDialogModule} from '@angular/material';
+import {MatDialogModule, MatSnackBarModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
@@ -54,7 +54,8 @@ import {HttpClientModule} from '@angular/common/http';
     ReactiveFormsModule,
     FlexLayoutModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [],
   entryComponents: [

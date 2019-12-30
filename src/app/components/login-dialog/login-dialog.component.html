@@ -10,6 +10,7 @@
       <mat-label>Passwort</mat-label>
       <input matInput type="password" formControlName="password">
     </mat-form-field>
+    <mat-error *ngIf="showError">Username oder Passwort ist falsch!</mat-error>
     <div class="d-flex justify-content-end align-content-end">
       <button mat-button>Login</button>
     </div>
