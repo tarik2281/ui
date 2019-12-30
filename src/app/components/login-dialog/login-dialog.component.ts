@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthenticationService} from 'src/app/services/authentication.service';
 import {MatDialogRef} from '@angular/material';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-dialog',
@@ -15,7 +16,8 @@ export class LoginDialogComponent implements OnInit {
 
 
   constructor(private dialogRef: MatDialogRef<LoginDialogComponent>,
-              private authenticationService: AuthenticationService) {
+              private authenticationService: AuthenticationService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -23,6 +25,11 @@ export class LoginDialogComponent implements OnInit {
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required])
     });
+  }
+
+  register() {
+    this.dialogRef.close(null);
+    this.router.navigate(['register']);
   }
 
   onSubmit() {

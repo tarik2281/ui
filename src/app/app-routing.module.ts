@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {AboutUsComponent} from 'src/app/pages/about-us/about-us.component';
 import {OverviewAppComponent} from 'src/app/pages/overview-app/overview-app.component';
 import {OverviewSmarttubComponent} from 'src/app/pages/overview-smarttub/overview-smarttub.component';
+import {RegisterUserComponent} from 'src/app/pages/register-user/register-user.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'about-us',
     component: AboutUsComponent
+  },
+  {
+    path: 'register',
+    component: RegisterUserComponent
   }
 ];
 

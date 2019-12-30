@@ -3,16 +3,18 @@
   <form [formGroup]="loginForm" (submit)="onSubmit()">
     <mat-form-field color="accent" appearance="outline" hideRequiredMarker>
       <mat-label>Username</mat-label>
-      <input matInput formControlName="username">
+      <input matInput formControlName="username" autocomplete="username">
 <!--      <mat-error>test</mat-error>-->
     </mat-form-field>
     <mat-form-field color="accent" appearance="outline" hideRequiredMarker>
       <mat-label>Passwort</mat-label>
-      <input matInput type="password" formControlName="password">
+      <input matInput type="password" formControlName="password" autocomplete="password">
     </mat-form-field>
     <mat-error *ngIf="showError">Username oder Passwort ist falsch!</mat-error>
-    <div class="d-flex justify-content-end align-content-end">
-      <button mat-button>Login</button>
+    <div class="d-flex flex-row">
+      <button mat-stroked-button type="button" (click)="register()">Noch kein Konto? Registrieren</button>
+      <div class="flex-grow-1"></div>
+      <button mat-stroked-button>Login</button>
     </div>
   </form>
 </div>
