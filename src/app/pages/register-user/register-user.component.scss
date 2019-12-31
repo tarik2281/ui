@@ -1,7 +1,7 @@
 .form-container {
-  background-color: white;
-  margin: auto;
-  width: 100%;
+  //background-color: white;
+  //margin: auto;
+  //width: 100%;
 }
 
 .form-container .container {
@@ -12,4 +12,11 @@
 
 mat-form-field {
   width: 100%;
+  letter-spacing: 0;
+}
+
+.custom-error {
+  font-size: 85%;
+  margin-left: 40px;
+  margin-bottom: 15px;
 }

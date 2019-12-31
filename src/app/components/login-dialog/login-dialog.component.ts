@@ -51,7 +51,6 @@ export class LoginDialogComponent implements OnInit {
 
       this.showError = true;
       this.loginForm.enable();
-      this.loginForm.reset();
     });
   }
 

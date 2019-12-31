@@ -16,10 +16,7 @@ export class AuthenticationService {
   }
 
   private readonly userSubject = new BehaviorSubject<User>(null);
-
-  public get user(): Observable<User> {
-    return this.userSubject.asObservable();
-  }
+  readonly user = this.userSubject.asObservable();
 
   public login(username: string, password: string): Observable<User> {
     const formData = new FormData();
