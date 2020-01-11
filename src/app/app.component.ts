@@ -16,6 +16,8 @@ export class AppComponent implements OnInit {
   positionY = 0;
   lastScrollY = 0;
 
+  badgeVisible = false;
+
   constructor(private authenticationService: AuthenticationService,
               private dialog: MatDialog,
               private snackBar: MatSnackBar) {
@@ -50,5 +52,9 @@ export class AppComponent implements OnInit {
 
     this.positionY = Math.min(0, Math.max(this.positionY - offsetY, -64));
     this.lastScrollY = window.scrollY;
+  }
+
+  toggleVisibility() {
+    this.badgeVisible = !this.badgeVisible;
   }
 }

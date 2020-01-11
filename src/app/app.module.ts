@@ -23,10 +23,18 @@ import {ProductViewComponent} from 'src/app/product-view/product-view.component'
 import { OverviewAppComponent } from './pages/overview-app/overview-app.component';
 import { OverviewSmarttubComponent } from './pages/overview-smarttub/overview-smarttub.component';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
-import {MAT_DATE_LOCALE, MatCheckboxModule, MatDialogModule, MatNativeDateModule, MatSnackBarModule} from '@angular/material';
+import {
+  MAT_DATE_LOCALE,
+  MatBadgeModule,
+  MatCheckboxModule,
+  MatDialogModule,
+  MatNativeDateModule,
+  MatSnackBarModule
+} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import { RegisterUserComponent } from './pages/register-user/register-user.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { ManageAccountComponent } from './pages/manage-account/manage-account.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +44,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     OverviewAppComponent,
     OverviewSmarttubComponent,
     LoginDialogComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    ManageAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +70,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatSnackBarModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatBadgeModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'de-DE' }

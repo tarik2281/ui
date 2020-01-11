@@ -12,7 +12,10 @@
         <button mat-menu-item (click)="onLogout()">Abmelden</button>
       </mat-menu>
       <button mat-button *ngIf="!user" (click)="openLoginDialog()">Anmelden</button>
-      <button mat-button>Warenkorb</button>
+
+      <button mat-icon-button (click)="toggleVisibility()">
+        <mat-icon [matBadge]="badgeVisible ? '1' : undefined" matBadgeColor="warn">shopping_cart</mat-icon>
+      </button>
     </mat-toolbar-row>
     <mat-toolbar-row>
       <div class="flex-grow-1"></div>

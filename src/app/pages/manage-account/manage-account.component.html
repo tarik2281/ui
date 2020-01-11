@@ -1,14 +1,16 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h1 class="app-content-title">Konto erstellen</h1>
+      <h1 class="app-content-title">Daten bearbeiten</h1>
     </div>
   </div>
-
   <div class="row form-container">
     <div class="col-12">
-      <form [formGroup]="registerForm" (submit)="registerUser()">
+      <form *ngIf="updateForm" [formGroup]="updateForm" (submit)="updateUser()">
         <div class="container">
+          <div class="row mt-3">
+            <h5 class="col-12">Kundennummer: {{user.id}}</h5>
+          </div>
           <div class="row mt-3">
             <div class="col-4">
               <mat-form-field appearance="outline" color="accent">
@@ -92,42 +94,19 @@
           </div>
           <div class="row">
             <div class="col-12">
-              <mat-form-field appearance="outline" color="accent">
-                <mat-label>Passwort</mat-label>
-                <input matInput type="password" formControlName="password" autocomplete="new-password">
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <mat-form-field appearance="outline" color="accent">
-                <mat-label>Passwort bestätigen</mat-label>
-                <input matInput type="password" formControlName="confirmPassword" autocomplete="new-password">
-                <mat-error *ngIf="confirmPasswordControl.hasError('match')">Passwörter stimmen nicht überein</mat-error>
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <mat-checkbox formControlName="confirmTos">Ich habe die <a routerLink="./" (click)="openTosDialog()">Allgemeinen Geschäftsbedingungen</a> gelesen und bin einverstanden.</mat-checkbox>
-              <mat-error class="custom-error" *ngIf="confirmTos.hasError('required') && confirmTos.dirty">Sie müssen den Bedingungen zustimmen</mat-error>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
               <mat-checkbox formControlName="newsletter">Newsletter abonnieren</mat-checkbox>
             </div>
           </div>
-          <div class="row">
-            <div class="col-12 d-flex flex-row">
-              <div class="flex-grow-1"></div>
-              <mat-error *ngIf="submitError" class="custom-error">{{submitError}}</mat-error>
-            </div>
-          </div>
+<!--          <div class="row">-->
+<!--            <div class="col-12 d-flex flex-row">-->
+<!--              <div class="flex-grow-1"></div>-->
+<!--              <mat-error *ngIf="submitError" class="custom-error">{{submitError}}</mat-error>-->
+<!--            </div>-->
+<!--          </div>-->
           <div class="row mb-5">
             <div class="col-12 d-flex flex-row">
               <div class="flex-grow-1"></div>
-              <button mat-stroked-button>Registrieren</button>
+              <button mat-stroked-button>Änderungen speichern</button>
             </div>
           </div>
         </div>
