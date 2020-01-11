@@ -1,5 +1,6 @@
 export interface User {
   id: number;
+  sex: string;
   firstName: string;
   lastName: string;
   emailAddress: string;
@@ -9,4 +10,5 @@ export interface User {
   postalCode: string;
   city: string;
   country: string;
+  newsletter: boolean;
 }

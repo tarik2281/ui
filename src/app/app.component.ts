@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {LoginDialogComponent} from 'src/app/components/login-dialog/login-dialog.component';
 import {AuthenticationService} from 'src/app/services/authentication.service';
@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   title = 'ui';
 
   user: User;
+  positionY = 0;
+  lastScrollY = 0;
 
   constructor(private authenticationService: AuthenticationService,
               private dialog: MatDialog,
@@ -40,5 +42,13 @@ export class AppComponent implements OnInit {
     this.dialog.open(LoginDialogComponent, {
       width: '500px'
     });
+  }
+
+  @HostListener('window:scroll', [])
+  onAppScroll() {
+    const offsetY = window.scrollY - this.lastScrollY;
+
+    this.positionY = Math.min(0, Math.max(this.positionY - offsetY, -64));
+    this.lastScrollY = window.scrollY;
   }
 }

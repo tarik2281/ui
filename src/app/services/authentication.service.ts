@@ -18,6 +18,12 @@ export class AuthenticationService {
   private readonly userSubject = new BehaviorSubject<User>(null);
   readonly user = this.userSubject.asObservable();
 
+  public isAuthenticated(): boolean {
+    return !!this.userSubject.getValue();
+  }
+
+  private meRequestObservable = null;
+
   public login(username: string, password: string): Observable<User> {
     const formData = new FormData();
     formData.append('username', username);
@@ -32,11 +38,19 @@ export class AuthenticationService {
   }
 
   public me(): Observable<User> {
-    const observable = this.http.get<User>('/api/user/me');
-    observable.subscribe(user => {
+    if (this.meRequestObservable) {
+      return this.meRequestObservable;
+    }
+
+    this.meRequestObservable = this.http.get<User>('/api/user/me');
+    this.meRequestObservable.subscribe(user => {
       this.userSubject.next(user);
+      this.meRequestObservable = null;
+    }, () => {
+      this.userSubject.next(null);
+      this.meRequestObservable = null;
     });
-    return observable;
+    return this.meRequestObservable;
   }
 
   public logout() {
