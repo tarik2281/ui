@@ -29,12 +29,15 @@ import {
   MatCheckboxModule,
   MatDialogModule,
   MatNativeDateModule,
-  MatSnackBarModule
+  MatSnackBarModule, MatTreeModule
 } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import { RegisterUserComponent } from './pages/register-user/register-user.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ManageAccountComponent } from './pages/manage-account/manage-account.component';
+import { FaqComponent } from './pages/faq/faq.component';
+import {RouterModule} from '@angular/router';
+import { RouteButtonComponent } from './components/route-button/route-button.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,9 @@ import { ManageAccountComponent } from './pages/manage-account/manage-account.co
     OverviewSmarttubComponent,
     LoginDialogComponent,
     RegisterUserComponent,
-    ManageAccountComponent
+    ManageAccountComponent,
+    FaqComponent,
+    RouteButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +76,9 @@ import { ManageAccountComponent } from './pages/manage-account/manage-account.co
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatTreeModule,
+    RouterModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'de-DE' }

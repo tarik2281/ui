@@ -6,6 +6,7 @@ import {OverviewSmarttubComponent} from 'src/app/pages/overview-smarttub/overvie
 import {RegisterUserComponent} from 'src/app/pages/register-user/register-user.component';
 import {ManageAccountComponent} from 'src/app/pages/manage-account/manage-account.component';
 import {AuthGuard} from 'src/app/services/auth-guard.service';
+import {FaqComponent} from 'src/app/pages/faq/faq.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,10 @@ const routes: Routes = [
     path: 'manage-account',
     component: ManageAccountComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'faq',
+    component: FaqComponent
   }
 ];
 
