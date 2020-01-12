@@ -10,6 +10,7 @@ import {FaqComponent} from 'src/app/pages/faq/faq.component';
 import {ProductViewComponent} from 'src/app/components/product-view/product-view.component';
 import {AllProductsComponent} from 'src/app/pages/all-products/all-products.component';
 import {ProductDetailComponent} from 'src/app/pages/product-detail/product-detail.component';
+import {ShoppingCartComponent} from 'src/app/pages/shopping-cart/shopping-cart.component';
 
 
 const routes: Routes = [
@@ -50,6 +51,10 @@ const routes: Routes = [
   {
     path: 'products/detail',
     component: ProductDetailComponent
+  },
+  {
+    path: 'cart',
+    component: ShoppingCartComponent
   }
 ];
 

@@ -29,7 +29,7 @@ import {
   MatCheckboxModule,
   MatDialogModule,
   MatNativeDateModule,
-  MatSnackBarModule, MatTreeModule
+  MatSnackBarModule, MatTooltipModule, MatTreeModule
 } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import { RegisterUserComponent } from './pages/register-user/register-user.component';
@@ -41,6 +41,7 @@ import { RouteButtonComponent } from './components/route-button/route-button.com
 import { AllProductsComponent } from './pages/all-products/all-products.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { HoverClassDirective } from './directives/hover-class.directive';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { HoverClassDirective } from './directives/hover-class.directive';
     RouteButtonComponent,
     AllProductsComponent,
     ProductDetailComponent,
-    HoverClassDirective
+    HoverClassDirective,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +86,8 @@ import { HoverClassDirective } from './directives/hover-class.directive';
     MatCheckboxModule,
     MatBadgeModule,
     MatTreeModule,
-    RouterModule
+    RouterModule,
+    MatTooltipModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'de-DE' }

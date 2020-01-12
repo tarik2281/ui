@@ -13,9 +13,9 @@
       </mat-menu>
       <a mat-button *ngIf="!user" (click)="openLoginDialog()">Anmelden</a>
 
-      <button mat-icon-button (click)="toggleVisibility()">
+      <a mat-icon-button routerLink="/cart">
         <mat-icon [matBadge]="badgeVisible ? '1' : undefined" matBadgeColor="warn">shopping_cart</mat-icon>
-      </button>
+      </a>
     </mat-toolbar-row>
     <mat-toolbar-row>
       <div class="flex-grow-1"></div>
