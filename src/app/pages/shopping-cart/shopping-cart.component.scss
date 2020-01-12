@@ -8,7 +8,44 @@
   padding-bottom: 50px;
 }
 
+.cart-entry-container:not(:first-of-type) {
+  padding-top: 50px;
+}
 
+.line {
+  position: absolute;
+  width: 100vw;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: red;
+  left: 0;
+}
+
+.cart-entry-container:last-of-type {
+  border-bottom-style: none;
+}
+
+.checkout-container {
+  margin: 35px;
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
+}
+
+.checkout-container-fixed {
+  position: fixed;
+  top: 80px;
+  right: 0;
+  z-index: 100;
+}
+
+.entries {
+  width: 60%;
+}
+
+.side-box {
+  width: 40%;
+}
 
 .cart-entry-container img {
   width: 125px;
