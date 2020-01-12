@@ -9,6 +9,7 @@ import {AuthGuard} from 'src/app/services/auth-guard.service';
 import {FaqComponent} from 'src/app/pages/faq/faq.component';
 import {ProductViewComponent} from 'src/app/components/product-view/product-view.component';
 import {AllProductsComponent} from 'src/app/pages/all-products/all-products.component';
+import {ProductDetailComponent} from 'src/app/pages/product-detail/product-detail.component';
 
 
 const routes: Routes = [
@@ -45,6 +46,10 @@ const routes: Routes = [
   {
     path: 'products',
     component: AllProductsComponent
+  },
+  {
+    path: 'products/detail',
+    component: ProductDetailComponent
   }
 ];
 

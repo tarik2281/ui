@@ -39,6 +39,8 @@ import { FaqComponent } from './pages/faq/faq.component';
 import {RouterModule} from '@angular/router';
 import { RouteButtonComponent } from './components/route-button/route-button.component';
 import { AllProductsComponent } from './pages/all-products/all-products.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { HoverClassDirective } from './directives/hover-class.directive';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { AllProductsComponent } from './pages/all-products/all-products.componen
     ManageAccountComponent,
     FaqComponent,
     RouteButtonComponent,
-    AllProductsComponent
+    AllProductsComponent,
+    ProductDetailComponent,
+    HoverClassDirective
   ],
   imports: [
     BrowserModule,
