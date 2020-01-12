@@ -10,11 +10,11 @@
         dolore magna aliquyam erat, sed diam voluptua.
       </p>
       <p class="product-price">4,99€ <span class="product-price-original">15,99€</span></p>
-      <button mat-stroked-button (click)="addToCart()">Zum Warenkorb hinzufügen</button>
+      <button mat-stroked-button (click)="addToCart()" [disabled]="addedToCart">{{ addedToCart ? 'Im Warenkorb' : 'Zum Warenkorb hinzufügen' }}</button>
     </div>
   </div>
   <div class="row additional-info-row">
-    <div class="col-2"></div>
+    <div class="col-4"></div>
     <div class="col-8">
       <div class="container">
         <div class="row">

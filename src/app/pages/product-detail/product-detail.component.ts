@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-product-detail',
@@ -7,12 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDetailComponent implements OnInit {
 
-  constructor() { }
+  addedToCart = false;
+
+  constructor(private snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
 
   addToCart() {
-    console.log('adding product to cart');
+    if (!this.addedToCart) {
+      console.log('adding product to cart');
+      this.addedToCart = true;
+      this.snackBar.open('Artikel zum Warenkorb hinzugefügt!', null, {
+        duration: 2000
+      });
+    }
   }
 }
