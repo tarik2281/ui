@@ -39,6 +39,14 @@ interface ExampleFlatNode {
   level: number;
 }
 
+function nodeTransformer(node: DataNode, level: number) {
+  return {
+    expandable: !!node.children && node.children.length > 0,
+    name: node.name,
+    level,
+  };
+}
+
 @Component({
   selector: 'app-faq',
   templateUrl: './faq.component.html',
@@ -46,26 +54,18 @@ interface ExampleFlatNode {
 })
 export class FaqComponent implements OnInit {
 
-  private _transformer = (node: DataNode, level: number) => {
-    return {
-      expandable: !!node.children && node.children.length > 0,
-      name: node.name,
-      level: level,
-    };
-  };
+
+  constructor() {
+    this.dataSource.data = QUESTION_DATA;
+  }
 
   treeControl = new FlatTreeControl<ExampleFlatNode>(
     node => node.level, node => node.expandable);
 
   treeFlattener = new MatTreeFlattener(
-    this._transformer, node => node.level, node => node.expandable, node => node.children);
+    nodeTransformer, node => node.level, node => node.expandable, node => node.children);
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-
-
-  constructor() {
-    this.dataSource.data = QUESTION_DATA;
-  }
 
   ngOnInit() {
   }

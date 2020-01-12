@@ -4,14 +4,14 @@
       <img class="app-logo" src="assets/SmarTIIS_logo.png" routerLink="/">
       <div class="flex-grow-1"></div>
 
-      <button mat-button *ngIf="user" [matMenuTriggerFor]="userMenu">Hallo, {{user.firstName}}!</button>
+      <a mat-button *ngIf="user" [matMenuTriggerFor]="userMenu">Hallo, {{user.firstName}}!</a>
       <mat-menu #userMenu="matMenu">
-        <button mat-menu-item routerLink="/manage-account">Persönliche Daten bearbeiten</button>
-        <button mat-menu-item>Passwort ändern</button>
-        <button mat-menu-item>Meine Bestellungen</button>
-        <button mat-menu-item (click)="onLogout()">Abmelden</button>
+        <a mat-menu-item routerLink="/manage-account">Persönliche Daten bearbeiten</a>
+        <a mat-menu-item>Passwort ändern</a>
+        <a mat-menu-item>Meine Bestellungen</a>
+        <a mat-menu-item (click)="onLogout()">Abmelden</a>
       </mat-menu>
-      <button mat-button *ngIf="!user" (click)="openLoginDialog()">Anmelden</button>
+      <a mat-button *ngIf="!user" (click)="openLoginDialog()">Anmelden</a>
 
       <button mat-icon-button (click)="toggleVisibility()">
         <mat-icon [matBadge]="badgeVisible ? '1' : undefined" matBadgeColor="warn">shopping_cart</mat-icon>
@@ -21,6 +21,7 @@
       <div class="flex-grow-1"></div>
       <app-route-button routerLink="/overview-smarttub">SmartTub</app-route-button>
       <app-route-button routerLink="/overview-app">SmarTIIS App</app-route-button>
+      <app-route-button routerLink="/products">Produkte</app-route-button>
       <app-route-button routerLink="/faq">FAQ</app-route-button>
       <app-route-button routerLink="/about-us">Über uns</app-route-button>
       <div class="flex-grow-1"></div>

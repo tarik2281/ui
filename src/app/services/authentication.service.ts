@@ -18,11 +18,11 @@ export class AuthenticationService {
   private readonly userSubject = new BehaviorSubject<User>(null);
   readonly user = this.userSubject.asObservable();
 
+  private meRequestObservable = null;
+
   public isAuthenticated(): boolean {
     return !!this.userSubject.getValue();
   }
-
-  private meRequestObservable = null;
 
   public login(username: string, password: string): Observable<User> {
     const formData = new FormData();

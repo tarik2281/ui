@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProductViewComponent } from './product-view.component';
+import { ProductViewComponent } from 'src/app/components/product-view/product-view.component';
 import {MatCardModule} from '@angular/material';
 
 describe('ProductViewComponent', () => {

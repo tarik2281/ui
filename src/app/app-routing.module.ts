@@ -7,6 +7,8 @@ import {RegisterUserComponent} from 'src/app/pages/register-user/register-user.c
 import {ManageAccountComponent} from 'src/app/pages/manage-account/manage-account.component';
 import {AuthGuard} from 'src/app/services/auth-guard.service';
 import {FaqComponent} from 'src/app/pages/faq/faq.component';
+import {ProductViewComponent} from 'src/app/components/product-view/product-view.component';
+import {AllProductsComponent} from 'src/app/pages/all-products/all-products.component';
 
 
 const routes: Routes = [
@@ -39,6 +41,10 @@ const routes: Routes = [
   {
     path: 'faq',
     component: FaqComponent
+  },
+  {
+    path: 'products',
+    component: AllProductsComponent
   }
 ];
 

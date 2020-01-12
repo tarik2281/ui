@@ -19,7 +19,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
-import {ProductViewComponent} from 'src/app/product-view/product-view.component';
+import {ProductViewComponent} from 'src/app/components/product-view/product-view.component';
 import { OverviewAppComponent } from './pages/overview-app/overview-app.component';
 import { OverviewSmarttubComponent } from './pages/overview-smarttub/overview-smarttub.component';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
@@ -38,6 +38,7 @@ import { ManageAccountComponent } from './pages/manage-account/manage-account.co
 import { FaqComponent } from './pages/faq/faq.component';
 import {RouterModule} from '@angular/router';
 import { RouteButtonComponent } from './components/route-button/route-button.component';
+import { AllProductsComponent } from './pages/all-products/all-products.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { RouteButtonComponent } from './components/route-button/route-button.com
     RegisterUserComponent,
     ManageAccountComponent,
     FaqComponent,
-    RouteButtonComponent
+    RouteButtonComponent,
+    AllProductsComponent
   ],
   imports: [
     BrowserModule,
