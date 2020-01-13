@@ -10,7 +10,7 @@
         dolore magna aliquyam erat, sed diam voluptua.
       </p>
       <p class="product-price">4,99€ <span class="product-price-original">15,99€</span></p>
-      <button mat-stroked-button (click)="addToCart()" [disabled]="addedToCart">{{ addedToCart ? 'Im Warenkorb' : 'Zum Warenkorb hinzufügen' }}</button>
+      <button mat-raised-button color="accent" (click)="addToCart()" [disabled]="addedToCart">{{ addedToCart ? 'Im Warenkorb' : 'Zum Warenkorb hinzufügen' }}</button>
     </div>
   </div>
   <div class="row additional-info-row">
