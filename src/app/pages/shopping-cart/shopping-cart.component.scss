@@ -13,12 +13,10 @@
 }
 
 .line {
-  position: absolute;
-  width: 100vw;
+  width: 100%;
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  border-bottom-color: red;
-  left: 0;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
 }
 
 .cart-entry-container:last-of-type {
@@ -27,9 +25,13 @@
 
 .checkout-container {
   margin: 35px;
-  border-radius: 10px;
+  border-radius: 7px;
   background-color: white;
   padding: 20px;
+}
+
+.total-sum {
+  font-weight: 500;
 }
 
 .checkout-container-fixed {
