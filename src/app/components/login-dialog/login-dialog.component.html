@@ -1,11 +1,11 @@
 <h1 mat-dialog-title>Anmelden</h1>
 <div mat-dialog-content>
   <form [formGroup]="loginForm" (submit)="onSubmit()">
-    <mat-form-field color="accent" appearance="outline" hideRequiredMarker>
+    <mat-form-field color="accent" hideRequiredMarker>
       <mat-label>Email-Adresse</mat-label>
       <input matInput formControlName="username" autocomplete="username">
     </mat-form-field>
-    <mat-form-field color="accent" appearance="outline" hideRequiredMarker>
+    <mat-form-field color="accent" hideRequiredMarker>
       <mat-label>Passwort</mat-label>
       <input matInput type="password" formControlName="password" autocomplete="current-password">
     </mat-form-field>

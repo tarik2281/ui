@@ -11,6 +11,7 @@ import {ProductViewComponent} from 'src/app/components/product-view/product-view
 import {AllProductsComponent} from 'src/app/pages/all-products/all-products.component';
 import {ProductDetailComponent} from 'src/app/pages/product-detail/product-detail.component';
 import {ShoppingCartComponent} from 'src/app/pages/shopping-cart/shopping-cart.component';
+import {ChangePasswordComponent} from 'src/app/pages/change-password/change-password.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,10 @@ const routes: Routes = [
     path: 'manage-account',
     component: ManageAccountComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'change-password',
+    component: ChangePasswordComponent
   },
   {
     path: 'faq',

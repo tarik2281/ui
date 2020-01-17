@@ -19,29 +19,32 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
-import {ProductViewComponent} from 'src/app/components/product-view/product-view.component';
+import { ProductViewComponent } from 'src/app/components/product-view/product-view.component';
 import { OverviewAppComponent } from './pages/overview-app/overview-app.component';
 import { OverviewSmarttubComponent } from './pages/overview-smarttub/overview-smarttub.component';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 import {
-  MAT_DATE_LOCALE,
+  MAT_DATE_LOCALE, MAT_FORM_FIELD_DEFAULT_OPTIONS,
   MatBadgeModule,
   MatCheckboxModule,
   MatDialogModule,
   MatNativeDateModule,
   MatSnackBarModule, MatTooltipModule, MatTreeModule
 } from '@angular/material';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RegisterUserComponent } from './pages/register-user/register-user.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ManageAccountComponent } from './pages/manage-account/manage-account.component';
 import { FaqComponent } from './pages/faq/faq.component';
-import {RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { RouteButtonComponent } from './components/route-button/route-button.component';
 import { AllProductsComponent } from './pages/all-products/all-products.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { HoverClassDirective } from './directives/hover-class.directive';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
+import { TosDialogComponent } from './components/tos-dialog/tos-dialog.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { PasswordToggleDirective } from './directives/password-toggle.directive';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,10 @@ import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.compo
     AllProductsComponent,
     ProductDetailComponent,
     HoverClassDirective,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    TosDialogComponent,
+    ChangePasswordComponent,
+    PasswordToggleDirective
   ],
   imports: [
     BrowserModule,
@@ -90,11 +96,14 @@ import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.compo
     MatTooltipModule
   ],
   providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'de-DE' }
+    { provide: MAT_DATE_LOCALE, useValue: 'de-DE' },
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }
   ],
   entryComponents: [
-    LoginDialogComponent
+    LoginDialogComponent,
+    TosDialogComponent
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

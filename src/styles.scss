@@ -32,3 +32,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-badge-content {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+mat-form-field {
+  width: 100%;
+  letter-spacing: 0 !important;
+}
+
+.icon-toggle {
+  cursor: pointer;
+  user-select: none;
+}

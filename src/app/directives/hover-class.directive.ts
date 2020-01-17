@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostListener, Input} from '@angular/core';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 @Directive({
   selector: '[appHoverClass]'
@@ -8,7 +8,7 @@ export class HoverClassDirective {
   @Input()
   appHoverClass: any;
 
-  constructor(public elementRef: ElementRef) {
+  constructor(public elementRef: ElementRef<HTMLElement>) {
   }
 
   @HostListener('mouseenter')

@@ -1,19 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from 'src/app/services/user.service';
 import {Router} from '@angular/router';
-import {MatSnackBar} from '@angular/material';
+import {MatDialog, MatSnackBar} from '@angular/material';
 import {AuthenticationService} from 'src/app/services/authentication.service';
-
-function matchValidator(target: FormControl): ValidatorFn {
-  return (c: FormControl): ValidationErrors | null => {
-    if (target.value === c.value) {
-      return null;
-    } else {
-      return {match: {valid: false}};
-    }
-  };
-}
+import {TosDialogComponent} from 'src/app/components/tos-dialog/tos-dialog.component';
+import {matchValidator} from 'src/app/validators/match-validator';
 
 @Component({
   selector: 'app-register-user',
@@ -32,12 +24,13 @@ export class RegisterUserComponent implements OnInit {
   constructor(private userService: UserService,
               private router: Router,
               private snackBar: MatSnackBar,
-              private authenticationService: AuthenticationService) {
+              private authenticationService: AuthenticationService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
     this.passwordControl = new FormControl('', [Validators.required]);
-    this.confirmPasswordControl = new FormControl('', [Validators.required, matchValidator(this.passwordControl)]);
+    this.confirmPasswordControl = new FormControl('', [Validators.required, matchValidator('password')]);
     this.confirmTos = new FormControl(false, [Validators.requiredTrue]);
 
     this.registerForm = new FormGroup({
@@ -87,6 +80,7 @@ export class RegisterUserComponent implements OnInit {
   }
 
   openTosDialog() {
+    this.dialog.open(TosDialogComponent);
     console.log('open dialog');
   }
 }
