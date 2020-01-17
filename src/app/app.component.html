@@ -7,7 +7,7 @@
       <a mat-button *ngIf="user" [matMenuTriggerFor]="userMenu">Hallo, {{user.firstName}}!</a>
       <mat-menu #userMenu="matMenu">
         <a mat-menu-item routerLink="/manage-account">Persönliche Daten bearbeiten</a>
-        <a mat-menu-item>Passwort ändern</a>
+        <a mat-menu-item routerLink="/change-password">Passwort ändern</a>
         <a mat-menu-item>Meine Bestellungen</a>
         <a mat-menu-item (click)="onLogout()">Abmelden</a>
       </mat-menu>

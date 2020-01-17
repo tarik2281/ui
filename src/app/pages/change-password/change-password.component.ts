@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {matchValidator} from 'src/app/validators/match-validator';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { matchValidator } from 'src/app/validators/match-validator';
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-change-password',
@@ -11,7 +14,8 @@ export class ChangePasswordComponent implements OnInit {
 
   passwordForm: FormGroup;
 
-  constructor() { }
+  constructor(private userService: UserService, private router: Router) {
+  }
 
   ngOnInit() {
     this.passwordForm = new FormGroup({
@@ -22,14 +26,14 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   updatePassword() {
-    console.log(this.passwordForm.valid);
-  }
-
-  toggle(element: HTMLInputElement) {
-    if (element.type === 'password') {
-      element.type = 'text';
-    } else {
-      element.type = 'password';
+    if (this.passwordForm.valid) {
+      this.userService.changePassword(this.passwordForm.value).subscribe(() => {
+        this.router.navigate(['/']);
+      }, (err: HttpErrorResponse) => {
+        if (err.error.message === 'wrong-password') {
+          this.passwordForm.controls.currentPassword.setErrors({ wrong: true });
+        }
+      });
     }
   }
 }

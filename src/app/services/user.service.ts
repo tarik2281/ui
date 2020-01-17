@@ -17,4 +17,8 @@ export class UserService {
   public update(data: any) {
     return this.http.post('/api/user/update', data);
   }
+
+  public changePassword(data: { currentPassword: string, newPassword: string}) {
+    return this.http.post('/api/user/change-password', data);
+  }
 }

@@ -37,6 +37,7 @@ export class AppComponent implements OnInit {
       this.snackBar.open('Erfolgreich abgemeldet!', null, {
         duration: 2000
       });
+      location.reload();
     });
   }
 
