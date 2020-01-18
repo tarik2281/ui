@@ -46,6 +46,7 @@ import { TosDialogComponent } from './components/tos-dialog/tos-dialog.component
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 import { PasswordToggleDirective } from './directives/password-toggle.directive';
 import { DeleteAccountComponent } from './pages/delete-account/delete-account.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { DeleteAccountComponent } from './pages/delete-account/delete-account.co
     TosDialogComponent,
     ChangePasswordComponent,
     PasswordToggleDirective,
-    DeleteAccountComponent
+    DeleteAccountComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

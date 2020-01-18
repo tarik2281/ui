@@ -13,6 +13,7 @@ import {ProductDetailComponent} from 'src/app/pages/product-detail/product-detai
 import {ShoppingCartComponent} from 'src/app/pages/shopping-cart/shopping-cart.component';
 import {ChangePasswordComponent} from 'src/app/pages/change-password/change-password.component';
 import { DeleteAccountComponent } from 'src/app/pages/delete-account/delete-account.component';
+import { NotFoundComponent } from 'src/app/pages/not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -67,6 +68,10 @@ const routes: Routes = [
   {
     path: 'cart',
     component: ShoppingCartComponent
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 
