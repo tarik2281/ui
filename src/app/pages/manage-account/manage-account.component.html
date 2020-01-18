@@ -1,116 +1,113 @@
-<div class="container">
+<div class="container small-container">
   <div class="row">
     <div class="col-12">
       <h1 class="app-content-title">Daten bearbeiten</h1>
     </div>
   </div>
-  <div class="row form-container">
-    <div class="col-12">
-      <form *ngIf="updateForm" [formGroup]="updateForm" (submit)="updateUser()">
-        <div class="container">
-          <div class="row mt-3">
-            <h5 class="col-12">Kundennummer: {{user.id}}</h5>
-          </div>
-          <div class="row mt-3">
-            <div class="col-4">
-              <mat-form-field color="accent">
-                <mat-label>Anrede</mat-label>
-                <mat-select formControlName="sex">
-                  <mat-option value="male">Herr</mat-option>
-                  <mat-option value="female">Frau</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div class="col-8">
-              <mat-form-field color="accent">
-                <mat-label>Vorname</mat-label>
-                <input matInput formControlName="firstName" autocomplete="given-name">
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <mat-form-field color="accent">
-                <mat-label>Nachname</mat-label>
-                <input matInput formControlName="lastName" autocomplete="family-name">
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <mat-form-field color="accent">
-                <mat-label>Geburtsdatum</mat-label>
-                <input matInput formControlName="birthday" [matDatepicker]="birthdayPicker" autocomplete="bday">
-                <mat-datepicker-toggle matSuffix [for]="birthdayPicker"></mat-datepicker-toggle>
-                <mat-datepicker #birthdayPicker></mat-datepicker>
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <mat-form-field color="accent">
-                <mat-label>Straße</mat-label>
-                <input matInput formControlName="address" autocomplete="address">
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-4">
-              <mat-form-field color="accent">
-                <mat-label>Postleitzahl</mat-label>
-                <input matInput formControlName="postalCode" name="postalCode">
-              </mat-form-field>
-            </div>
-            <div class="col-8">
-              <mat-form-field color="accent">
-                <mat-label>Ort</mat-label>
-                <input matInput formControlName="city" name="city">
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <mat-form-field color="accent">
-                <mat-label>Land</mat-label>
-                <input matInput formControlName="country" autocomplete="country-name">
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <mat-form-field color="accent">
-                <mat-label>Telefonnummer</mat-label>
-                <input matInput type="tel" formControlName="phoneNumber" autocomplete="tel">
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <mat-form-field color="accent">
-                <mat-label>Email-Adresse</mat-label>
-                <input matInput formControlName="emailAddress" autocomplete="email">
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <mat-checkbox formControlName="newsletter">Newsletter abonnieren</mat-checkbox>
-            </div>
-          </div>
-<!--          <div class="row">-->
-<!--            <div class="col-12 d-flex flex-row">-->
-<!--              <div class="flex-grow-1"></div>-->
-<!--              <mat-error *ngIf="submitError" class="custom-error">{{submitError}}</mat-error>-->
-<!--            </div>-->
-<!--          </div>-->
-          <div class="row mb-5">
-            <div class="col-12 d-flex flex-row">
-              <div class="flex-grow-1"></div>
-              <button mat-raised-button color="accent">Änderungen speichern</button>
-            </div>
-          </div>
-        </div>
-      </form>
+
+  <form *ngIf="updateForm" [formGroup]="updateForm" (submit)="updateUser()">
+
+    <div class="row mt-3">
+      <h5 class="col-12">Kundennummer: {{user.id}}</h5>
     </div>
-  </div>
+    <div class="row mt-3">
+      <div class="col-4">
+        <mat-form-field color="accent">
+          <mat-label>Anrede</mat-label>
+          <mat-select formControlName="sex">
+            <mat-option value="male">Herr</mat-option>
+            <mat-option value="female">Frau</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-8">
+        <mat-form-field color="accent">
+          <mat-label>Vorname</mat-label>
+          <input matInput formControlName="firstName" autocomplete="given-name">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <mat-form-field color="accent">
+          <mat-label>Nachname</mat-label>
+          <input matInput formControlName="lastName" autocomplete="family-name">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <mat-form-field color="accent">
+          <mat-label>Geburtsdatum</mat-label>
+          <input matInput formControlName="birthday" [matDatepicker]="birthdayPicker" autocomplete="bday">
+          <mat-datepicker-toggle matSuffix [for]="birthdayPicker"></mat-datepicker-toggle>
+          <mat-datepicker #birthdayPicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <mat-form-field color="accent">
+          <mat-label>Straße</mat-label>
+          <input matInput formControlName="address" autocomplete="address">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <mat-form-field color="accent">
+          <mat-label>Postleitzahl</mat-label>
+          <input matInput formControlName="postalCode" name="postalCode">
+        </mat-form-field>
+      </div>
+      <div class="col-8">
+        <mat-form-field color="accent">
+          <mat-label>Ort</mat-label>
+          <input matInput formControlName="city" name="city">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <mat-form-field color="accent">
+          <mat-label>Land</mat-label>
+          <input matInput formControlName="country" autocomplete="country-name">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <mat-form-field color="accent">
+          <mat-label>Telefonnummer</mat-label>
+          <input matInput type="tel" formControlName="phoneNumber" autocomplete="tel">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <mat-form-field color="accent">
+          <mat-label>Email-Adresse</mat-label>
+          <input matInput formControlName="emailAddress" autocomplete="email">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <mat-checkbox formControlName="newsletter">Newsletter abonnieren</mat-checkbox>
+      </div>
+    </div>
+    <!--          <div class="row">-->
+    <!--            <div class="col-12 d-flex flex-row">-->
+    <!--              <div class="flex-grow-1"></div>-->
+    <!--              <mat-error *ngIf="submitError" class="custom-error">{{submitError}}</mat-error>-->
+    <!--            </div>-->
+    <!--          </div>-->
+    <div class="row mb-5">
+      <div class="col-12">
+        <button mat-raised-button class="float-right" color="accent">Änderungen speichern</button>
+      </div>
+    </div>
+
+  </form>
+
 </div>

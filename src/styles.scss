@@ -1,7 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .app-content-title {
   text-align: center;
@@ -28,7 +34,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   text-align: center;
 }
 
-
 .mat-badge-content {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
@@ -42,3 +47,32 @@ mat-form-field {
   cursor: pointer;
   user-select: none;
 }
+
+.small-container {
+  max-width: 60%;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .small-container {
+    max-width: 540px;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .small-container {
+    max-width: 720px;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+}
+
