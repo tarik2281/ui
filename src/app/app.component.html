@@ -14,7 +14,7 @@
       <a mat-button *ngIf="!user" (click)="openLoginDialog()">Anmelden</a>
 
       <a mat-icon-button routerLink="/cart">
-        <mat-icon [matBadge]="badgeVisible ? '1' : undefined" matBadgeColor="warn">shopping_cart</mat-icon>
+        <mat-icon [matBadge]="cartService.shoppingCart.products.length > 0 ? cartService.shoppingCart.products.length : undefined" matBadgeColor="warn">shopping_cart</mat-icon>
       </a>
     </mat-toolbar-row>
     <mat-toolbar-row>

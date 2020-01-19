@@ -1,20 +1,24 @@
-<div class="container">
+<div class="container" *ngIf="product">
   <div class="row">
-    <div class="col-4">
-      <img class="product-image" src="assets/BathTubScreen.png">
+    <div class="col-4 d-flex">
+      <img class="product-image" [src]="product.thumbnailUrl">
     </div>
     <div class="col-8">
-      <h1 class="product-title">Test Product</h1>
+      <h1 class="product-title">{{ product.title }}</h1>
       <p class="product-description">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua.
+        {{ product.shortDescription }}
       </p>
-      <p class="product-price">4,99€ <span class="product-price-original">15,99€</span></p>
-      <button mat-raised-button color="accent" (click)="addToCart()" [disabled]="addedToCart">{{ addedToCart ? 'Im Warenkorb' : 'Zum Warenkorb hinzufügen' }}</button>
+      <p class="product-price">{{ product.price | currency:'EUR' }}
+<!--        <span class="product-price-original">{{ 15.99 | currency:'EUR' }}</span>-->
+      </p>
+      <button mat-raised-button color="accent" (click)="addToCart()"
+              [disabled]="isInCart()">{{ isInCart() ? 'Im Warenkorb' : 'Zum Warenkorb hinzufügen' }}</button>
     </div>
   </div>
   <div class="row additional-info-row">
-    <div class="col-4"></div>
+    <div class="col-4">
+      <!-- placeholder for gallery -->
+    </div>
     <div class="col-8">
       <div class="container">
         <div class="row">
@@ -22,9 +26,10 @@
           </div>
         </div>
       </div>
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
-      Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
+      <p *ngFor="let line of product.longDescription | lines">
+        {{ line }}
+      </p>
+<!--      {{ product.longDescription }}-->
     </div>
   </div>
 </div>

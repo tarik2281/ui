@@ -1,5 +1,5 @@
-<div class="product-container" routerLink="/products/detail" appHoverClass="mat-elevation-z2">
-  <img class="product-image" src="assets/BathTubScreen.png">
-  <span class="product-title">Test Product</span><br/>
-  <div class="product-price">4,99€</div>
+<div class="product-container" [routerLink]="['/products', product.id]" appHoverClass="mat-elevation-z2">
+  <img class="product-image" [src]="product.thumbnailUrl">
+  <span class="product-title">{{ product.title }}</span><br/>
+  <div class="product-price">{{ product.price | currency:'EUR' }}</div>
 </div>

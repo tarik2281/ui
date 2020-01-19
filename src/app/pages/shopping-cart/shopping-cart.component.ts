@@ -1,4 +1,5 @@
 import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
+import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -22,7 +23,7 @@ export class ShoppingCartComponent implements OnInit, AfterViewInit {
   @ViewChild('sideBox', {static: false})
   sideBox: ElementRef;
 
-  constructor() {
+  constructor(public cartService: ShoppingCartService) {
   }
 
   ngOnInit() {

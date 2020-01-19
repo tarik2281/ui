@@ -3,6 +3,7 @@ import {MatDialog, MatSnackBar} from '@angular/material';
 import {LoginDialogComponent} from 'src/app/components/login-dialog/login-dialog.component';
 import {AuthenticationService} from 'src/app/services/authentication.service';
 import {User} from 'src/app/model/user';
+import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ export class AppComponent implements OnInit {
 
   constructor(private authenticationService: AuthenticationService,
               private dialog: MatDialog,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar,
+              public cartService: ShoppingCartService) {
   }
 
   ngOnInit() {

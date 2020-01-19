@@ -1,24 +1,20 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Product } from 'src/app/model/product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor() { }
+  constructor(private http: HttpClient) {
+  }
 
   getAllProducts() {
-    return [
-      {
-        id: 1,
-        name: 'Product1',
-        price: '4.99€'
-      },
-      {
-        id: 2,
-        name: 'Product2',
-        price: '16.99€'
-      }
-    ];
+    return this.http.get<Product[]>('/api/products');
+  }
+
+  getProductById(id: number) {
+    return this.http.get<Product>('/api/products/' + id);
   }
 }

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,7 +16,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ProductViewComponent } from 'src/app/components/product-view/product-view.component';
@@ -47,6 +47,11 @@ import { ChangePasswordComponent } from './pages/change-password/change-password
 import { PasswordToggleDirective } from './directives/password-toggle.directive';
 import { DeleteAccountComponent } from './pages/delete-account/delete-account.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { registerLocaleData } from '@angular/common';
+import localeDe from '@angular/common/locales/de';
+import { LinesPipe } from 'src/app/pipes/lines.pipe';
+
+registerLocaleData(localeDe);
 
 @NgModule({
   declarations: [
@@ -68,7 +73,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     ChangePasswordComponent,
     PasswordToggleDirective,
     DeleteAccountComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LinesPipe
   ],
   imports: [
     BrowserModule,
@@ -97,9 +103,11 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     MatBadgeModule,
     MatTreeModule,
     RouterModule,
-    MatTooltipModule
+    MatTooltipModule,
+    FormsModule
   ],
   providers: [
+    { provide: LOCALE_ID, useValue: 'de' },
     { provide: MAT_DATE_LOCALE, useValue: 'de-DE' },
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }
   ],

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {MatSnackBar} from '@angular/material';
+import { MatSnackBar } from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/model/product';
+import { ProductService } from 'src/app/services/product.service';
+import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -9,16 +13,34 @@ import {MatSnackBar} from '@angular/material';
 export class ProductDetailComponent implements OnInit {
 
   addedToCart = false;
+  productId = 0;
 
-  constructor(private snackBar: MatSnackBar) { }
+  product: Product;
+
+  constructor(private snackBar: MatSnackBar,
+              private route: ActivatedRoute,
+              private productService: ProductService,
+              private cartService: ShoppingCartService) {
+  }
 
   ngOnInit() {
+    this.productId = +this.route.snapshot.paramMap.get('id');
+
+    this.productService.getProductById(this.productId).subscribe(data => {
+      this.product = data;
+    });
+
+    console.log('requested product id', this.productId);
+  }
+
+  isInCart() {
+    return this.cartService.isInCart(this.product);
   }
 
   addToCart() {
     if (!this.addedToCart) {
-      console.log('adding product to cart');
       this.addedToCart = true;
+      this.cartService.addProduct(this.product);
       this.snackBar.open('Artikel zum Warenkorb hinzugefügt!', null, {
         duration: 2000
       });
