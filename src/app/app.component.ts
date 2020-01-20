@@ -77,10 +77,10 @@ export class AppComponent implements OnInit {
       // this.toolbarDom.nativeElement.classList.remove('mat-elevation-z4');
     }
 
-    this.logoHeight = lerp(128, 64, -this.positionY / SCROLL_OFFSET)
-    this.logoY = lerp(128, 0, -this.positionY / SCROLL_OFFSET);
-    this.logoX = lerp(100, 10, -this.positionY / SCROLL_OFFSET);
-    this.fancyTextAlpha = lerp(0.87, 0.0, -this.positionY / SCROLL_OFFSET);
+    // this.logoHeight = lerp(128, 64, -this.positionY / SCROLL_OFFSET)
+    this.logoY = this.positionY + 128;
+    // this.logoX = lerp(100, 10, -this.positionY / SCROLL_OFFSET);
+    // this.fancyTextAlpha = lerp(0.87, 0.0, -this.positionY / SCROLL_OFFSET);
 
     // this.positionY = Math.min(0, Math.max(this.positionY - offsetY, -128));
     this.lastScrollY = window.scrollY;
