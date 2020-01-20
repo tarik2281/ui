@@ -1,9 +1,11 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import {MatDialog, MatSnackBar} from '@angular/material';
-import {LoginDialogComponent} from 'src/app/components/login-dialog/login-dialog.component';
-import {AuthenticationService} from 'src/app/services/authentication.service';
-import {User} from 'src/app/model/user';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { LoginDialogComponent } from 'src/app/components/login-dialog/login-dialog.component';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { User } from 'src/app/model/user';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+
+const SCROLL_OFFSET = 256;
 
 @Component({
   selector: 'app-root',
@@ -18,6 +20,16 @@ export class AppComponent implements OnInit {
   lastScrollY = 0;
 
   badgeVisible = false;
+
+  isAdded = false;
+
+  logoX = 100;
+  logoY = 128;
+  logoHeight = 128;
+
+  fancyTextAlpha = 0.87;
+
+  @ViewChild('toolbarDom', { static: false }) toolbarDom: ElementRef<HTMLElement>;
 
   constructor(private authenticationService: AuthenticationService,
               private dialog: MatDialog,
@@ -53,11 +65,32 @@ export class AppComponent implements OnInit {
   onAppScroll() {
     const offsetY = window.scrollY - this.lastScrollY;
 
-    this.positionY = Math.min(0, Math.max(this.positionY - offsetY, -64));
+    this.positionY = Math.max(-window.scrollY, -SCROLL_OFFSET);
+
+    if (this.positionY <= -SCROLL_OFFSET && !this.isAdded) {
+      this.isAdded = true;
+      // this.toolbarDom.nativeElement.classList.add('mat-elevation-z4');
+    }
+
+    if (this.positionY > -SCROLL_OFFSET && this.isAdded) {
+      this.isAdded = false;
+      // this.toolbarDom.nativeElement.classList.remove('mat-elevation-z4');
+    }
+
+    this.logoHeight = lerp(128, 64, -this.positionY / SCROLL_OFFSET)
+    this.logoY = lerp(128, 0, -this.positionY / SCROLL_OFFSET);
+    this.logoX = lerp(100, 10, -this.positionY / SCROLL_OFFSET);
+    this.fancyTextAlpha = lerp(0.87, 0.0, -this.positionY / SCROLL_OFFSET);
+
+    // this.positionY = Math.min(0, Math.max(this.positionY - offsetY, -128));
     this.lastScrollY = window.scrollY;
   }
 
   toggleVisibility() {
     this.badgeVisible = !this.badgeVisible;
   }
+}
+
+function lerp(start, end, amt) {
+  return (1-amt)*start+amt*end;
 }

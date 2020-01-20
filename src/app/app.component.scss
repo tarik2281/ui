@@ -4,17 +4,44 @@
 .mat-toolbar {
   position: fixed;
   z-index: 10;
+  transition: box-shadow .2s;
+}
+
+.fancy-background-image {
+  //width: 100%;
+  //background-color: white;
+  background-image:  linear-gradient(to top, white, #111111), url("../assets/image_38906.jpg");
+  background-size: cover;
+  background-position-y: 87%;
+  background-blend-mode: screen;
+}
+
+.fancy-toolbar-row {
+  height: 256px;
+}
+
+.fancy-toolbar-text {
+  position: relative;
+  top: 50px;
 }
 
 .app-content {
-  padding-top: 138px;
+  padding-top: 330px;
 }
 
 .app-logo {
-  height: 64px;
+  height: 128px;
   position: fixed;
   left: 10px;
   top: 0;
+}
+
+.app-logo-static {
+
+}
+
+.app-logo-fixed {
+
 }
 
 .app-footer {

@@ -1,9 +1,20 @@
 <div class="app-container">
-  <mat-toolbar [ngStyle]="{top: positionY + 'px'}" color="primary" class="mat-elevation-z2">
-    <mat-toolbar-row>
-      <img class="app-logo" src="assets/SmarTIIS_logo.png" routerLink="/">
+  <mat-toolbar #toolbarDom [ngStyle]="{top: positionY + 'px'}" color="primary" [class.mat-elevation-z4]="isAdded">
+    <mat-toolbar-row class="fancy-toolbar-row fancy-background-image">
+      <img class="app-logo" src="assets/SmarTIIS_logo.png" routerLink="/" [ngStyle]="{height: logoHeight + 'px', top: logoY + 'px', left: logoX + 'px'}">
       <div class="flex-grow-1"></div>
-
+      <p class="fancy-toolbar-text" [ngStyle]="{color: 'rgba(0,0,0,' + fancyTextAlpha + ')'}"></p>
+      <div class="flex-grow-1"></div>
+<!--      <img src="assets/Headquarter.jpg" class="fancy-background-image">-->
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <div class="flex-grow-1"></div>
+      <app-route-button routerLink="/overview-smarttub">SmartTub</app-route-button>
+      <app-route-button routerLink="/overview-app">SmarTIIS App</app-route-button>
+      <app-route-button routerLink="/products">Produkte</app-route-button>
+      <app-route-button routerLink="/faq">FAQ</app-route-button>
+      <app-route-button routerLink="/about-us">Über uns</app-route-button>
+      <div class="flex-grow-1"></div>
       <a mat-button *ngIf="user" [matMenuTriggerFor]="userMenu">Hallo, {{user.firstName}}!</a>
       <mat-menu #userMenu="matMenu">
         <a mat-menu-item routerLink="/manage-account">Persönliche Daten bearbeiten</a>
@@ -16,15 +27,6 @@
       <a mat-icon-button routerLink="/cart">
         <mat-icon [matBadge]="cartService.shoppingCart.products.length > 0 ? cartService.shoppingCart.products.length : undefined" matBadgeColor="warn">shopping_cart</mat-icon>
       </a>
-    </mat-toolbar-row>
-    <mat-toolbar-row>
-      <div class="flex-grow-1"></div>
-      <app-route-button routerLink="/overview-smarttub">SmartTub</app-route-button>
-      <app-route-button routerLink="/overview-app">SmarTIIS App</app-route-button>
-      <app-route-button routerLink="/products">Produkte</app-route-button>
-      <app-route-button routerLink="/faq">FAQ</app-route-button>
-      <app-route-button routerLink="/about-us">Über uns</app-route-button>
-      <div class="flex-grow-1"></div>
     </mat-toolbar-row>
 
   </mat-toolbar>
