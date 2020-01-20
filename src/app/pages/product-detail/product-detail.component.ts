@@ -12,9 +12,7 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 })
 export class ProductDetailComponent implements OnInit {
 
-  addedToCart = false;
   productId = 0;
-
   product: Product;
 
   constructor(private snackBar: MatSnackBar,
@@ -33,17 +31,10 @@ export class ProductDetailComponent implements OnInit {
     console.log('requested product id', this.productId);
   }
 
-  isInCart() {
-    return this.cartService.isInCart(this.product);
-  }
-
   addToCart() {
-    if (!this.addedToCart) {
-      this.addedToCart = true;
-      this.cartService.addProduct(this.product);
-      this.snackBar.open('Artikel zum Warenkorb hinzugefügt!', null, {
-        duration: 2000
-      });
-    }
+    this.cartService.addProduct(this.product);
+    this.snackBar.open('Artikel zum Warenkorb hinzugefügt!', null, {
+      duration: 2000
+    });
   }
 }

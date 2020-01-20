@@ -37,16 +37,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ManageAccountComponent } from './pages/manage-account/manage-account.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { RouterModule } from '@angular/router';
-import { RouteButtonComponent } from './components/route-button/route-button.component';
 import { AllProductsComponent } from './pages/all-products/all-products.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
-import { HoverClassDirective } from './directives/hover-class.directive';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
-import { TosDialogComponent } from './components/tos-dialog/tos-dialog.component';
-import { ChangePasswordComponent } from './pages/change-password/change-password.component';
-import { PasswordToggleDirective } from './directives/password-toggle.directive';
-import { DeleteAccountComponent } from './pages/delete-account/delete-account.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import { LinesPipe } from 'src/app/pipes/lines.pipe';
@@ -64,16 +57,9 @@ registerLocaleData(localeDe);
     RegisterUserComponent,
     ManageAccountComponent,
     FaqComponent,
-    RouteButtonComponent,
     AllProductsComponent,
     ProductDetailComponent,
-    HoverClassDirective,
     ShoppingCartComponent,
-    TosDialogComponent,
-    ChangePasswordComponent,
-    PasswordToggleDirective,
-    DeleteAccountComponent,
-    NotFoundComponent,
     LinesPipe
   ],
   imports: [
@@ -112,8 +98,7 @@ registerLocaleData(localeDe);
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }
   ],
   entryComponents: [
-    LoginDialogComponent,
-    TosDialogComponent
+    LoginDialogComponent
   ],
   bootstrap: [AppComponent]
 })

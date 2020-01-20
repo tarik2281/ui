@@ -1,20 +1,12 @@
 
 @import 'src/theme.scss';
 
-.mat-toolbar {
-  position: fixed;
-  z-index: 10;
-}
-
 .app-content {
-  padding-top: 138px;
+  padding-top: 10px;
 }
 
 .app-logo {
   height: 64px;
-  position: fixed;
-  left: 10px;
-  top: 0;
 }
 
 .app-footer {

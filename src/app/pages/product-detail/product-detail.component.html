@@ -9,10 +9,8 @@
         {{ product.shortDescription }}
       </p>
       <p class="product-price">{{ product.price | currency:'EUR' }}
-<!--        <span class="product-price-original">{{ 15.99 | currency:'EUR' }}</span>-->
       </p>
-      <button mat-raised-button color="accent" (click)="addToCart()"
-              [disabled]="isInCart()">{{ isInCart() ? 'Im Warenkorb' : 'Zum Warenkorb hinzufügen' }}</button>
+      <button mat-stroked-button (click)="addToCart()">Zum Warenkorb hinzufügen</button>
     </div>
   </div>
   <div class="row additional-info-row">
@@ -29,7 +27,6 @@
       <p *ngFor="let line of product.longDescription | lines">
         {{ line }}
       </p>
-<!--      {{ product.longDescription }}-->
     </div>
   </div>
 </div>

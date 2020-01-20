@@ -2,10 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material';
 
-/**
- * Food data with nested structure.
- * Each node has a name and an optiona list of children.
- */
 interface DataNode {
   name: string;
   children?: DataNode[];
@@ -25,7 +21,7 @@ const QUESTION_DATA: DataNode[] = [
     name: 'Kontoverwaltung',
     children: [
       {
-        name: 'abcdefghijklmnopqrstuvwxyz?',
+        name: 'Was ist das?',
         children: [{name: 'Ja'}]
       }
     ]

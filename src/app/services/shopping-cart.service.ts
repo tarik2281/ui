@@ -30,29 +30,4 @@ export class ShoppingCartService {
     const index = this.shoppingCart.products.findIndex((value) => value.product.id === product.id);
     this.shoppingCart.products.splice(index, 1);
   }
-
-  isInCart(product: Product) {
-    return !!this.shoppingCart.products.find(value => value.product.id === product.id);
-  }
-
-  getShippingFee() {
-    return 4.99;
-  }
-
-  calculateProductSum() {
-    let sum = 0;
-    for (const entry of this.shoppingCart.products) {
-      sum += entry.amount * entry.product.price;
-    }
-    return sum;
-  }
-
-  calculateTotalSum() {
-    return this.calculateProductSum() + this.getShippingFee();
-  }
-
-  calculateTaxes() {
-    const sum = this.calculateProductSum();
-    return (sum - sum / 1.19).toFixed(2);
-  }
 }

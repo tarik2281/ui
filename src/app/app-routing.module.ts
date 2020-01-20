@@ -7,13 +7,9 @@ import {RegisterUserComponent} from 'src/app/pages/register-user/register-user.c
 import {ManageAccountComponent} from 'src/app/pages/manage-account/manage-account.component';
 import {AuthGuard} from 'src/app/services/auth-guard.service';
 import {FaqComponent} from 'src/app/pages/faq/faq.component';
-import {ProductViewComponent} from 'src/app/components/product-view/product-view.component';
 import {AllProductsComponent} from 'src/app/pages/all-products/all-products.component';
 import {ProductDetailComponent} from 'src/app/pages/product-detail/product-detail.component';
 import {ShoppingCartComponent} from 'src/app/pages/shopping-cart/shopping-cart.component';
-import {ChangePasswordComponent} from 'src/app/pages/change-password/change-password.component';
-import { DeleteAccountComponent } from 'src/app/pages/delete-account/delete-account.component';
-import { NotFoundComponent } from 'src/app/pages/not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -44,16 +40,6 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'change-password',
-    component: ChangePasswordComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'delete-account',
-    component: DeleteAccountComponent,
-    canActivate: [AuthGuard]
-  },
-  {
     path: 'faq',
     component: FaqComponent
   },
@@ -68,10 +54,6 @@ const routes: Routes = [
   {
     path: 'cart',
     component: ShoppingCartComponent
-  },
-  {
-    path: '**',
-    component: NotFoundComponent
   }
 ];
 

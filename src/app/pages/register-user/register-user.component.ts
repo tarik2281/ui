@@ -2,9 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from 'src/app/services/user.service';
 import {Router} from '@angular/router';
-import {MatDialog, MatSnackBar} from '@angular/material';
+import {MatSnackBar} from '@angular/material';
 import {AuthenticationService} from 'src/app/services/authentication.service';
-import {TosDialogComponent} from 'src/app/components/tos-dialog/tos-dialog.component';
 import {matchValidator} from 'src/app/validators/match-validator';
 
 @Component({
@@ -24,8 +23,7 @@ export class RegisterUserComponent implements OnInit {
   constructor(private userService: UserService,
               private router: Router,
               private snackBar: MatSnackBar,
-              private authenticationService: AuthenticationService,
-              private dialog: MatDialog) {
+              private authenticationService: AuthenticationService) {
   }
 
   ngOnInit() {
@@ -43,7 +41,7 @@ export class RegisterUserComponent implements OnInit {
       city: new FormControl('', [Validators.required]),
       country: new FormControl('', [Validators.required]),
       phoneNumber: new FormControl('', []),
-      emailAddress: new FormControl('', [Validators.required, Validators.email]),
+      emailAddress: new FormControl('', [Validators.required]),
       password: this.passwordControl,
       confirmPassword: this.confirmPasswordControl,
       confirmTos: this.confirmTos,
@@ -80,7 +78,6 @@ export class RegisterUserComponent implements OnInit {
   }
 
   openTosDialog() {
-    this.dialog.open(TosDialogComponent);
     console.log('open dialog');
   }
 }
