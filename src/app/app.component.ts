@@ -5,7 +5,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { User } from 'src/app/model/user';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 
-const SCROLL_OFFSET = 256;
+const SCROLL_OFFSET = 384;
 
 @Component({
   selector: 'app-root',
@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   isAdded = false;
 
   logoX = 100;
-  logoY = 128;
+  logoY = 256;
   logoHeight = 128;
 
   fancyTextAlpha = 0.87;
@@ -45,6 +45,13 @@ export class AppComponent implements OnInit {
 
     this.authenticationService.me();
   }
+
+  scrollToContent(element: HTMLDivElement) {
+    console.log('scroll called', element);
+    window.scrollTo({behavior: 'smooth', top: 458 - 64});
+    // element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+  }
+
 
   onLogout() {
     this.authenticationService.logout().subscribe(result => {
@@ -78,7 +85,7 @@ export class AppComponent implements OnInit {
     }
 
     // this.logoHeight = lerp(128, 64, -this.positionY / SCROLL_OFFSET)
-    this.logoY = this.positionY + 128;
+    this.logoY = this.positionY + 256;
     // this.logoX = lerp(100, 10, -this.positionY / SCROLL_OFFSET);
     // this.fancyTextAlpha = lerp(0.87, 0.0, -this.positionY / SCROLL_OFFSET);
 

@@ -10,7 +10,45 @@
 
 .screen-image {
   width: auto;
-  height: 350px;
+  height: 500px;
   margin: 30px auto;
 }
 
+.title-row {
+  height: calc(100vh - 64px);
+  //height: 100vh;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-image: url("~/assets/wave.svg");
+  background-size: cover;
+
+  .app-content-text {
+    max-width: 60%;
+  }
+}
+
+.title-row-2 {
+  height: calc(100vh - 64px);
+  //height: 100vh;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-image: url("~/assets/wave (1).svg");
+  background-size: cover;
+
+  .app-content-text {
+    max-width: 60%;
+  }
+}
+
+.text-block {
+  max-width: 550px;
+}
+
+.title-image {
+  width: auto;
+  height: 550px;
+}

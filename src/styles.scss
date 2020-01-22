@@ -58,6 +58,11 @@ mat-form-field {
   max-width: 60%;
 }
 
+.big-container {
+  max-width: 100%;
+  padding: 0 !important;
+}
+
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
   .small-container {
@@ -79,9 +84,33 @@ mat-form-field {
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-
+  //.big-container {
+  //  max-width: 1100px;
+  //}
 }
 
 .mat-app-background {
   background: white;
+}
+
+.slide-in-left {
+  transition: 1s;
+  opacity: 0;
+  transform: translateX(-200px);
+}
+
+.slide-in-left-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-in-right {
+  transition: 1s;
+  opacity: 0;
+  transform: translateX(200px);
+}
+
+.slide-in-right-active {
+  opacity: 1;
+  transform: translateX(0);
 }
