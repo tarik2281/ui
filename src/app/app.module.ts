@@ -24,7 +24,7 @@ import { OverviewAppComponent } from './pages/overview-app/overview-app.componen
 import { OverviewSmarttubComponent } from './pages/overview-smarttub/overview-smarttub.component';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 import {
-  MAT_DATE_LOCALE, MAT_FORM_FIELD_DEFAULT_OPTIONS,
+  MAT_DATE_LOCALE, MAT_DIALOG_SCROLL_STRATEGY, MAT_FORM_FIELD_DEFAULT_OPTIONS,
   MatBadgeModule,
   MatCheckboxModule,
   MatDialogModule,
@@ -50,8 +50,13 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import { LinesPipe } from 'src/app/pipes/lines.pipe';
+import {BlockScrollStrategy, NoopScrollStrategy, Overlay} from '@angular/cdk/overlay';
 
 registerLocaleData(localeDe);
+
+export function scrollFactory(overlay: Overlay): () => NoopScrollStrategy {
+  return () => overlay.scrollStrategies.noop();
+}
 
 @NgModule({
   declarations: [
@@ -108,6 +113,7 @@ registerLocaleData(localeDe);
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'de' },
+    { provide: MAT_DIALOG_SCROLL_STRATEGY, useFactory: scrollFactory, deps: [Overlay] },
     { provide: MAT_DATE_LOCALE, useValue: 'de-DE' },
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }
   ],

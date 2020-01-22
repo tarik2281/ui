@@ -27,6 +27,12 @@ body {
   text-align: justify;
 }
 
+//.cdk-global-scrollblock{
+//  position: static !important;
+//  width: initial !important;
+//  overflow-y: inherit !important;
+//}
+
 .overview-text {
   width: 70%;
   margin: auto;
@@ -76,3 +82,6 @@ mat-form-field {
 
 }
 
+.mat-app-background {
+  background: white;
+}
