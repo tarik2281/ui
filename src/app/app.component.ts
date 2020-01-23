@@ -7,6 +7,8 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 
 const SCROLL_OFFSET = 384;
 
+const APP_LOGO_HEIGHT = 192;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -24,7 +26,7 @@ export class AppComponent implements OnInit {
   isAdded = false;
 
   logoX = 100;
-  logoY = 256;
+  logoY = (SCROLL_OFFSET - APP_LOGO_HEIGHT);
   logoHeight = 128;
 
   fancyTextAlpha = 0.87;
@@ -85,7 +87,7 @@ export class AppComponent implements OnInit {
     }
 
     // this.logoHeight = lerp(128, 64, -this.positionY / SCROLL_OFFSET)
-    this.logoY = this.positionY + 256;
+    this.logoY = this.positionY + (SCROLL_OFFSET - APP_LOGO_HEIGHT);
     // this.logoX = lerp(100, 10, -this.positionY / SCROLL_OFFSET);
     // this.fancyTextAlpha = lerp(0.87, 0.0, -this.positionY / SCROLL_OFFSET);
 

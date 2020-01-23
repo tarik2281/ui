@@ -3,6 +3,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 
 interface Person {
   readonly img: string;
+  readonly position: string;
   readonly name: string;
   readonly description: string;
 }
@@ -10,6 +11,7 @@ interface Person {
 const PEOPLE: Person[] = [
   {
     img: 'assets/Entrepreneur and CEO Philipp.jpg',
+    position: 'CEO und Entrepreneur',
     name: 'Philipp Dingelmann',
     description: 'Philipp ist der erste Gründer und CEO der SmarTIIS. Er zeichnet sich vor\n' +
       'allem durch seine Kreativität und seinen entrepreneurial Spirit aus. Er\n' +
@@ -20,6 +22,7 @@ const PEOPLE: Person[] = [
   },
   {
     img: 'assets/Computer Engineer Tom.jpg',
+    position: 'Mechanic and Computer Engineer',
     name: 'Tom Lorenz',
     description: 'Für das Technische ist Tom als Ingenieur zuständig. Noch während seines\n' +
       'Masterstudiums in Berlin lernte er Philipp auf einer Messe für Gründer\n' +
@@ -29,6 +32,7 @@ const PEOPLE: Person[] = [
   },
   {
     img: 'assets/Software Engineer Michael.jpg',
+    position: 'Software Systems Engineer',
     name: 'Michael Mertens',
     description: 'In Zeiten der Digitalisierung darf ein Softwareentwickler in einem\n' +
       'innovativen Start-Up nicht fehlen. Informatiker Michael ist durch sein\n' +
@@ -40,11 +44,10 @@ const PEOPLE: Person[] = [
   },
   {
     img: 'assets/Marketing Manager Eliza.jpg',
+    position: 'Product Designer',
     name: 'Eliza Braun',
     description: 'Ohne die richtige Vermarktung ist die beste Idee nutzlos – hier setzt Eliza\n' +
-      'als Verantwortliche für das Design an. Eliza und Philipp sind gute\n' +
-      'Freunde seit dem ersten Semester, sodass es für sie selbstverständlich\n' +
-      'ist, ihre Fähigkeiten mit den anderen zu teilen. Sie arbeitet eng mit den\n' +
+      'als Verantwortliche für das Design an. Sie arbeitet eng mit den\n' +
       'anderen Gründern zusammen, um möglichst viele Informationen und\n' +
       'Details über die Produkte zu bekommen. Bei der Produktentwicklung\n' +
       'und der Erstellung von Prototypen arbeiten meistens alle 4 Gründer\n' +

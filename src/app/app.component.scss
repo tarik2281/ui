@@ -1,6 +1,8 @@
 
 @import 'src/theme.scss';
 
+$app-logo-height: 192px;
+
 .mat-toolbar {
   position: fixed;
   z-index: 10;
@@ -10,7 +12,8 @@
 .fancy-background-image {
   //width: 100%;
   //background-color: white;
-  background-image:  linear-gradient(to top, white, #0000), url("../assets/image_38906.jpg");
+  //background-image:  linear-gradient(to top, white, #0000),
+  background-image:  linear-gradient(to top, #fffc, #fff8), url("../assets/image_38906.jpg");
   background-size: cover;
   background-position-y: 88%;
   //background-blend-mode: screen;
@@ -30,7 +33,7 @@
 }
 
 .app-logo {
-  height: 128px;
+  height: $app-logo-height;
   position: fixed;
   left: 100px;
   top: 0;
@@ -44,7 +47,7 @@
 }
 
 .app-logo-fixed {
-  top: 128px;
+  top: $app-logo-height;
   //visibility: hidden;
   //position: fixed;
   left: 20px;
