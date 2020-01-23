@@ -2,3 +2,43 @@
 .row {
   margin-bottom: 30px;
 }
+
+.person-image {
+  position: relative;
+  width: 450px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.thumbnail-image {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  margin-top: -36px;
+}
+
+.thumbnail-container {
+  display: inline-flex;
+  flex-direction: column;
+  opacity: 0.5;
+  transition: opacity .2s;
+  cursor: pointer;
+
+  span {
+    margin-top: 5px;
+    font-weight: 500;
+    text-align: center;
+  }
+}
+
+.thumbnail-container:hover {
+  opacity: 1;
+}
+
+.thumbnail-container-active {
+  opacity: 1;
+}

@@ -9,6 +9,8 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+
+
 .app-content-title {
   text-align: center;
   padding: 30px;
@@ -61,6 +63,7 @@ mat-form-field {
 .big-container {
   max-width: 100%;
   padding: 0 !important;
+  padding-top: 64px !important;
 }
 
 // Small devices (landscape phones, 576px and up)
@@ -91,6 +94,7 @@ mat-form-field {
 
 .mat-app-background {
   background: white;
+  overflow-x: hidden;
 }
 
 .slide-in-left {
@@ -114,3 +118,84 @@ mat-form-field {
   opacity: 1;
   transform: translateX(0);
 }
+
+.title-row {
+  //height: calc(100vh - 64px);
+  //height: 100vh;
+  //align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+  .app-content-text {
+    max-width: 60%;
+  }
+
+  p {
+    font-size: 120%;
+  }
+}
+
+
+.text-block {
+  max-width: 550px;
+
+  p {
+    font-size: 120%;
+    margin-bottom: 0 !important;
+  }
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: calc(100vh - 64px);
+  align-items: center;
+}
+
+.content-row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.wave-bottom {
+  background-image: url("~/assets/wave.svg");
+  background-size: cover;
+}
+
+.wave-bottom-2 {
+  background-image: url("~/assets/wave.svg");
+  background-size: cover;
+  background-position-x: center;
+}
+
+.wave-bottom-3 {
+  background-image: url("~/assets/wave.svg");
+  background-size: cover;
+  background-position-x: right;
+}
+
+.wave-top {
+  background-image: url("~/assets/wave (1).svg");
+  background-size: cover;
+}
+
+.wave-top-2 {
+  background-image: url("~/assets/wave (1).svg");
+  background-size: cover;
+  background-position-x: center;
+}
+
+.wave-top-3 {
+  background-image: url("~/assets/wave (1).svg");
+  background-size: cover;
+  background-position-x: right;
+}
+
+//.page-container:first-child {
+//  margin-top: 64px;
+//}

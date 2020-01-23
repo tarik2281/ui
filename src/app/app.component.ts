@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
 
   scrollToContent(element: HTMLDivElement) {
     console.log('scroll called', element);
-    window.scrollTo({behavior: 'smooth', top: 458 - 64});
+    window.scrollTo({behavior: 'smooth', top: 458});
     // element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
   }
 
