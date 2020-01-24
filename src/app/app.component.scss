@@ -4,9 +4,9 @@
 $app-logo-height: 192px;
 
 .mat-toolbar {
-  position: fixed;
-  z-index: 10;
-  transition: box-shadow .2s;
+  //position: fixed;
+  //z-index: 10;
+  //transition: box-shadow .2s;
 }
 
 .fancy-background-image {
@@ -20,7 +20,22 @@ $app-logo-height: 192px;
 }
 
 .fancy-toolbar-row {
+  position: relative;
   height: 384px;
+}
+
+.fixed-toolbar-row {
+  //position: fixed;
+  //z-index: 100;
+  //background-color: white;
+  //transition: .2s;
+}
+
+.sticky-toolbar {
+  position: sticky;
+  transition: .2s;
+  top: 0;
+  z-index: 100;
 }
 
 .fancy-toolbar-text {
@@ -29,21 +44,38 @@ $app-logo-height: 192px;
 }
 
 .app-content {
-  margin-top: 458px;
+  //margin-top: 458px;
+}
+
+.sticky-sentinel {
+  position: absolute;
+  //background-color: yellow;
+  height: 40px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  top: calc(384px - 40px);
 }
 
 .app-logo {
   height: $app-logo-height;
-  position: fixed;
+  position: absolute;
   left: 100px;
-  top: 0;
-  transition: all .25s;
-  transition-property: top, left, height;
+  bottom: 0;
+  z-index: 200;
+  //bottom: 0;
+  //transition: all .25s;
+  //transition-property: top, left, height;
   //filter: drop-shadow(2px 4px 6px black);
 }
 
 .app-logo-static {
 
+}
+
+.log {
+  height: 64px;
+  position: absolute;
 }
 
 .app-logo-fixed {
