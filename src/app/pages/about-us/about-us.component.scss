@@ -1,7 +1,15 @@
 
 .hq-image {
   width: auto;
-  height: 500px;
+  height: 400px;
+}
+
+.hq-text-block {
+  max-width: 600px;
+
+  p {
+    font-size: unset;
+  }
 }
 
 .person-image {

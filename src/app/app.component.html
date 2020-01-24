@@ -31,7 +31,11 @@
   </mat-toolbar>
 
   <div #content class="app-content">
-    <router-outlet></router-outlet>
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+  </div>
+
+  <div class="app-footer">
+
   </div>
 
 </div>

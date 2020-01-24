@@ -4,6 +4,7 @@ import { LoginDialogComponent } from 'src/app/components/login-dialog/login-dial
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { User } from 'src/app/model/user';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { NavigationEnd, Router } from '@angular/router';
 
 const SCROLL_OFFSET = 384;
 
@@ -32,11 +33,13 @@ export class AppComponent implements OnInit {
   fancyTextAlpha = 0.87;
 
   @ViewChild('toolbarDom', { static: false }) toolbarDom: ElementRef<HTMLElement>;
+  @ViewChild('content', { static: false }) contentDiv: ElementRef<HTMLDivElement>;
 
   constructor(private authenticationService: AuthenticationService,
               private dialog: MatDialog,
               private snackBar: MatSnackBar,
-              public cartService: ShoppingCartService) {
+              public cartService: ShoppingCartService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -48,9 +51,25 @@ export class AppComponent implements OnInit {
     this.authenticationService.me();
   }
 
+  firstActivation = true;
+
+  onActivate(event) {
+    if (this.firstActivation) {
+      this.firstActivation = false;
+      return;
+    }
+
+    console.log(event);
+    if (!this.isAdded) {
+      window.scrollTo({behavior: 'smooth', top: 458});
+    } else {
+      window.scrollTo({ behavior: 'auto', top: 458});
+    }
+  }
+
   scrollToContent(element: HTMLDivElement) {
-    console.log('scroll called', element);
-    window.scrollTo({behavior: 'smooth', top: 458});
+    // console.log('scroll called', element);
+    // window.scrollTo({behavior: 'smooth', top: 458});
     // element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
   }
 

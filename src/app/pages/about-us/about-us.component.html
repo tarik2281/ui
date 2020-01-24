@@ -1,25 +1,48 @@
 <div class="big-container">
   <div class="page-container wave-bottom-3">
     <div class="content-row">
-      <img class="hq-image mat-elevation-z16" src="assets/Headquarter.jpg">
-      <div class="text-block">
-        <p></p>
+      <h1 appSlideIn="top">Unser Unternehmen</h1>
+    </div>
+    <div class="content-row">
+      <img appSlideIn="left" class="hq-image mat-elevation-z16" src="assets/Headquarter.jpg">
+      <div appSlideIn="right" class="hq-text-block">
+        <h3>Enstehungsgeschichte</h3>
+        <p>
+          Die SmarTIIS GmbH hat sich vor vier Jahren gegründet und besteht aus insgesamt 50 Mitarbeitern.
+          Dabei arbeiten diese zu einem Großteil gemeinsam an der mechanischen und softwaretechnischen
+          Lösung eines innovativen Smart-Home Produkts – der sogenannten SmartTub. Das Headquarter und
+          damit der derzeit einzige Standort der SmartTIIS liegt mitten im Herzen des Ruhrgebiets in der Stadt
+          Essen und direkt am Campus der Universität Duisburg-Essen. Hier möchten die 4 Gründer nicht nur die
+          Region, in der sie geboren wurden und aufgewachsen sind,stärken, sondern auch international zeigen,
+          welches Potenzial die Start-Up Szene in Deutschland hat. Die Entscheidung im Ruhrgebiet zu bleiben
+          war jedoch nicht leicht, da viele Kollegen und Gründer von anderen Start-Ups mit ihren Plänen und
+          Ideen nach Berlin gegangen sind. Die wenigen verbliebenen sammeln sich hingegen in Köln und kaum
+          ein Start-Up scheint im Ruhrgebiet zu verweilen. „Das müssen wir auf jeden Fall ändern!“ dachten sich
+          die 4 Gründer der SmarTIIS und an dieser Entscheidung halten sie auch heute noch fest.
+        </p>
       </div>
     </div>
   </div>
   <div class="page-container wave-top-3">
     <div class="content-row">
-      <h1>Unser Team</h1>
+      <div class="text-block">
+
+      </div>
+    </div>
+  </div>
+  <div class="page-container wave-bottom-2">
+    <div class="content-row">
+      <h1 appSlideIn="top">Unser Team</h1>
     </div>
     <div class="content-row" [@crossfade]="fadeState" (@crossfade.done)="animationDone()">
-      <img class="person-image mat-elevation-z16" [src]="person.img">
-      <div class="text-block">
+      <img appSlideIn="left" class="person-image mat-elevation-z16" [src]="person.img">
+      <div appSlideIn="right" class="text-block">
         <h6>{{person.position}}</h6>
         <h3>{{person.name}}</h3>
         <p>{{person.description}}</p>
       </div>
     </div>
-    <div class="content-row">
+    <div appSlideIn="top" class="content-row">
       <div *ngFor="let person of allPeople; let i = index"
            class="thumbnail-container"
            [class.thumbnail-container-active]="isThumbnailActive(i)"
