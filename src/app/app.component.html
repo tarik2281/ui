@@ -16,7 +16,8 @@
 
   <mat-toolbar #toolbarDom color="primary" class="sticky-toolbar" [ngClass]="{'mat-elevation-z4': isAdded}">
     <mat-toolbar-row>
-      <img *ngIf="isAdded" class="log" @stickyLogo src="assets/SmarTIIS_logo.png" (@stickyLogo.done)="onAnimationDone($event)">
+      <img *ngIf="isAdded" class="log" @stickyLogo src="assets/SmarTIIS_logo.png"
+           (@stickyLogo.done)="onAnimationDone($event)">
       <div class="flex-grow-1"></div>
       <app-route-button routerLink="/overview-smarttub">SmartTub</app-route-button>
       <app-route-button routerLink="/overview-app" (click)="scrollToContent(content)">SmarTIIS App</app-route-button>
@@ -47,8 +48,11 @@
     <router-outlet (activate)="onActivate($event)"></router-outlet>
   </div>
 
-<!--  <div class="app-footer">-->
-<!--    <p>Footer</p>-->
-<!--  </div>-->
+  <div class="app-footer">
+    <i class="fa fa-instagram fa-2x"></i>
+    <i class="fa fa-twitter fa-2x"></i>
+    <i class="fa fa-twitch fa-2x"></i>
+    <i class="fa fa-facebook-square fa-2x"></i>
+  </div>
 
 </div>

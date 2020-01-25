@@ -1,0 +1,44 @@
+
+@mixin page-container($flex-direction) {
+  display: flex;
+  flex-flow: $flex-direction wrap;
+  min-height: calc(100vh - #{$toolbar-height});
+}
+
+/**
+  To be used with rows.
+ */
+.page-container-v {
+  @include page-container(column);
+}
+
+.content-row {
+
+}
+
+/**
+  To be used with columns.
+ */
+.page-container-h {
+  @include page-container(row);
+}
+
+.content-column {
+
+}
+
+@media (min-width: 576px) {
+
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+
+}
+
+@media (min-width: 1200px) {
+
+}

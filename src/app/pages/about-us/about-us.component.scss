@@ -15,6 +15,13 @@
 .big-text-block {
   max-width: 550px;
   text-align: justify;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.big-text-block:first-child {
+  margin-top: -150px;
 }
 
 .person-image {

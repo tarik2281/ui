@@ -5,6 +5,8 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { User } from 'src/app/model/user';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { animate, AnimationEvent, style, transition, trigger } from '@angular/animations';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +27,13 @@ import { animate, AnimationEvent, style, transition, trigger } from '@angular/an
   ]
 })
 export class AppComponent implements OnInit, AfterViewInit {
+
+  isSmall$ = this.breakpointObserver.observe('(max-width: 768px)')
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
+
   title = 'ui';
 
   user: User;
@@ -41,7 +50,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(private authenticationService: AuthenticationService,
               private dialog: MatDialog,
               private snackBar: MatSnackBar,
-              public cartService: ShoppingCartService) {
+              public cartService: ShoppingCartService,
+              private breakpointObserver: BreakpointObserver) {
   }
 
   ngOnInit() {

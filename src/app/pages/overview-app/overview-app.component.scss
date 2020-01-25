@@ -64,15 +64,15 @@
   margin-top: 10px;
   margin-bottom: 70px;
 
-  img {
-    width: auto;
-    height: 75px;
-  }
-
-  img:first-child {
-    height: 50px;
-    width: auto;
-  }
+  //img {
+  //  width: auto;
+  //  height: 75px;
+  //}
+  //
+  //img:first-child {
+  //  height: 50px;
+  //  width: auto;
+  //}
 }
 
 .title-row-2 {
@@ -100,4 +100,16 @@
 .title-image {
   width: 270px;
   height: 550px;
+}
+
+.apple-app-store {
+  user-select: none;
+  height: 50px;
+  width: auto;
+}
+
+.google-play-store {
+  user-select: none;
+  width: auto;
+  height: 75px;
 }

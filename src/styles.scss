@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "global-styles/variables";
+@import "global-styles/layout";
+
 html, body {
   height: 100%;
 }
@@ -7,6 +10,8 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow: scroll;
+  overflow-x: hidden !important;
 }
 
 
@@ -168,11 +173,15 @@ mat-form-field {
   }
 }
 
+.fa-1-5x {
+  font-size: 1.5em !important;
+}
+
 .page-container {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: calc(100vh - 64px);
+  min-height: calc(100vh - 64px);
   align-items: center;
   //overflow-y: hidden;
 }
