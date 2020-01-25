@@ -1,0 +1,46 @@
+
+//.input-field-background {
+//  background-color: white;
+//  border-radius: 5px;
+//}
+
+//::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+//  background-color: white;
+//  border-radius: 5px;
+//}
+
+h4 {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.vl {
+  margin: 0 40px;
+  border-right: 1px solid #eeeeee;
+}
+
+.buttons {
+  //margin-top: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.reset-password-button {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+}
+
+//.fa {
+//  margin: auto;
+//}

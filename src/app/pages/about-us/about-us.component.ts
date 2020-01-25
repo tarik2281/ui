@@ -89,7 +89,7 @@ export class AboutUsComponent implements OnInit, AfterViewInit {
 
   fadeState = 'visible';
 
-  @ViewChild('testImg', { static: false }) testImg: ElementRef<HTMLImageElement>;
+  // @ViewChild('testImg', { static: false }) testImg: ElementRef<HTMLImageElement>;
 
   constructor() {
   }
@@ -98,11 +98,11 @@ export class AboutUsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    const observer = new IntersectionObserver(entries => {
-      console.log('is intersecting', entries[0].isIntersecting);
-    }, { rootMargin: '100px 0px 0px 0px'});
-
-    observer.observe(this.testImg.nativeElement);
+    // const observer = new IntersectionObserver(entries => {
+    //   console.log('is intersecting', entries[0].isIntersecting);
+    // }, { rootMargin: '100px 0px 0px 0px'});
+    //
+    // observer.observe(this.testImg.nativeElement);
 
     // for (const person of PEOPLE) {
     //   person.image = new Image();

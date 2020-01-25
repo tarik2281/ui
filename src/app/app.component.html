@@ -32,7 +32,7 @@
         <a mat-menu-item>Meine Bestellungen</a>
         <a mat-menu-item (click)="onLogout()">Abmelden</a>
       </mat-menu>
-      <a mat-button *ngIf="!user" (click)="openLoginDialog()">Anmelden</a>
+      <a mat-button *ngIf="!user" routerLink="login">Anmelden</a>
 
       <a mat-icon-button routerLink="/cart">
         <mat-icon
@@ -49,10 +49,10 @@
   </div>
 
   <div class="app-footer">
-    <i class="fa fa-instagram fa-2x"></i>
-    <i class="fa fa-twitter fa-2x"></i>
-    <i class="fa fa-twitch fa-2x"></i>
-    <i class="fa fa-facebook-square fa-2x"></i>
+    <i class="fab fa-instagram fa-2x"></i>
+    <i class="fab fa-twitter fa-2x"></i>
+    <i class="fab fa-twitch fa-2x"></i>
+    <i class="fab fa-facebook-square fa-2x"></i>
   </div>
 
 </div>
