@@ -24,33 +24,84 @@
     </div>
   </div>
   <div class="page-container wave-top-3">
-    <div class="content-row">
-      <div class="text-block">
-        <h3>Unternehmenswerte</h3>
-        <ul>
-          <li>asd</li>
-          <li>asd</li>
-          <li>asd</li>
-          <li>asd</li>
-          <li>asd</li>
-          <li>asd</li>
-        </ul>
+    <div appSlideIn="top" class="content-row">
+      <div class="big-text-block">
+        <h6>Wir sind ein Team</h6>
+        <p>
+          Egal ob Gründer, Auszubildender, oder regulärer Mitarbeiter. Egal, ob
+          Techniker, Informatiker oder Produktdesigner – Entscheidungen werden stets im Team
+          getroffen. Auch die Tests der eigenen Produkte werden in-House durchgeführt. Dazu hat die
+          SmarTIIS einen Baderaum, den jeder Mitarbeiter benutzen darf, um nach getaner Arbeit noch
+          ein paar Minuten in der Badewanne zu relaxen. Doch auch in Fällen, wo einmal etwas schief
+          geht wird keiner alleine gelassen.
+        </p>
+      </div>
+      <div class="big-text-block">
+        <h6>Unternehmergeist</h6>
+        <p>
+          „Der Tag, an dem wir aufhören, wie Unternehmer zu agieren, wird der
+          erste Tag sein, an dem wir nur ein weiteres Technologieunternehmen sind.“ Damit meint
+          SmarTIIS CEO vor allem, dass die 4 Gründungsmitglieder ständig auf der Suche nach Neuem,
+          nach Innovation, sind und nicht lockerlassen. Auch unternehmerisch sind sie von Reisen und
+          Gastauftritten begeistert und lassen sich dabei keine Gelegenheit entgehen.
+        </p>
       </div>
     </div>
+    <div appSlideIn="top" class="content-row">
+      <div class="big-text-block">
+        <h6>Kunden begeistern</h6>
+        <p>
+          „Wir selbst sind sowieso immer von unseren Ideen begeistert. Die Frage
+          ist jedoch, ob die Idee es schafft auch unsere Kunden mit dieser Begeisterung zu füllen.“ Eliza
+          meint damit, dass die SmarTIIS vor allem darauf abzielt, ihren Kunden ein emotionales,
+          positives Erlebnis mit den Produkten der SmarTIIS, aber auch mit dem Unternehmen selbst zu
+          ermöglichen. Dabei steht der Kunde immer im Mittelpunkt, bei jedem Schritt und Tritt des
+          Unternehmens – bei jeder noch so kleinen Entscheidung.
+        </p>
+      </div>
+      <div class="big-text-block">
+        <h6>Abenteuerlustig, kreativ und offen</h6>
+        <p>
+          „Obwohl man niemals leichtsinnig sein sollte, sollte man
+          doch Risiken eingehen und Kreativität begrüßen.“ Dies trifft die Mentalität von Tom und
+          Michael wie die Faust aufs Auge. „Schief gehen kann immer etwas. Beim Programmieren geht
+          das sogar oft schneller als man denkt.“ Sagt Michael. Doch abhalten sollte das keinen. „Ein
+          gewisses Maß an Frustration gehört ja auch irgendwie dazu“ sagt er dann, mit einem
+          Schmunzeln. Damit sind Offenheit für Neues und eine gewisse Affinität zum Risiko
+          Grundvoraussetzung, um bei der SmarTIIS eingestellt zu werden.
+        </p>
+      </div>
+    </div>
+<!--      <div>-->
+<!--        <h3>Unternehmenswerte</h3>-->
+<!--        <ul @listAnimation>-->
+<!--          <li>Wir sind ein Team – Egal ob Gründer, Auszubildender, oder regulärer Mitarbeiter. Egal, ob-->
+<!--            Techniker, Informatiker oder Produktdesigner – Entscheidungen werden stets im Team-->
+<!--            getroffen. Auch die Tests der eigenen Produkte werden in-House durchgeführt. Dazu hat die-->
+<!--            SmarTIIS einen Baderaum, den jeder Mitarbeiter benutzen darf, um nach getaner Arbeit noch-->
+<!--            ein paar Minuten in der Badewanne zu relaxen. Doch auch in Fällen, wo einmal etwas schief-->
+<!--            geht wird keiner alleine gelassen.</li>-->
+<!--          <li>asd</li>-->
+<!--          <li>asd</li>-->
+<!--          <li>asd</li>-->
+<!--          <li>asd</li>-->
+<!--          <li>asd</li>-->
+<!--        </ul>-->
+<!--      </div>-->
   </div>
   <div class="page-container wave-bottom-2">
     <div class="content-row">
       <h1 appSlideIn="top">Unser Team</h1>
     </div>
     <div class="content-row" [@crossfade]="fadeState" (@crossfade.done)="animationDone()">
-      <img appSlideIn="left" class="person-image mat-elevation-z16" [src]="person.img">
+      <img #testImg appSlideIn="left" class="person-image mat-elevation-z16" [src]="person.img">
       <div appSlideIn="right" class="text-block">
         <h6>{{person.position}}</h6>
         <h3>{{person.name}}</h3>
         <p>{{person.description}}</p>
       </div>
     </div>
-    <div appSlideIn="top" class="content-row">
+    <div class="content-row" appSlideIn="top">
       <div *ngFor="let person of allPeople; let i = index"
            class="thumbnail-container"
            [class.thumbnail-container-active]="isThumbnailActive(i)"

@@ -1,28 +1,25 @@
-import { AfterViewInit, Directive, ElementRef, HostListener, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, keyframes, style } from '@angular/animations';
-
-const SCROLL_TOLERANCE = 100;
 
 const slideAnimation = animate('1s ease', keyframes([
   style({ opacity: 0, transform: 'translate({{x}}px, {{y}}px)' }),
-  style({ opacity: 1, transform: 'translate(0, 0)' }),
-  // style({ opacity: 0 }),
+  style({ opacity: 1, transform: 'none' })
 ]));
 
 @Directive({
   selector: '[appSlideIn]'
 })
-export class SlideInDirective implements OnInit, AfterViewInit {
+export class SlideInDirective implements OnInit, OnDestroy {
+
+  private observer: IntersectionObserver;
 
   player: AnimationPlayer;
-  isActive = false;
 
   @Input()
   appSlideIn: 'left' | 'right' | 'top' | 'bottom' = 'left';
 
   constructor(private animationBuilder: AnimationBuilder,
               private element: ElementRef<HTMLElement>) {
-    // console.log('init', window.innerHeight, this.element.nativeElement.getBoundingClientRect().top);
   }
 
   ngOnInit(): void {
@@ -46,75 +43,27 @@ export class SlideInDirective implements OnInit, AfterViewInit {
         break;
     }
 
-    this.player = factory.create(this.element.nativeElement, { params: { x, y }});
-    this.player.init()
+    this.element.nativeElement.style.opacity = '0';
 
-    // switch (this.appSlideIn) {
-    //   case 'left':
-    //     this.element.nativeElement.classList.add('slide-in-left');
-    //     break;
-    //   case 'right':
-    //     this.element.nativeElement.classList.add('slide-in-right');
-    //     break;
-    //   case 'top':
-    //     this.element.nativeElement.classList.add('slide-in-top');
-    //     break;
-    //   case 'bottom':
-    //     this.element.nativeElement.classList.add('slide-in-bottom');
-    //     break;
-    // }
-  }
-
-  ngAfterViewInit(): void {
-    // console.log('init', window.innerHeight, this.element.nativeElement.getBoundingClientRect().top);
-    this.dispatch();
-  }
-
-  dispatch() {
-    if (!this.isActive) {
-      const windowBottom = window.innerHeight;
-      const elementTop = this.element.nativeElement.getBoundingClientRect().top;
-
-      let bottom = windowBottom;
-
-      switch (this.appSlideIn) {
-        case 'top':
-          bottom = windowBottom - 200 - SCROLL_TOLERANCE;
-          break;
-        case 'left':
-        case 'right':
-          bottom = windowBottom - SCROLL_TOLERANCE;
-          break;
-        case 'bottom':
-          bottom = windowBottom + 200 - SCROLL_TOLERANCE;
-          break;
-      }
-
-      if (elementTop < bottom) {
-        this.isActive = true;
+    this.observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        this.player = factory.create(this.element.nativeElement, { params: { x, y } });
         this.player.play();
-
-        // switch (this.appSlideIn) {
-        //   case 'left':
-        //     this.element.nativeElement.classList.add('slide-in-left-active');
-        //     break;
-        //   case 'right':
-        //     this.element.nativeElement.classList.add('slide-in-right-active');
-        //     break;
-        //   case 'top':
-        //     this.element.nativeElement.classList.add('slide-in-top-active');
-        //     break;
-        //   case 'bottom':
-        //     this.element.nativeElement.classList.add('slide-in-bottom-active');
-        //     break;
-        // }
+        this.observer.disconnect();
+        this.observer = undefined;
       }
-    }
+    }, { threshold: [0.2] });
+
+    this.observer.observe(this.element.nativeElement);
   }
 
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll(e: Event) {
-    this.dispatch();
-    // console.log('scroll', window.innerHeight, this.element.nativeElement.getBoundingClientRect().top);
+  ngOnDestroy(): void {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+
+    if (this.player) {
+      this.player.destroy();
+    }
   }
 }

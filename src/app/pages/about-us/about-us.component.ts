@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { animate, query, stagger, state, style, transition, trigger } from '@angular/animations';
 
 interface Person {
   readonly img: string;
@@ -69,26 +69,49 @@ const PEOPLE: Person[] = [
       })),
       transition('hidden <=> visible', [
         animate('0.2s')
-    ])
-  ])]
+      ])]),
+    // trigger('listAnimation', [
+    //   transition(':enter', [
+    //     query('*', [
+    //       style({ opacity: 0, transform: 'translateX(-200px)' }),
+    //       stagger(-100, [
+    //         animate('1s cubic-bezier(0.35, 0, 0.25, 1)', style({ opacity: 1, transform: 'none' }))
+    //       ])
+    //     ])
+    //   ])
+    // ])
+  ]
 })
-export class AboutUsComponent implements OnInit {
+export class AboutUsComponent implements OnInit, AfterViewInit {
 
   personIndex = 0;
   nextPersonIndex = -1;
 
   fadeState = 'visible';
 
-  constructor() { }
+  @ViewChild('testImg', { static: false }) testImg: ElementRef<HTMLImageElement>;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  ngAfterViewInit(): void {
+    const observer = new IntersectionObserver(entries => {
+      console.log('is intersecting', entries[0].isIntersecting);
+    }, { rootMargin: '100px 0px 0px 0px'});
+
+    observer.observe(this.testImg.nativeElement);
+  }
+
   animationDone() {
     if (this.fadeState === 'hidden') {
-      this.fadeState = 'visible';
-      this.personIndex = this.nextPersonIndex;
-      this.nextPersonIndex = -1;
+      setTimeout(() => {
+        this.fadeState = 'visible';
+        this.personIndex = this.nextPersonIndex;
+        this.nextPersonIndex = -1;
+      });
     }
   }
 
