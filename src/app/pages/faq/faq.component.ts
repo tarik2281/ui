@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {FlatTreeControl} from '@angular/cdk/tree';
-import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material';
+import { Component, OnInit } from '@angular/core';
+import { FlatTreeControl } from '@angular/cdk/tree';
+import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 /**
  * Food data with nested structure.
@@ -17,7 +18,7 @@ const QUESTION_DATA: DataNode[] = [
     children: [
       {
         name: 'Was ist das?',
-        children: [{name: 'Ja'}]
+        children: [{ name: 'Ja' }]
       }
     ]
   },
@@ -26,7 +27,7 @@ const QUESTION_DATA: DataNode[] = [
     children: [
       {
         name: 'abcdefghijklmnopqrstuvwxyz?',
-        children: [{name: 'Ja'}]
+        children: [{ name: 'Ja' }]
       }
     ]
   }
@@ -50,10 +51,56 @@ function nodeTransformer(node: DataNode, level: number) {
 @Component({
   selector: 'app-faq',
   templateUrl: './faq.component.html',
-  styleUrls: ['./faq.component.scss']
+  styleUrls: ['./faq.component.scss'],
+  animations: [
+    trigger('autoExpand', [
+      transition(':enter', [
+        style({ height: 0 }),
+        animate('1s ease')
+      ]),
+      transition(':leave', [
+        // style({height:'auto'}),
+        animate('1s ease', style({ height: 0 }))
+      ])
+    ]),
+    trigger('expand', [
+      state('collapsed', style({ height: 0 })),
+      state('expanded', style({})),
+      transition('collapsed <=> expanded', [
+        animate('1s cubic-bezier(0.35, 0, 0.25, 1)')
+      ]),
+      // transition(':enter', [
+      //   style({ height: 0 }),
+      //   animate('1s ease')
+      // ])
+    ])
+  ]
 })
 export class FaqComponent implements OnInit {
 
+  state = 'collapsed';
+
+  transitioning = false;
+
+  toggle() {
+    if (this.transitioning) return;
+
+    if (this.state === 'collapsed') {
+      this.state = 'expanded';
+    } else {
+      this.state = 'collapsed';
+    }
+  }
+
+  onAnimationStart(event) {
+    this.transitioning = true;
+    console.log(event);
+  }
+
+  onAnimationEnd(event) {
+    this.transitioning = false;
+    console.log(event);
+  }
 
   constructor() {
     this.dataSource.data = QUESTION_DATA;

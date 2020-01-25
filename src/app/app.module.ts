@@ -27,7 +27,7 @@ import {
   MAT_DATE_LOCALE, MAT_DIALOG_SCROLL_STRATEGY, MAT_FORM_FIELD_DEFAULT_OPTIONS,
   MatBadgeModule,
   MatCheckboxModule,
-  MatDialogModule,
+  MatDialogModule, MatExpansionModule,
   MatNativeDateModule,
   MatSnackBarModule, MatTooltipModule, MatTreeModule
 } from '@angular/material';
@@ -111,7 +111,8 @@ export function scrollFactory(overlay: Overlay): () => NoopScrollStrategy {
     MatTreeModule,
     RouterModule,
     MatTooltipModule,
-    FormsModule
+    FormsModule,
+    MatExpansionModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'de' },
