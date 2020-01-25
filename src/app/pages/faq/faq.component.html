@@ -8,7 +8,7 @@
 <!--    <div class="col-2"></div>-->
     <div class="col-12">
       <div class="text-block">
-        <h6 (click)="toggle()">fasdfasdf</h6>
+        <h6 class="title-with-icon" (click)="toggle()"><span>fasdfasdf</span><mat-icon [class.expanded-icon]="state==='expanded'">expand_more</mat-icon></h6>
         <p @autoExpand (@autoExpand.start)="onAnimationStart($event)" (@autoExpand.done)="onAnimationEnd($event)" *ngIf="state==='expanded'">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
@@ -18,6 +18,16 @@
         </p>
       </div>
 
+      <div class="text-block">
+        <h6 class="title-with-icon" (click)="toggle()"><span>fasdfasdf</span><mat-icon [class.expanded-icon]="state==='expanded'">expand_more</mat-icon></h6>
+        <p @autoExpand (@autoExpand.start)="onAnimationStart($event)" (@autoExpand.done)="onAnimationEnd($event)" *ngIf="state==='expanded'">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+          clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+          consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          sed diam voluptua.
+        </p>
+      </div>
       <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
         <!-- This is the tree node template for leaf nodes -->
         <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>

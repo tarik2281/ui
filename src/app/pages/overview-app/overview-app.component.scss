@@ -33,6 +33,48 @@
   }
 }
 
+.sentinell {
+  position: absolute;
+  display: block;
+  left: 0;
+  right: 0;
+  top: calc(-64px - 55px);
+  height: 50px;
+  //background-color: yellow;
+  z-index: 1000;
+}
+
+.sticky-text {
+  //position: fixed;
+  //position: sticky;
+  //bottom: 10px;
+  //right: 10px;
+  //display: flex;
+  //flex-direction: column;
+  //padding: 45px;
+  //align-items: center;
+  //margin-top: calc(100vh - 64px);
+  //justify-content: flex-end;
+
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 70px;
+
+  img {
+    width: auto;
+    height: 75px;
+  }
+
+  img:first-child {
+    height: 50px;
+    width: auto;
+  }
+}
+
 .title-row-2 {
   height: calc(100vh - 64px);
   //height: 100vh;

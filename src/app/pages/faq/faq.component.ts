@@ -56,11 +56,11 @@ function nodeTransformer(node: DataNode, level: number) {
     trigger('autoExpand', [
       transition(':enter', [
         style({ height: 0 }),
-        animate('1s ease')
+        animate('.5s ease')
       ]),
       transition(':leave', [
         // style({height:'auto'}),
-        animate('1s ease', style({ height: 0 }))
+        animate('.5s ease', style({ height: 0 }))
       ])
     ]),
     trigger('expand', [

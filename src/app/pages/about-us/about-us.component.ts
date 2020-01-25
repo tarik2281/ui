@@ -103,6 +103,11 @@ export class AboutUsComponent implements OnInit, AfterViewInit {
     }, { rootMargin: '100px 0px 0px 0px'});
 
     observer.observe(this.testImg.nativeElement);
+
+    // for (const person of PEOPLE) {
+    //   person.image = new Image();
+    //   person.image.src = person.img;
+    // }
   }
 
   animationDone() {

@@ -1,5 +1,5 @@
 <div class="big-container">
-  <div class="title-row">
+  <div class="title-row position-relative">
     <div appSlideIn="left" class="text-block">
       <h1>Unsere SmartHome App</h1>
       <p>
@@ -54,4 +54,9 @@
 <!--      <img class="app-content-image screen-image" src="assets/ScreenScenes.png">-->
 <!--    </div>-->
 <!--  </div>-->
+  <div class="sticky-text" [class.position-fixed]="isSticky==!isSticky">
+    <img src="assets/Download_on_the_App_Store_Badge_DE_RGB_blk_092917.svg">
+    <img src="assets/google-play-badge.png">
+    <!--      <img src="assets/google-play-badge.png">-->
+  </div>
 </div>
