@@ -88,6 +88,7 @@
   .app-content-text {
     max-width: 60%;
   }
+
   p {
     font-size: 120%;
   }
@@ -100,6 +101,7 @@
 .title-image {
   width: 270px;
   height: 550px;
+  filter: drop-shadow(2px 4px 6px black);
 }
 
 .apple-app-store {

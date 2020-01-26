@@ -51,7 +51,7 @@ import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import { LinesPipe } from 'src/app/pipes/lines.pipe';
 import {BlockScrollStrategy, NoopScrollStrategy, Overlay} from '@angular/cdk/overlay';
-import { SlideInDirective } from './directives/slide-in.directive';
+import { ScrollInDirective } from 'src/app/directives/scroll-in.directive';
 import { LoginComponent } from './pages/login/login.component';
 
 registerLocaleData(localeDe);
@@ -82,7 +82,7 @@ export function scrollFactory(overlay: Overlay): () => NoopScrollStrategy {
     DeleteAccountComponent,
     NotFoundComponent,
     LinesPipe,
-    SlideInDirective,
+    ScrollInDirective,
     LoginComponent
   ],
   imports: [

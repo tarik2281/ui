@@ -1,11 +1,11 @@
 <div class="big-container">
   <div class="page-container wave-bottom-3">
     <div class="content-row">
-      <h1 appSlideIn="top">Unser Unternehmen</h1>
+      <h1 appScrollIn="slideTop">Unser Unternehmen</h1>
     </div>
     <div class="content-row">
-      <img appSlideIn="left" class="hq-image mat-elevation-z16" src="assets/Headquarter.jpg">
-      <div appSlideIn="right" class="hq-text-block">
+      <img appScrollIn="slideLeft" class="hq-image mat-elevation-z16" src="assets/Headquarter.jpg">
+      <div appScrollIn="slideRight" class="hq-text-block">
         <h3>Enstehungsgeschichte</h3>
         <p>
           Die SmarTIIS GmbH hat sich vor vier Jahren gegründet und besteht aus insgesamt 50 Mitarbeitern.
@@ -24,8 +24,8 @@
     </div>
   </div>
   <div class="page-container-h wave-top-3">
-    <div appSlideIn="top" class="content-column">
-      <div class="big-text-block mat-elevation-z4">
+    <div appScrollIn="slideTop" class="content-column">
+      <div class="big-text-block custom-shadow">
         <h6>Wir sind ein Team</h6>
         <p>
           Egal ob Gründer, Auszubildender, oder regulärer Mitarbeiter. Egal, ob
@@ -36,7 +36,7 @@
           geht wird keiner alleine gelassen.
         </p>
       </div>
-      <div class="big-text-block mat-elevation-z4">
+      <div appScrollIn="slideTop" class="big-text-block custom-shadow">
         <h6>Unternehmergeist</h6>
         <p>
           „Der Tag, an dem wir aufhören, wie Unternehmer zu agieren, wird der
@@ -47,8 +47,8 @@
         </p>
       </div>
     </div>
-    <div appSlideIn="top" class="content-column">
-      <div class="big-text-block mat-elevation-z4">
+    <div class="content-column">
+      <div appScrollIn="slideTop" class="big-text-block custom-shadow">
         <h6>Kunden begeistern</h6>
         <p>
           „Wir selbst sind sowieso immer von unseren Ideen begeistert. Die Frage
@@ -59,7 +59,7 @@
           Unternehmens – bei jeder noch so kleinen Entscheidung.
         </p>
       </div>
-      <div class="big-text-block mat-elevation-z4">
+      <div appScrollIn="slideTop" class="big-text-block custom-shadow">
         <h6>Abenteuerlustig, kreativ und offen</h6>
         <p>
           „Obwohl man niemals leichtsinnig sein sollte, sollte man
@@ -91,17 +91,17 @@
   </div>
   <div class="page-container wave-bottom-2">
     <div class="content-row">
-      <h1 appSlideIn="top">Unser Team</h1>
+      <h1 appScrollIn="slideTop">Unser Team</h1>
     </div>
     <div class="content-row" [@crossfade]="fadeState" (@crossfade.done)="animationDone()">
-      <img #testImg appSlideIn="left" class="person-image mat-elevation-z16" [src]="person.img">
-      <div appSlideIn="right" class="text-block">
+      <img #testImg appScrollIn="slideLeft" class="person-image mat-elevation-z16" [src]="person.img">
+      <div appScrollIn="slideRight" class="text-block">
         <h6>{{person.position}}</h6>
         <h3>{{person.name}}</h3>
         <p>{{person.description}}</p>
       </div>
     </div>
-    <div class="content-row" appSlideIn="top">
+    <div class="content-row" >
       <div *ngFor="let person of allPeople; let i = index"
            class="thumbnail-container"
            [class.thumbnail-container-active]="isThumbnailActive(i)"

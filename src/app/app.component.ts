@@ -13,17 +13,27 @@ import { map, shareReplay } from 'rxjs/operators';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [
+    // trigger('stickyLogo', [
+    //   transition(':enter', [
+    //     style({ opacity: 1, height: '192px', top: '-192px', left: '100px' }),
+    //     animate('.25s ease', style({ opacity: 1, height: '64px', top: 0, left: '16px' }))
+    //   ]),
+    //   transition(':leave', [
+    //     style({ opacity: 1, height: '64px', top: 0, left: '16px' }),
+    //     animate('.25s ease', style({ opacity: 1, height: '192px', top: '-192px', left: '100px' }))
+    //   ])
+    // ])
     trigger('stickyLogo', [
       transition(':enter', [
-        style({ opacity: 1, height: '192px', top: '-192px', left: '100px' }),
-        animate('.25s ease', style({ opacity: 1, height: '64px', top: 0, left: '16px' }))
+        style({ opacity: 0, top: '-64px' }),
+        animate('.25s ease', style({opacity: 1, top: 0 }))
       ]),
+
       transition(':leave', [
-        style({ opacity: 1, height: '64px', top: 0, left: '16px' }),
-        animate('.25s ease', style({ opacity: 1, height: '192px', top: '-192px', left: '100px' }))
+        style({ opacity: 1, top: 0 }),
+        animate('.25s ease', style({opacity: 0, top: '-64px' }))
       ])
     ])
-
   ]
 })
 export class AppComponent implements OnInit, AfterViewInit {
@@ -95,11 +105,13 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
 
     console.log(event);
-    // if (!this.isAdded) {
-    //   window.scrollTo({ behavior: 'smooth', top: 458 });
-    // } else {
-    //   window.scrollTo({ behavior: 'auto', top: 458 });
-    // }
+    if (!this.isAdded) {
+      this.contentDiv.nativeElement.scrollIntoView({behavior:'smooth', block:'start', inline:'nearest'})
+      // window.scrollTo({ behavior: 'smooth', top: 384 });
+    } else {
+      // this.contentDiv.nativeElement.scrollIntoView({ behavior})
+      window.scrollTo({ behavior: 'auto', top: 384 });
+    }
   }
 
   scrollToContent(element: HTMLDivElement) {
