@@ -1,10 +1,10 @@
-import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatSidenav, MatSnackBar } from '@angular/material';
 import { LoginDialogComponent } from 'src/app/components/login-dialog/login-dialog.component';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { User } from 'src/app/model/user';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
-import { animate, AnimationEvent, style, transition, trigger } from '@angular/animations';
+import { animate, style, transition, trigger } from '@angular/animations';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
 
@@ -26,12 +26,12 @@ import { map, shareReplay } from 'rxjs/operators';
     trigger('stickyLogo', [
       transition(':enter', [
         style({ opacity: 0, transform: 'translateY(-64px)' }),
-        animate('.25s ease', style({opacity: 1, transform: 'none' }))
+        animate('.25s ease', style({ opacity: 1, transform: 'none' }))
       ]),
 
       transition(':leave', [
         style({ opacity: 1, transform: 'none' }),
-        animate('.25s ease', style({opacity: 0, transform: 'translateY(-64px)' }))
+        animate('.25s ease', style({ opacity: 0, transform: 'translateY(-64px)' }))
       ])
     ])
   ]
@@ -49,15 +49,13 @@ export class AppComponent implements OnInit, AfterViewInit {
   user: User;
 
   isAdded = false;
+  firstActivation = true;
 
-  logoVisible = true;
-
-  @ViewChild('toolbarDom', { read: ElementRef, static: false }) toolbarDom: ElementRef<HTMLElement>;
+  @ViewChild('sidenavContainer', {static: false, read: ElementRef}) sidenavContainer: ElementRef<HTMLElement>;
   @ViewChild('content', { static: false }) contentDiv: ElementRef<HTMLDivElement>;
-  @ViewChild('mainContainer', { static: false }) mainContainer: ElementRef<HTMLDivElement>;
   @ViewChild('stickySentinel', { static: false }) stickySentinel: ElementRef<HTMLDivElement>;
 
-  @ViewChild('drawer', {read: MatSidenav, static:false}) sidenav: MatSidenav;
+  @ViewChild('drawer', { read: MatSidenav, static: false }) sidenav: MatSidenav;
 
   constructor(private authenticationService: AuthenticationService,
               private dialog: MatDialog,
@@ -83,28 +81,20 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
 
+    // !!!!!
+    this.sidenavContainer.nativeElement.classList.remove('mat-drawer-container');
+
     const obs = new IntersectionObserver((entries, observer) => {
       if (entries[0].isIntersecting) {
         this.isAdded = false;
       } else {
         this.isAdded = true;
-        this.logoVisible = false;
       }
-      // for (const entry of entries) {
-      //
-      // }
     });
 
     obs.observe(this.stickySentinel.nativeElement);
   }
 
-  firstActivation = true;
-
-  onAnimationDone(event: AnimationEvent) {
-    if (event.toState === 'void') {
-      this.logoVisible = true;
-    }
-  }
 
   onActivate(event) {
     if (this.firstActivation) {
@@ -114,18 +104,18 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     console.log(event);
     if (!this.isAdded) {
-      this.contentDiv.nativeElement.scrollIntoView({behavior:'smooth', block:'start', inline:'nearest'})
+      this.contentDiv.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
       // window.scrollTo({ behavior: 'smooth', top: 384 });
     } else {
       // this.contentDiv.nativeElement.scrollIntoView({ behavior})
-      this.contentDiv.nativeElement.scrollIntoView({behavior:'auto', block:'start', inline:'nearest'})
+      this.contentDiv.nativeElement.scrollIntoView({ behavior: 'auto', block: 'start', inline: 'nearest' });
 
       // window.scrollTo({ behavior: 'auto', top: 384 });
     }
-console.log(this.sidenav);
+    console.log(this.sidenav);
 
     if (this.sidenav) {
-      this.sidenav.close()
+      this.sidenav.close();
     }
   }
 

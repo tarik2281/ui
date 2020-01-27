@@ -5,7 +5,7 @@
 .smarttub-container {
   @include page-container-grid(1, 3, 1fr, $use-spacing: true);
 
-  grid-template-areas: row(1) row(3) row(2);
+  grid-template-areas: row(1) row(2) row(3);
 
   //row-gap: 70px;
 }

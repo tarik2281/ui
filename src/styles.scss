@@ -16,10 +16,15 @@ body {
   //overflow: scroll;
   //overflow-x: hidden !important;
 }
+//
+//.mat-drawer-container {
+//  display: contents !important;
+//}
 
-.mat-drawer-container {
-  display: contents !important;
-}
+//::ng-deep .mat-drawer-container {
+//  overflow: initial !important;
+//  position: initial !important;
+//}
 
 .app-content-title {
   text-align: center;
