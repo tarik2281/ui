@@ -1,5 +1,19 @@
 @import "variables";
 
+@mixin make-circled-icon {
+  font-size: 2em !important;
+  display: inline-block;
+  border-radius: 100%;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 10px;
+  min-width: 54px;
+  max-width: 54px;
+  height: 54px;
+  text-align: center;
+  user-select: none;
+}
+
 .small-paragraph {
   margin: 0 10px;
   max-width: 400px;
@@ -42,6 +56,10 @@
   display: inline-flex;
   align-items: center;
 
+  i {
+    @include make-circled-icon;
+  }
+
   span {
     color: $dark-lighter-text;
     max-width: 300px;
@@ -61,7 +79,23 @@
 }
 
 .icon-big-paragraph {
+  margin: 0 10px;
+  display: inline-block;
+  text-align: center;
+  color: $dark-lighter-text;
+  max-width: 300px;
 
+  i {
+    display: block !important;
+    font-size: 4em !important;
+    user-select: none;
+  }
+
+  span {
+    display: block;
+    margin-top: 20px;
+    font-size: 110%;
+  }
 }
 
 
@@ -115,17 +149,18 @@
   Usable with Material Icons and Font Awesome Icons
  */
 .circled-icon {
-  font-size: 2em !important;
-  display: inline-block;
-  border-radius: 100%;
-  border: 1px solid var(--primary-color);
-  color: var(--primary-color);
-  padding: 10px;
-  min-width: 54px;
-  max-width: 54px;
-  height: 54px;
-  text-align: center;
-  user-select: none;
+  @include make-circled-icon;
+  //font-size: 2em !important;
+  //display: inline-block;
+  //border-radius: 100%;
+  //border: 1px solid var(--primary-color);
+  //color: var(--primary-color);
+  //padding: 10px;
+  //min-width: 54px;
+  //max-width: 54px;
+  //height: 54px;
+  //text-align: center;
+  //user-select: none;
 }
 
 .circled-icon-hover {
