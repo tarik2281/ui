@@ -2,6 +2,8 @@
 
 @import "global-styles/variables";
 @import "global-styles/layout";
+@import "global-styles/backgrounds";
+@import "global-styles/utils";
 
 html, body {
   height: 100%;
@@ -10,11 +12,13 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  overflow: scroll;
-  overflow-x: hidden !important;
+  //overflow: scroll;
+  //overflow-x: hidden !important;
 }
 
-
+.mat-drawer-container {
+  display: contents !important;
+}
 
 .app-content-title {
   text-align: center;
@@ -107,50 +111,6 @@ mat-form-field {
   overflow-x: hidden;
 }
 
-.slide-in-left {
-  transition: 1s;
-  opacity: 0;
-  transform: translateX(-200px);
-}
-
-.slide-in-left-active {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.slide-in-right {
-  transition: 1s;
-  opacity: 0;
-  transform: translateX(200px);
-}
-
-.slide-in-right-active {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.slide-in-top {
-  transition: 1s;
-  opacity: 0;
-  transform: translateY(-200px);
-}
-
-.slide-in-top-active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.slide-in-bottom {
-  transition: 1s;
-  opacity: 0;
-  transform: translateY(200px);
-}
-
-.slide-in-bottom-active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .title-row {
   //height: calc(100vh - 64px);
   //height: 100vh;
@@ -168,6 +128,7 @@ mat-form-field {
   }
 }
 
+@import "theme";
 
 .text-block {
   max-width: 550px;
@@ -175,6 +136,16 @@ mat-form-field {
   p {
     font-size: 120%;
     margin-bottom: 0 !important;
+    color: #676767;
+    //color: $dark-accent-text;
+  }
+
+  h1, h2, h3, h4, h5 {
+    //color: var(--primary-darker-color);
+  }
+
+  h6 {
+    //color: $dark-accent-text;
   }
 }
 
@@ -199,39 +170,6 @@ mat-form-field {
   justify-content: space-evenly;
 }
 
-.wave-bottom {
-  background-image: url("~/assets/wave.svg");
-  background-size: cover;
-}
-
-.wave-bottom-2 {
-  background-image: url("~/assets/wave.svg");
-  background-size: cover;
-  background-position-x: center;
-}
-
-.wave-bottom-3 {
-  background-image: url("~/assets/wave.svg");
-  background-size: cover;
-  background-position-x: right;
-}
-
-.wave-top {
-  background-image: url("~/assets/wave (1).svg");
-  background-size: cover;
-}
-
-.wave-top-2 {
-  background-image: url("~/assets/wave (1).svg");
-  background-size: cover;
-  background-position-x: center;
-}
-
-.wave-top-3 {
-  background-image: url("~/assets/wave (1).svg");
-  background-size: cover;
-  background-position-x: right;
-}
 
 //.page-container:first-child {
 //  margin-top: 64px;

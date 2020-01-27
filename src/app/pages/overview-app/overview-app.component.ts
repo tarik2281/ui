@@ -11,6 +11,8 @@ export class OverviewAppComponent implements OnInit, AfterViewInit {
 
   // @ViewChild('sentinel', {static:false}) sentinelDom: ElementRef<HTMLDivElement>;
 
+  @ViewChild('test', {static:false}) container: ElementRef<HTMLDivElement>;
+
   constructor() { }
 
   ngOnInit() {
@@ -30,5 +32,7 @@ export class OverviewAppComponent implements OnInit, AfterViewInit {
     // observer.observe(this.sentinelDom.nativeElement);
   }
 
-
+  scroll() {
+    this.container.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})
+  }
 }

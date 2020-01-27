@@ -81,6 +81,7 @@ $app-logo-height: 192px;
   position: absolute;
   left: 100px;
   top: 50px;
+  filter: drop-shadow(0px 0px 10px #fff);
   //z-index: 200;
   //bottom: 0;
   //transition: all .25s;
@@ -97,6 +98,15 @@ $app-logo-height: 192px;
   position: absolute;
 }
 
+@media (max-width: 768px) {
+  .log {
+    //width: auto;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+}
+
 .app-logo-fixed {
   top: $app-logo-height;
   //visibility: hidden;
@@ -108,8 +118,19 @@ $app-logo-height: 192px;
 }
 
 .app-footer {
-  background-color: #e0e0e0;
+  //background-color: #e0e0e0;
+  //background-color: #a7a7a7;
+  background-color: rgba(0,0,0,0.07);
   height: 190px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  //align
+}
+
+.fab {
+  margin-right: 15px;
 }
 
 a:hover {

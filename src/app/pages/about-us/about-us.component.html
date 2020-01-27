@@ -25,6 +25,7 @@
   </div>
   <div class="page-container-h wave-top-3">
     <div appScrollIn="slideTop" class="content-column">
+      <h1>Das ist uns wichtig</h1>
       <div class="big-text-block custom-shadow">
         <h6>Wir sind ein Team</h6>
         <p>
@@ -94,7 +95,14 @@
       <h1 appScrollIn="slideTop">Unser Team</h1>
     </div>
     <div class="content-row" [@crossfade]="fadeState" (@crossfade.done)="animationDone()">
-      <img #testImg appScrollIn="slideLeft" class="person-image mat-elevation-z16" [src]="person.img">
+<!--      <div class="col-3">-->
+        <img #testImg appScrollIn="slideLeft" class="person-image mat-elevation-z16" [src]="person.img">
+<!--      </div>-->
+      <div class="navigation-buttons">
+        <i class="material-icons circled-icon circled-icon-hover" (click)="cycle(-1)">arrow_back</i>
+        <i class="material-icons circled-icon circled-icon-hover" (click)="cycle(1)">arrow_forward</i>
+      </div>
+
       <div appScrollIn="slideRight" class="text-block">
         <h6>{{person.position}}</h6>
         <h3>{{person.name}}</h3>

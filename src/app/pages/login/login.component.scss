@@ -9,6 +9,8 @@
 //  border-radius: 5px;
 //}
 
+@import "src/theme";
+
 h4 {
   text-align: center;
   margin-top: 20px;
@@ -29,13 +31,14 @@ h4 {
 
 .vl {
   margin: 0 40px;
-  border-right: 1px solid #eeeeee;
+  border-right: 1px solid $dark-dividers;
 }
 
 .buttons {
   //margin-top: auto;
   display: flex;
   flex-direction: column;
+  min-width: 300px;
 }
 
 .reset-password-button {

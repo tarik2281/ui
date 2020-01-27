@@ -1,63 +1,159 @@
+<mat-sidenav-container>
+  <mat-sidenav #drawer fixedInViewport>
 
-<div class="app-container" #mainContainer>
-  <!--    <mat-toolbar-row class="fancy-toolbar-row fancy-background-image">-->
-  <!--      <div class="flex-grow-1"></div>-->
-  <!--      <p class="fancy-toolbar-text" [ngStyle]="{color: 'rgba(0,0,0,' + fancyTextAlpha + ')'}"></p>-->
-  <!--      <div class="flex-grow-1"></div>-->
-  <!--    </mat-toolbar-row>-->
-  <!--    <mat-toolbar-row *ngIf="isAdded"></mat-toolbar-row>-->
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">Link 1</a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+<!--    <div class="app-container" #mainContainer>-->
+      <!--    <mat-toolbar-row class="fancy-toolbar-row fancy-background-image">-->
+      <!--      <div class="flex-grow-1"></div>-->
+      <!--      <p class="fancy-toolbar-text" [ngStyle]="{color: 'rgba(0,0,0,' + fancyTextAlpha + ')'}"></p>-->
+      <!--      <div class="flex-grow-1"></div>-->
+      <!--    </mat-toolbar-row>-->
+      <!--    <mat-toolbar-row *ngIf="isAdded"></mat-toolbar-row>-->
+      <!--  <div class="fancy-toolbar-row fancy-background-image">-->
+      <!--    <img *ngIf="logoVisible" class="app-logo" src="assets/SmarTIIS_logo.png" routerLink="/">-->
+
+      <!--  </div>-->
+
+      <div class="fancy-toolbar-row fancy-background-image">
+        <img class="app-logo" src="assets/SmarTIIS_logo.png" routerLink="/">
+
+      </div>
+
+      <div #stickySentinel class="sticky-sentinel">
+
+      </div>
+
+      <mat-toolbar #toolbarDom class="sticky-toolbar" [ngClass]="{'shadow-sm': isAdded}">
+        <mat-toolbar-row>
+          <button
+            *ngIf="isSmall$ | async"
+            type="button"
+            aria-label="Toggle sidenav"
+            mat-icon-button
+            (click)="drawer.toggle()">
+            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+          </button>
+          <img *ngIf="isAdded" class="log" @stickyLogo src="assets/SmarTIIS_logo.png">
+          <div class="flex-grow-1"></div>
+          <ng-container *ngIf="(isSmall$ | async) === false">
+
+            <app-route-button routerLink="/overview-smarttub">SmartTub</app-route-button>
+            <app-route-button routerLink="/overview-app" (click)="scrollToContent(content)">SmarTIIS App</app-route-button>
+            <app-route-button routerLink="/products">Produkte</app-route-button>
+            <app-route-button routerLink="/faq">FAQ</app-route-button>
+            <app-route-button routerLink="/about-us">Über uns</app-route-button>
+            <div class="flex-grow-1"></div>
+            <a mat-button *ngIf="user" [matMenuTriggerFor]="userMenu">Hallo, {{user.firstName}}!</a>
+            <mat-menu #userMenu="matMenu">
+              <a mat-menu-item routerLink="/manage-account">Persönliche Daten bearbeiten</a>
+              <a mat-menu-item routerLink="/change-password">Passwort ändern</a>
+              <a mat-menu-item>Meine Bestellungen</a>
+              <a mat-menu-item (click)="onLogout()">Abmelden</a>
+            </mat-menu>
+            <a mat-stroked-button *ngIf="!user" routerLink="login">Anmelden</a>
+          </ng-container>
+
+          <a mat-icon-button routerLink="/cart">
+            <mat-icon
+              [matBadge]="cartService.shoppingCart.products.length > 0 ? cartService.shoppingCart.products.length : undefined"
+              matBadgeColor="warn">shopping_cart
+            </mat-icon>
+          </a>
+        </mat-toolbar-row>
+
+      </mat-toolbar>
+
+      <div #content class="app-content">
+        <router-outlet (activate)="onActivate($event)"></router-outlet>
+      </div>
+
+      <div class="app-footer">
+        <div class="social-buttons">
+          <h6>Folge uns</h6>
+          <i class="fab fa-instagram fa-1-5x"></i>
+          <i class="fab fa-twitter fa-1-5x"></i>
+          <i class="fab fa-youtube fa-1-5x"></i>
+          <i class="fab fa-facebook-square fa-1-5x"></i>
+        </div>
+      </div>
+
+<!--    </div>-->
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!--<ng-template #contentTemplate>-->
+
+<!--<div class="app-container" #mainContainer>-->
+<!--  &lt;!&ndash;    <mat-toolbar-row class="fancy-toolbar-row fancy-background-image">&ndash;&gt;-->
+<!--  &lt;!&ndash;      <div class="flex-grow-1"></div>&ndash;&gt;-->
+<!--  &lt;!&ndash;      <p class="fancy-toolbar-text" [ngStyle]="{color: 'rgba(0,0,0,' + fancyTextAlpha + ')'}"></p>&ndash;&gt;-->
+<!--  &lt;!&ndash;      <div class="flex-grow-1"></div>&ndash;&gt;-->
+<!--  &lt;!&ndash;    </mat-toolbar-row>&ndash;&gt;-->
+<!--  &lt;!&ndash;    <mat-toolbar-row *ngIf="isAdded"></mat-toolbar-row>&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="fancy-toolbar-row fancy-background-image">&ndash;&gt;-->
+<!--&lt;!&ndash;    <img *ngIf="logoVisible" class="app-logo" src="assets/SmarTIIS_logo.png" routerLink="/">&ndash;&gt;-->
+
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+
 <!--  <div class="fancy-toolbar-row fancy-background-image">-->
-<!--    <img *ngIf="logoVisible" class="app-logo" src="assets/SmarTIIS_logo.png" routerLink="/">-->
+<!--    <img class="app-logo" src="assets/SmarTIIS_logo.png" routerLink="/">-->
 
 <!--  </div>-->
 
-  <div class="fancy-toolbar-row fancy-background-image">
-    <img class="app-logo" src="assets/SmarTIIS_logo.png" routerLink="/">
+<!--  <div #stickySentinel class="sticky-sentinel">-->
 
-  </div>
+<!--  </div>-->
 
-  <div #stickySentinel class="sticky-sentinel">
+<!--  <mat-toolbar #toolbarDom class="sticky-toolbar" [ngClass]="{'shadow-sm': isAdded}">-->
+<!--    <mat-toolbar-row>-->
+<!--      <img *ngIf="isAdded" class="log" @stickyLogo src="assets/SmarTIIS_logo.png">-->
+<!--      <div class="flex-grow-1"></div>-->
+<!--      <app-route-button routerLink="/overview-smarttub">SmartTub</app-route-button>-->
+<!--      <app-route-button routerLink="/overview-app" (click)="scrollToContent(content)">SmarTIIS App</app-route-button>-->
+<!--      <app-route-button routerLink="/products">Produkte</app-route-button>-->
+<!--      <app-route-button routerLink="/faq">FAQ</app-route-button>-->
+<!--      <app-route-button routerLink="/about-us">Über uns</app-route-button>-->
+<!--      <div class="flex-grow-1"></div>-->
+<!--      <a mat-button *ngIf="user" [matMenuTriggerFor]="userMenu">Hallo, {{user.firstName}}!</a>-->
+<!--      <mat-menu #userMenu="matMenu">-->
+<!--        <a mat-menu-item routerLink="/manage-account">Persönliche Daten bearbeiten</a>-->
+<!--        <a mat-menu-item routerLink="/change-password">Passwort ändern</a>-->
+<!--        <a mat-menu-item>Meine Bestellungen</a>-->
+<!--        <a mat-menu-item (click)="onLogout()">Abmelden</a>-->
+<!--      </mat-menu>-->
+<!--      <a mat-stroked-button *ngIf="!user" routerLink="login">Anmelden</a>-->
 
-  </div>
+<!--      <a mat-icon-button routerLink="/cart">-->
+<!--        <mat-icon-->
+<!--          [matBadge]="cartService.shoppingCart.products.length > 0 ? cartService.shoppingCart.products.length : undefined"-->
+<!--          matBadgeColor="warn">shopping_cart-->
+<!--        </mat-icon>-->
+<!--      </a>-->
+<!--    </mat-toolbar-row>-->
 
-  <mat-toolbar #toolbarDom class="sticky-toolbar" [ngClass]="{'shadow-sm': isAdded}">
-    <mat-toolbar-row>
-      <img *ngIf="isAdded" class="log" @stickyLogo src="assets/SmarTIIS_logo.png">
-      <div class="flex-grow-1"></div>
-      <app-route-button routerLink="/overview-smarttub">SmartTub</app-route-button>
-      <app-route-button routerLink="/overview-app" (click)="scrollToContent(content)">SmarTIIS App</app-route-button>
-      <app-route-button routerLink="/products">Produkte</app-route-button>
-      <app-route-button routerLink="/faq">FAQ</app-route-button>
-      <app-route-button routerLink="/about-us">Über uns</app-route-button>
-      <div class="flex-grow-1"></div>
-      <a mat-button *ngIf="user" [matMenuTriggerFor]="userMenu">Hallo, {{user.firstName}}!</a>
-      <mat-menu #userMenu="matMenu">
-        <a mat-menu-item routerLink="/manage-account">Persönliche Daten bearbeiten</a>
-        <a mat-menu-item routerLink="/change-password">Passwort ändern</a>
-        <a mat-menu-item>Meine Bestellungen</a>
-        <a mat-menu-item (click)="onLogout()">Abmelden</a>
-      </mat-menu>
-      <a mat-button *ngIf="!user" routerLink="login">Anmelden</a>
+<!--  </mat-toolbar>-->
 
-      <a mat-icon-button routerLink="/cart">
-        <mat-icon
-          [matBadge]="cartService.shoppingCart.products.length > 0 ? cartService.shoppingCart.products.length : undefined"
-          matBadgeColor="warn">shopping_cart
-        </mat-icon>
-      </a>
-    </mat-toolbar-row>
+<!--  <div #content class="app-content">-->
+<!--    <router-outlet (activate)="onActivate($event)"></router-outlet>-->
+<!--  </div>-->
 
-  </mat-toolbar>
+<!--  <div class="app-footer">-->
+<!--    <div class="social-buttons">-->
+<!--      <h6>Folge uns</h6>-->
+<!--      <i class="fab fa-instagram fa-1-5x"></i>-->
+<!--      <i class="fab fa-twitter fa-1-5x"></i>-->
+<!--      <i class="fab fa-youtube fa-1-5x"></i>-->
+<!--      <i class="fab fa-facebook-square fa-1-5x"></i>-->
+<!--    </div>-->
+<!--  </div>-->
 
-  <div #content class="app-content">
-    <router-outlet (activate)="onActivate($event)"></router-outlet>
-  </div>
+<!--</div>-->
 
-  <div class="app-footer">
-    <i class="fab fa-instagram fa-2x"></i>
-    <i class="fab fa-twitter fa-2x"></i>
-    <i class="fab fa-twitch fa-2x"></i>
-    <i class="fab fa-facebook-square fa-2x"></i>
-  </div>
-
-</div>
+<!--</ng-template>-->

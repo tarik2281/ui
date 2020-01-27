@@ -121,6 +121,7 @@ export class AboutUsComponent implements OnInit, AfterViewInit {
   }
 
   setNextPerson(index: number) {
+    console.log('nextPerson', index);
     if (this.personIndex !== index) {
       this.nextPersonIndex = index;
       this.fadeState = 'hidden';
@@ -138,5 +139,9 @@ export class AboutUsComponent implements OnInit, AfterViewInit {
 
   get allPeople() {
     return PEOPLE;
+  }
+
+  cycle(direction: number) {
+    this.setNextPerson((this.personIndex + direction) % PEOPLE.length);
   }
 }

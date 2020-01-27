@@ -30,7 +30,7 @@
 }
 
 .content-column {
-  max-width: 550px;
+  max-width: 300px;
   display: flex;
   flex-flow: column wrap;
   justify-content: space-evenly;
@@ -47,9 +47,13 @@
 }
 
 @media (min-width: 992px) {
-
+  .content-column {
+    max-width: 400px;
+  }
 }
 
 @media (min-width: 1200px) {
-
+  .content-column {
+    max-width: 550px;
+  }
 }

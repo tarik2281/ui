@@ -7,8 +7,8 @@ const slideAnimation = animate('1s ease', keyframes([
 ]));
 
 const growAnimation = animate('.3s ease', keyframes([
-  style({opacity: 0, transform: 'scale(0.8)'}),
-  style({opacity: 1, transform: 'none'})
+  style({ opacity: 0, transform: 'scale(0.8)' }),
+  style({ opacity: 1, transform: 'none' })
 ]));
 
 export type ScrollInAnimation = 'slideLeft' | 'slideRight' | 'slideTop' | 'slideBottom' | 'grow' | 'fade';
@@ -35,6 +35,7 @@ export class ScrollInDirective implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+
 
     let animation: AnimationMetadata;
     const params: AnimationParams = {};
@@ -71,10 +72,23 @@ export class ScrollInDirective implements OnInit, OnDestroy {
 
     this.observer = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting) {
-        this.player = factory.create(this.element.nativeElement, { params });
-        this.player.play();
+
         this.observer.disconnect();
         this.observer = undefined;
+
+        if (this.element.nativeElement instanceof HTMLImageElement) {
+          const image = this.element.nativeElement as HTMLImageElement;
+          if (!image.complete) {
+            image.onload = () => {
+              this.player = factory.create(this.element.nativeElement, { params });
+              this.player.play();
+            };
+            return;
+          }
+        }
+
+        this.player = factory.create(this.element.nativeElement, { params });
+        this.player.play();
       }
     }, { threshold: [0.2] });
 

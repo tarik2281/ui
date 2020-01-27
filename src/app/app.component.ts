@@ -25,13 +25,13 @@ import { map, shareReplay } from 'rxjs/operators';
     // ])
     trigger('stickyLogo', [
       transition(':enter', [
-        style({ opacity: 0, top: '-64px' }),
-        animate('.25s ease', style({opacity: 1, top: 0 }))
+        style({ opacity: 0, transform: 'translateY(-64px)' }),
+        animate('.25s ease', style({opacity: 1, transform: 'none' }))
       ]),
 
       transition(':leave', [
-        style({ opacity: 1, top: 0 }),
-        animate('.25s ease', style({opacity: 0, top: '-64px' }))
+        style({ opacity: 1, transform: 'none' }),
+        animate('.25s ease', style({opacity: 0, transform: 'translateY(-64px)' }))
       ])
     ])
   ]
@@ -110,7 +110,9 @@ export class AppComponent implements OnInit, AfterViewInit {
       // window.scrollTo({ behavior: 'smooth', top: 384 });
     } else {
       // this.contentDiv.nativeElement.scrollIntoView({ behavior})
-      window.scrollTo({ behavior: 'auto', top: 384 });
+      this.contentDiv.nativeElement.scrollIntoView({behavior:'auto', block:'start', inline:'nearest'})
+
+      // window.scrollTo({ behavior: 'auto', top: 384 });
     }
   }
 

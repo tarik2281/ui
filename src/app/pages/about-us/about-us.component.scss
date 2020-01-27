@@ -28,7 +28,52 @@
   position: relative;
   width: 450px;
   height: 300px;
+  //width: 100%;
   object-fit: cover;
+}
+
+.navigation-buttons {
+  display: block;
+}
+
+//.text-block {
+//  max-width: 300px;
+//}
+
+@media (min-width: 768px) {
+
+  .navigation-buttons {
+    display: contents;
+  }
+  .circled-icon:first-of-type {
+    position: absolute;
+    left: 5%;
+  }
+
+  .circled-icon:last-of-type {
+    position: absolute;
+    right: 5%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .person-image {
+    width: 300px;
+    height: 200px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .person-image {
+    width: 450px;
+    height: 300px;
+  }
+
+  .text-block {
+  }
+
+
+
 }
 
 .thumbnail-image {
@@ -63,3 +108,13 @@
 .thumbnail-container-active {
   opacity: 1;
 }
+
+//.circled-icon:first-of-type {
+//  position: absolute;
+//  left: 5%;
+//}
+//
+//.circled-icon:last-of-type {
+//  position: absolute;
+//  right: 5%;
+//}
