@@ -1,7 +1,7 @@
 
 @import 'src/theme.scss';
+@import "src/global-styles/variables";
 
-$app-logo-height: 192px;
 
 .app-container {
 
@@ -35,7 +35,7 @@ $app-logo-height: 192px;
 
 .fancy-toolbar-row {
   position: relative;
-  height: 384px;
+  height: $image-header-height;
 }
 
 .fixed-toolbar-row {
@@ -53,6 +53,11 @@ $app-logo-height: 192px;
   top: 0;
   z-index: 100;
   background-color: #00000000;
+  min-height: $toolbar-height !important;
+}
+
+.sidenav {
+  width: 200px;
 }
 
 .fancy-toolbar-text {
@@ -62,7 +67,7 @@ $app-logo-height: 192px;
 
 .app-content {
   //margin-top: 64px;
-  padding-top: 64px;
+  //padding-top: 64px;
   //margin-top: 458px;
 }
 
@@ -73,11 +78,14 @@ $app-logo-height: 192px;
   left: 0;
   right: 0;
   z-index: 100;
-  top: calc(384px - 41px);
+  top: calc(#{$image-header-height} - 41px);
 }
 
 .app-logo {
-  height: $app-logo-height;
+  width: 100%;
+  max-width: 474px;
+  height: auto;
+  //height: $big-app-logo-height;
   position: absolute;
   left: 100px;
   top: 50px;
@@ -98,17 +106,24 @@ $app-logo-height: 192px;
   position: absolute;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-toolbar-collapsed) {
   .log {
     //width: auto;
     left: 0;
     right: 0;
     margin: 0 auto;
   }
+
+  .app-logo {
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    //height: auto;;
+  }
 }
 
 .app-logo-fixed {
-  top: $app-logo-height;
+  top: $big-app-logo-height;
   //visibility: hidden;
   //position: fixed;
   left: 20px;

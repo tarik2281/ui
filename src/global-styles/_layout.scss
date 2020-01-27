@@ -1,10 +1,10 @@
-
 @import "variables";
 
 @mixin page-container($flex-direction) {
   display: flex;
   flex-flow: $flex-direction wrap;
-  min-height: calc(100vh - #{$toolbar-height});
+  min-height: $min-page-height;
+  padding-top: $toolbar-height;
   justify-content: space-evenly;
   align-content: space-evenly;
   align-items: center;
@@ -12,8 +12,17 @@
   height: auto;
 }
 
-@mixin page-container-grid {
+//@function single-column($rows) {
+//  $result: "";
+//  @for $i from 1 through $rows {
+//    $result: $result + row($i);
+//  }
+//  @debug
+//}
+
+@mixin page-container-grid($columns: 0, $rows: 0, $column-size: max-content, $row-size: max-content, $use-spacing: false) {
   min-height: $min-page-height;
+  padding-top: $toolbar-height;
 
   display: grid;
 
@@ -21,27 +30,80 @@
   align-items: center;
   justify-content: space-evenly;
   justify-items: center;
+
+  @if ($columns > 0) {
+    grid-template-columns: repeat($columns, $column-size);
+    //grid-template-areas: #{@for($i from 1 through $rows) { row($i) }};
+  }
+
+  @if ($rows > 0) {
+    grid-template-rows: repeat($rows, $row-size);
+  }
+
+  @if ($use-spacing) {
+    row-gap: 70px;
+    padding: 70px 0;
+  }
+}
+
+@function row($content-num...) {
+  $result: "";
+
+  @each $content in $content-num {
+    $result: $result + "content-#{$content} ";
+  }
+
+  @return $result;
 }
 
 .page-container-grid {
-  @include page-container-grid;
+  @include page-container-grid(2, 1);
   //min-height: $min-page-height;
 
   //display: grid;
-  grid-template-columns: max-content max-content;
-  grid-template-rows: 1fr;
-  grid-template-areas: "content-1 content-2";
+  //grid-template-columns: max-content max-content;
+  //grid-template-rows: 1fr;
+  grid-template-areas: row(1, 2);
 
   //align-items: center;
   //justify-content: space-evenly;
 }
 
-.content-1 { grid-area: content-1; }
+.content-1 {
+  grid-area: content-1;
+}
 
-.content-2 { grid-area: content-2; }
-.content-3 { grid-area: content-3; }
-.content-4 { grid-area: content-4; }
-.content-5 { grid-area: content-5; }
+.content-2 {
+  grid-area: content-2;
+}
+
+.content-3 {
+  grid-area: content-3;
+}
+
+.content-4 {
+  grid-area: content-4;
+}
+
+.content-5 {
+  grid-area: content-5;
+}
+
+.content-6 {
+  grid-area: content-6;
+}
+
+.content-7 {
+  grid-area: content-7;
+}
+
+.content-8 {
+  grid-area: content-8;
+}
+
+.content-9 {
+  grid-area: content-9;
+}
 
 /**
   To be used with rows.

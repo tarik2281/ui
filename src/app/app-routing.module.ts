@@ -21,7 +21,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'about-us'
+    redirectTo: 'overview-smarttub'
   },
   {
     path: 'overview-smarttub',

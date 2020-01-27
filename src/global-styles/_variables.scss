@@ -1,7 +1,17 @@
+
+$big-app-logo-height: 192px;
+$image-header-height: 284px;
 $toolbar-height: 64px;
 
-$breakpoint-medium: 768px;
+$breakpoint-single-column-small: 500px;
+$breakpoint-single-column-big: 768px;
+$breakpoint-multi-column-small: 1000px;
+$breakpoint-multi-column-big: 1200px;
+$breakpoint-toolbar-collapsed: 860px;
+
+//$breakpoint-medium: 768px;
 
 $dark-lighter-text: #676767;
 
-$min-page-height: calc(100vh - #{$toolbar-height});
+//$min-page-height: calc(100vh - #{$toolbar-height});
+$min-page-height: 100vh;

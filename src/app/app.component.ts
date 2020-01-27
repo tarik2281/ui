@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog, MatSidenav, MatSnackBar } from '@angular/material';
 import { LoginDialogComponent } from 'src/app/components/login-dialog/login-dialog.component';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { User } from 'src/app/model/user';
@@ -38,7 +38,7 @@ import { map, shareReplay } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit, AfterViewInit {
 
-  isSmall$ = this.breakpointObserver.observe('(max-width: 768px)')
+  isSmall$ = this.breakpointObserver.observe('(max-width: 860px)')
     .pipe(
       map(result => result.matches),
       shareReplay()
@@ -57,6 +57,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('mainContainer', { static: false }) mainContainer: ElementRef<HTMLDivElement>;
   @ViewChild('stickySentinel', { static: false }) stickySentinel: ElementRef<HTMLDivElement>;
 
+  @ViewChild('drawer', {read: MatSidenav, static:false}) sidenav: MatSidenav;
+
   constructor(private authenticationService: AuthenticationService,
               private dialog: MatDialog,
               private snackBar: MatSnackBar,
@@ -71,6 +73,12 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
 
     this.authenticationService.me();
+  }
+
+  openDrawer() {
+    if (this.sidenav) {
+      this.sidenav.open();
+    }
   }
 
   ngAfterViewInit(): void {
@@ -113,6 +121,11 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.contentDiv.nativeElement.scrollIntoView({behavior:'auto', block:'start', inline:'nearest'})
 
       // window.scrollTo({ behavior: 'auto', top: 384 });
+    }
+console.log(this.sidenav);
+
+    if (this.sidenav) {
+      this.sidenav.close()
     }
   }
 

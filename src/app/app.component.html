@@ -1,11 +1,16 @@
 <mat-sidenav-container>
-  <mat-sidenav #drawer fixedInViewport>
+  <mat-sidenav *ngIf="isSmall$ | async" #drawer fixedInViewport class="sidenav">
 
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar color="accent">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a mat-list-item routerLink="/overview-smarttub">SmartTub</a>
+      <a mat-list-item routerLink="/overview-app">SmarTIIS App</a>
+      <a mat-list-item routerLink="/products">Produkte</a>
+      <a mat-list-item routerLink="/faq">FAQ</a>
+      <a mat-list-item routerLink="/about-us">Über uns</a>
+      <hr>
+      <a mat-list-item routerLink="/login">Anmelden</a>
+      <a mat-list-item routerLink="/cart">Warenkorb</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -31,13 +36,13 @@
       </div>
 
       <mat-toolbar #toolbarDom class="sticky-toolbar" [ngClass]="{'shadow-sm': isAdded}">
-        <mat-toolbar-row>
+<!--        <mat-toolbar-row>-->
           <button
             *ngIf="isSmall$ | async"
             type="button"
             aria-label="Toggle sidenav"
             mat-icon-button
-            (click)="drawer.toggle()">
+            (click)="openDrawer()">
             <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
           </button>
           <img *ngIf="isAdded" class="log" @stickyLogo src="assets/SmarTIIS_logo.png">
@@ -68,7 +73,7 @@
               matBadgeColor="warn">shopping_cart
             </mat-icon>
           </a>
-        </mat-toolbar-row>
+<!--        </mat-toolbar-row>-->
 
       </mat-toolbar>
 

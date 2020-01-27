@@ -1,4 +1,68 @@
 
+@import "src/global-styles/layout";
+
+.main-container {
+  @include page-container-grid(2, 2);
+
+  //grid-template-columns: repeat(2, max-content);
+  //grid-template-rows: repeat(2, max-content);
+  grid-template-areas: row(1, 1) row(2, 3);
+  //grid-template-areas: "content-1 content-1" "content-2 content-3";
+}
+
+.values-container {
+  @include page-container-grid(2, 7);
+
+  grid-template-areas:
+    row(1,4)
+    row(2,4)
+    row(2,4)
+    row(2,5)
+    row(3,5)
+    row(3,5)
+    row(3,5);
+  //  "content-2 content-4"
+  //"content-2 content-4"
+  //"content-2 content-5"
+  //"content-3 content-5"
+  //"content-3 content-5"
+  //"content-1 content-4"
+  //"content-3 content-5";
+
+  //@include page-container-grid(2, 3);
+  //
+  //grid-template-rows: 10% max-content max-content;
+  //
+  //grid-template-areas:
+  //  "content-1 content-4"
+  //  "content-2 content-5"
+  //  "content-3 content-5"
+  //  //"content-2 content-5"
+  //  //"content-3 content-5"
+  //  //"content-3 content-5"
+  //  //"content-3 content-5";
+}
+
+.people-container {
+//  @include page-container-grid(4, 2);
+//
+//  grid-template-columns: 10% max-content max-content 10%;
+//  //grid-template-rows: 10% 50%;
+//
+//  grid-template-areas:
+//    "content-1 content-1 content-1 content-1"
+//    "content-4 content-2 content-3 content-5"
+//    //"content-4 content-4 content-4 content-4"
+//;
+  @include page-container-grid(2, 3);
+
+  grid-template-areas:
+    "content-1 content-1"
+    "content-2 content-3"
+    "content-4 content-4"
+;
+}
+
 .hq-image {
   width: auto;
   height: 400px;
@@ -42,18 +106,18 @@
 
 @media (min-width: 768px) {
 
-  .navigation-buttons {
-    display: contents;
-  }
-  .circled-icon:first-of-type {
-    position: absolute;
-    left: 5%;
-  }
-
-  .circled-icon:last-of-type {
-    position: absolute;
-    right: 5%;
-  }
+  //.navigation-buttons {
+  //  display: contents;
+  //}
+  //.circled-icon:first-of-type {
+  //  position: absolute;
+  //  left: 5%;
+  //}
+  //
+  //.circled-icon:last-of-type {
+  //  position: absolute;
+  //  right: 5%;
+  //}
 }
 
 @media (min-width: 1000px) {

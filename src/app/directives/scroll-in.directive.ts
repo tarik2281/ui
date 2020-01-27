@@ -1,5 +1,6 @@
 import { Directive, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { animate, AnimationBuilder, AnimationMetadata, AnimationPlayer, keyframes, style } from '@angular/animations';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 const slideAnimation = animate('1s ease', keyframes([
   style({ opacity: 0, transform: 'translate({{x}}px, {{y}}px)' }),
@@ -11,7 +12,17 @@ const growAnimation = animate('.3s ease', keyframes([
   style({ opacity: 1, transform: 'none' })
 ]));
 
-export type ScrollInAnimation = 'slideLeft' | 'slideRight' | 'slideTop' | 'slideBottom' | 'grow' | 'fade';
+const shrinkAnimation = animate('1s ease', keyframes([
+  style({ opacity: 0, transform: 'scale(1.2)' }),
+  style({ opacity: 1, transform: 'none' })
+]));
+
+const fadeAnimation = animate('1s ease', keyframes([
+  style({ opacity: 0 }),
+  style({ opacity: 1 })
+]));
+
+export type ScrollInAnimation = 'slideLeft' | 'slideRight' | 'slideTop' | 'slideBottom' | 'grow' | 'shrink' | 'fade';
 
 interface AnimationParams {
   x?: number;
@@ -30,17 +41,25 @@ export class ScrollInDirective implements OnInit, OnDestroy {
   @Input()
   appScrollIn: ScrollInAnimation = 'grow';
 
+  @Input()
+  singleColumnAnimation: ScrollInAnimation | undefined;
+
   constructor(private animationBuilder: AnimationBuilder,
-              private element: ElementRef<HTMLElement>) {
+              private element: ElementRef<HTMLElement>,
+              private breakpointObserver: BreakpointObserver) {
   }
 
   ngOnInit(): void {
 
+    let src = this.breakpointObserver.isMatched('(min-width: 1000px)') ? this.appScrollIn : this.singleColumnAnimation;
+    if (!src) {
+      src = this.appScrollIn;
+    }
 
     let animation: AnimationMetadata;
     const params: AnimationParams = {};
 
-    switch (this.appScrollIn) {
+    switch (src) {
       case 'slideLeft':
         params.x = -200;
         params.y = 0;
@@ -63,6 +82,12 @@ export class ScrollInDirective implements OnInit, OnDestroy {
         break;
       case 'grow':
         animation = growAnimation;
+        break;
+      case 'shrink':
+        animation = shrinkAnimation;
+        break;
+      case 'fade':
+        animation = fadeAnimation;
         break;
     }
 
