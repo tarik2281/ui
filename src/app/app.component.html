@@ -44,11 +44,13 @@
           <div class="flex-grow-1"></div>
           <ng-container *ngIf="(isSmall$ | async) === false">
 
-            <app-route-button routerLink="/overview-smarttub">SmartTub</app-route-button>
-            <app-route-button routerLink="/overview-app" (click)="scrollToContent(content)">SmarTIIS App</app-route-button>
-            <app-route-button routerLink="/products">Produkte</app-route-button>
-            <app-route-button routerLink="/faq">FAQ</app-route-button>
-            <app-route-button routerLink="/about-us">Über uns</app-route-button>
+            <div class="navigation-wrapper">
+              <app-route-button routerLink="/overview-smarttub">SmartTub</app-route-button>
+              <app-route-button routerLink="/overview-app" (click)="scrollToContent(content)">SmarTIIS App</app-route-button>
+              <app-route-button routerLink="/products">Produkte</app-route-button>
+              <app-route-button routerLink="/faq">FAQ</app-route-button>
+              <app-route-button routerLink="/about-us">Über uns</app-route-button>
+            </div>
             <div class="flex-grow-1"></div>
             <a mat-button *ngIf="user" [matMenuTriggerFor]="userMenu">Hallo, {{user.firstName}}!</a>
             <mat-menu #userMenu="matMenu">

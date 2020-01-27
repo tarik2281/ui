@@ -3,3 +3,5 @@ $toolbar-height: 64px;
 $breakpoint-medium: 768px;
 
 $dark-lighter-text: #676767;
+
+$min-page-height: calc(100vh - #{$toolbar-height});

@@ -136,3 +136,12 @@ $app-logo-height: 192px;
 a:hover {
   text-decoration: none;
 }
+
+.navigation-wrapper {
+  position: absolute;
+  //background-color: #c32000;
+  left: 0;
+  right: 0;
+  text-align: center;
+  //margin: 0 auto;
+}

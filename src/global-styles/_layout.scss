@@ -1,17 +1,52 @@
 
+@import "variables";
+
 @mixin page-container($flex-direction) {
   display: flex;
   flex-flow: $flex-direction wrap;
   min-height: calc(100vh - #{$toolbar-height});
   justify-content: space-evenly;
+  align-content: space-evenly;
   align-items: center;
+  justify-items: center;
   height: auto;
 }
+
+@mixin page-container-grid {
+  min-height: $min-page-height;
+
+  display: grid;
+
+  align-content: space-evenly;
+  align-items: center;
+  justify-content: space-evenly;
+  justify-items: center;
+}
+
+.page-container-grid {
+  @include page-container-grid;
+  //min-height: $min-page-height;
+
+  //display: grid;
+  grid-template-columns: max-content max-content;
+  grid-template-rows: 1fr;
+  grid-template-areas: "content-1 content-2";
+
+  //align-items: center;
+  //justify-content: space-evenly;
+}
+
+.content-1 { grid-area: content-1; }
+
+.content-2 { grid-area: content-2; }
+.content-3 { grid-area: content-3; }
+.content-4 { grid-area: content-4; }
+.content-5 { grid-area: content-5; }
 
 /**
   To be used with rows.
  */
-.page-container-v {
+.page-container-flex-column {
   @include page-container(column);
 }
 
@@ -25,7 +60,7 @@
 /**
   To be used with columns.
  */
-.page-container-h {
+.page-container-flex-row {
   @include page-container(row);
 }
 

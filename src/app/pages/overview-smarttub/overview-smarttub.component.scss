@@ -1,10 +1,35 @@
 @import "src/theme";
+@import "src/global-styles/layout";
+
+.smarttub-container {
+  @include page-container-grid;
+
+  grid-template-columns: max-content max-content;
+  grid-template-rows: max-content max-content;
+  grid-template-areas: "content-1 content-2" "button content-2";
+
+  align-content: center;
+}
+
+.features-container {
+  @include page-container-grid;
+
+  grid-template-columns: repeat(3, max-content);
+  grid-template-rows: repeat(2, max-content);
+  grid-template-areas: "content-1 content-1 content-2" "content-3 content-4 content-5";
+
+  //align-content: space-evenly;
+}
+
+.button-area {
+  grid-area: button;
+}
 
 .title-image {
   width: 100%;
   max-width: 450px;
   height: auto;
-  box-shadow: 0px 27px 55px -15px rgba(0,0,0,0.37);
+  box-shadow: 0px 27px 55px -15px rgba(0, 0, 0, 0.37);
   //filter: drop-shadow(2px 4px 6px black);
 }
 
