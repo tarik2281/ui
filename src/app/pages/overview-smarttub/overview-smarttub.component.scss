@@ -4,6 +4,7 @@
 .fancy-header {
   background-image: linear-gradient(to top, #000c, #000c), url("src/assets/WerbephotoSmartTub.png");
   background-position-y: center;
+  background-position-x: right;
 }
 .smarttub-container {
   @include page-container-grid(1, 2, 1fr, $use-spacing: true);
