@@ -51,52 +51,52 @@ export class ScrollInDirective implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    let src = this.breakpointObserver.isMatched('(min-width: 1000px)') ? this.appScrollIn : this.singleColumnAnimation;
-    if (!src) {
-      src = this.appScrollIn;
-    }
-
-    let animation: AnimationMetadata;
-    const params: AnimationParams = {};
-
-    switch (src) {
-      case 'slideLeft':
-        params.x = -200;
-        params.y = 0;
-        animation = slideAnimation;
-        break;
-      case 'slideRight':
-        params.x = 200;
-        params.y = 0;
-        animation = slideAnimation;
-        break;
-      case 'slideTop':
-        params.x = 0;
-        params.y = -200;
-        animation = slideAnimation;
-        break;
-      case 'slideBottom':
-        params.x = 0;
-        params.y = 200;
-        animation = slideAnimation;
-        break;
-      case 'grow':
-        animation = growAnimation;
-        break;
-      case 'shrink':
-        animation = shrinkAnimation;
-        break;
-      case 'fade':
-        animation = fadeAnimation;
-        break;
-    }
-
-    const factory = this.animationBuilder.build(animation);
-
     this.element.nativeElement.style.opacity = '0';
 
     this.observer = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting) {
+
+        let src = this.breakpointObserver.isMatched('(min-width: 1000px)') ? this.appScrollIn : this.singleColumnAnimation;
+        if (!src) {
+          src = this.appScrollIn;
+        }
+
+        let animation: AnimationMetadata;
+        const params: AnimationParams = {};
+
+        switch (src) {
+          case 'slideLeft':
+            params.x = -200;
+            params.y = 0;
+            animation = slideAnimation;
+            break;
+          case 'slideRight':
+            params.x = 200;
+            params.y = 0;
+            animation = slideAnimation;
+            break;
+          case 'slideTop':
+            params.x = 0;
+            params.y = -200;
+            animation = slideAnimation;
+            break;
+          case 'slideBottom':
+            params.x = 0;
+            params.y = 200;
+            animation = slideAnimation;
+            break;
+          case 'grow':
+            animation = growAnimation;
+            break;
+          case 'shrink':
+            animation = shrinkAnimation;
+            break;
+          case 'fade':
+            animation = fadeAnimation;
+            break;
+        }
+
+        const factory = this.animationBuilder.build(animation);
 
         this.observer.disconnect();
         this.observer = undefined;

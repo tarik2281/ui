@@ -2,46 +2,93 @@
 @import "src/global-styles/layout";
 
 .main-container {
-  @include page-container-grid(2, 2);
+  @include page-container-grid(1, 3, 1fr, $use-spacing: true);
 
-  //grid-template-columns: repeat(2, max-content);
-  //grid-template-rows: repeat(2, max-content);
-  grid-template-areas: row(1, 1) row(2, 3);
-  //grid-template-areas: "content-1 content-1" "content-2 content-3";
+  grid-template-areas: row(1) row(2) row(3);
+
+  margin-top: 50px;
+}
+
+.hq-image {
+  width: 100vw;
+  max-width: 530px;
+  height: auto;
 }
 
 .values-container {
-  @include page-container-grid(2, 7);
+  @include page-container-grid(1, 5, 1fr, $use-spacing: true);
 
-  grid-template-areas:
-    row(1,4)
-    row(2,4)
-    row(2,4)
-    row(2,5)
-    row(3,5)
-    row(3,5)
-    row(3,5);
-  //  "content-2 content-4"
-  //"content-2 content-4"
-  //"content-2 content-5"
-  //"content-3 content-5"
-  //"content-3 content-5"
-  //"content-1 content-4"
-  //"content-3 content-5";
-
-  //@include page-container-grid(2, 3);
-  //
-  //grid-template-rows: 10% max-content max-content;
-  //
-  //grid-template-areas:
-  //  "content-1 content-4"
-  //  "content-2 content-5"
-  //  "content-3 content-5"
-  //  //"content-2 content-5"
-  //  //"content-3 content-5"
-  //  //"content-3 content-5"
-  //  //"content-3 content-5";
+  grid-template-areas: row(1) row(2) row(3) row(4) row(5);
 }
+
+.card-paragraph {
+  max-width: 550px;
+  text-align: justify;
+  background-color: #fff;
+
+  @media (min-width: 550px) {
+
+    border-radius: 10px;
+  }
+
+  padding: 20px;
+}
+
+@media (min-width: $breakpoint-multi-column-small) {
+  .main-container {
+    @include page-container-grid(2, 2);
+
+    //grid-template-columns: repeat(2, max-content);
+    //grid-template-rows: repeat(2, max-content);
+    grid-template-areas: row(1, 1) row(2, 3);
+    margin-top: 0;
+    //grid-template-areas: "content-1 content-1" "content-2 content-3";
+  }
+
+  .hq-image {
+    max-width: 400px;
+  }
+  .values-container {
+    @include page-container-grid(2, 7);
+
+    grid-template-areas:
+      row(1,4)
+      row(2,4)
+      row(2,4)
+      row(2,5)
+      row(3,5)
+      row(3,5)
+      row(3,5);
+  }
+
+  .card-paragraph {
+    max-width: 400px;
+  }
+}
+
+@media (min-width: $breakpoint-multi-column-big) {
+  .hq-image {
+    max-width: 530px;
+  }
+
+  .values-container {
+    @include page-container-grid(2, 7);
+
+    grid-template-areas:
+      row(1,4)
+      row(2,4)
+      row(2,4)
+      row(2,5)
+      row(3,5)
+      row(3,5)
+      row(3,5);
+  }
+
+  .card-paragraph {
+    max-width: 550px;
+  }
+}
+
 
 .people-container {
 //  @include page-container-grid(4, 2);
@@ -61,11 +108,6 @@
     "content-2 content-3"
     "content-4 content-4"
 ;
-}
-
-.hq-image {
-  width: auto;
-  height: 400px;
 }
 
 .hq-text-block {

@@ -27,6 +27,19 @@
   grid-template-areas: row(1) row(2) row(3) row(4) row(5);
 }
 
+.order-button {
+  margin: 100px 0;
+  background-color: var(--primary-color);
+  border: 5px solid var(--primary-color);
+  color: white;
+  border-radius: 60px;
+  transition: .2s;
+}
+
+.order-button:hover {
+  background-color: white;
+  color: var(--primary-color);
+}
 
 .functions-image {
   width: 100vw;
@@ -37,16 +50,28 @@
 .title-image {
    width: 100vw;
    max-width: 450px;
+
+  //@media (min-width: 450px) {
+  //  border-radius: 10px;
+  //}
+
+  //border-radius: 10px;
    height: auto;
    //box-shadow: 0px 27px 55px -15px rgba(0, 0, 0, 0.37);
    //filter: drop-shadow(2px 4px 6px black);
   margin: 0 -10px;
-  @include mat-elevation(4);
+  @include mat-elevation(6);
  }
 
 .text-block {
   text-align: justify;
 }
+
+//@media (min-width: 450px) {
+//  .title-image {
+//    border-radius: 10px;
+//  }
+//}
 
 @media (max-width: $breakpoint-single-column-big) {
   //.smarttub-container {
@@ -97,7 +122,7 @@
   }
 
   .title-image {
-    @include app-shadow;
+    //@include app-shadow;
     max-width: 350px;
   }
 
