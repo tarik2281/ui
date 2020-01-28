@@ -4,7 +4,7 @@
 .screen-container {
   @include page-container-grid(1, 2, 1fr, $use-spacing: true);
 
-  grid-template-areas: row(1) row(2);
+  grid-template-areas: row(2) row(3);
 }
 
 .screen-info-container {
@@ -18,6 +18,7 @@
   max-width: 200px;
   margin-top: 50px;
   filter: drop-shadow(2px 4px 6px black);
+  display: none;
 }
 
 //.screen-wrapper {
@@ -51,6 +52,7 @@
   .screen-image {
     max-width: 200px;
     margin-top: 0;
+    display: block;
   }
 }
 

@@ -1,7 +1,62 @@
+
+@import "src/theme";
+@import "src/global-styles/layout";
+@import "src/global-styles/variables";
+
 .form-container {
   //background-color: white;
   //margin: auto;
   //width: 100%;
+}
+
+.wave-bottom {
+  background-image: url("src/assets/wave.svg");
+  background-size: cover;
+  background-position: center;
+}
+
+.big-container {
+  background-color: #333;
+  padding-bottom: 200px;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: white;
+  border-radius: 5px;
+}
+.card-container {
+   border-radius: 10px;
+   background-color: white;
+   padding: 45px 40px;
+   @include mat-elevation(16);
+
+  max-width: 900px;
+
+  margin: 0 auto;
+  //margin-bottom: 200px;
+ }
+
+@media (min-width: $breakpoint-single-column-small) {
+  .card-container {
+    padding: 45px 70px;
+  }
+}
+
+.register-button {
+  padding: 5px 30px;
+}
+
+.fancy-header {
+  background-image: unset;
+  background-color: #333;
+  min-height: 40vh !important;
+}
+
+.main-container {
+  @include page-container-grid(1, 1, 1fr);
+
+  grid-template-areas: row(1);
+
+  //margin-top: 50px;
 }
 
 //.form-container .container {

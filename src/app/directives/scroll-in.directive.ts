@@ -7,7 +7,7 @@ const slideAnimation = animate('1s ease', keyframes([
   style({ opacity: 1, transform: 'none' })
 ]));
 
-const growAnimation = animate('.3s ease', keyframes([
+const growAnimation = animate('0.5s ease', keyframes([
   style({ opacity: 0, transform: 'scale(0.8)' }),
   style({ opacity: 1, transform: 'none' })
 ]));

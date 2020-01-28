@@ -2,7 +2,7 @@
 @import "src/global-styles/layout";
 @import "src/global-styles/utils";
 .fancy-header {
-  background-image: linear-gradient(to top, #000c, #000c), url("src/assets/WerbephotoSmartTub.png");
+  background-image: url("src/assets/overlay.PNG"), url("src/assets/WerbephotoSmartTub.png");
   background-position-y: center;
   background-position-x: right;
 }

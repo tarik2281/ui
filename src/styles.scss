@@ -48,7 +48,7 @@ body {
 .fancy-header {
   position: relative;
   min-height: $image-header-height;
-  background-image: linear-gradient(to top, #000c, #000c), url("assets/image_38906.jpg");
+  background-image: url("src/assets/overlay.PNG"), url("assets/image_38906.jpg");
   background-size: cover;
   background-position-y: 88%;
 }
@@ -86,7 +86,7 @@ mat-form-field {
 
 .big-container {
   max-width: 100%;
-  padding: 0 !important;
+  //padding: 0 !important;
   //padding-top: 64px !important;
 }
 
