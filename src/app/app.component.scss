@@ -45,10 +45,19 @@ mat-sidenav-content {
   background: unset;
   min-height: $toolbar-height !important;
   color: white;
+
+
+  ::ng-deep .mat-button[disabled] {
+    color: rgba(255, 255, 255, 0.26);
+  }
 }
 
 .toolbar-stuck {
   color: black;
+
+  ::ng-deep .mat-button[disabled] {
+    color: rgba(#000, 0.26);
+  }
 }
 
 .sticky-toolbar-sentinel {
