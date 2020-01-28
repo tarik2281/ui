@@ -11,6 +11,11 @@
 
 @import "src/theme";
 
+.fancy-header {
+  background-image: linear-gradient(to top, #000c, #000c);
+  background-position-y: center;
+}
+
 h4 {
   text-align: center;
   margin-top: 20px;

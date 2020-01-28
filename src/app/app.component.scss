@@ -18,7 +18,7 @@ mat-sidenav-content {
 .fancy-header {
   position: relative;
   height: $image-header-height;
-  background-image: linear-gradient(to top, #fffc, #fffc), url("../assets/image_38906.jpg");
+  background-image: linear-gradient(to top, #000c, #000c), url("../assets/image_38906.jpg");
   background-size: cover;
   background-position-y: 88%;
 }
@@ -37,13 +37,18 @@ mat-sidenav-content {
 }
 
 .sticky-toolbar {
-  position: sticky;
+  position: fixed;
   transition: .2s;
-  margin-top: -64px;
+  //margin-top: -64px;
   top: 0;
   z-index: 100;
   background: unset;
   min-height: $toolbar-height !important;
+  color: white;
+}
+
+.toolbar-stuck {
+  color: black;
 }
 
 .sticky-toolbar-sentinel {

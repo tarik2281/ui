@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatDialog, MatSidenav, MatSnackBar } from '@angular/material';
 import { LoginDialogComponent } from 'src/app/components/login-dialog/login-dialog.component';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -36,7 +36,7 @@ import { map, shareReplay } from 'rxjs/operators';
     ])
   ]
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit, OnChanges {
 
   isSmall$ = this.breakpointObserver.observe('(max-width: 860px)')
     .pipe(
@@ -71,6 +71,14 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
 
     this.authenticationService.me();
+
+    this.intersectionObserver = new IntersectionObserver((entries, observer) => {
+      if (entries[0].isIntersecting) {
+        this.isAdded = false;
+      } else {
+        this.isAdded = true;
+      }
+    });
   }
 
   openDrawer() {
@@ -79,24 +87,29 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
   }
 
+  intersectionObserver: IntersectionObserver;
+
+  ngOnChanges(changes: SimpleChanges): void {
+  }
+
   ngAfterViewInit(): void {
 
     // !!!!!
     this.sidenavContainer.nativeElement.classList.remove('mat-drawer-container');
 
-    const obs = new IntersectionObserver((entries, observer) => {
-      if (entries[0].isIntersecting) {
-        this.isAdded = false;
-      } else {
-        this.isAdded = true;
-      }
-    });
 
-    obs.observe(this.stickySentinel.nativeElement);
+
+    // obs.observe(this.stickySentinel.nativeElement);
   }
 
 
   onActivate(event) {
+    this.intersectionObserver.disconnect();
+
+    this.intersectionObserver.observe(document.querySelector('.fancy-header'));
+
+    console.log(document.querySelector('.fancy-header'));
+
     if (this.firstActivation) {
       this.firstActivation = false;
       return;

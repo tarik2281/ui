@@ -44,6 +44,14 @@ body {
   text-align: justify;
 }
 
+.fancy-header {
+  position: relative;
+  min-height: $image-header-height;
+  background-image: linear-gradient(to top, #000c, #000c), url("assets/image_38906.jpg");
+  background-size: cover;
+  background-position-y: 88%;
+}
+
 //.cdk-global-scrollblock{
 //  position: static !important;
 //  width: initial !important;
