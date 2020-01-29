@@ -2,7 +2,7 @@
 
 <div class="page-container-flex-row fancy-header">
   <div class="content-row">
-    <div class="login-container" appScrollIn="grow">
+    <div class="login-container wave-bottom" appScrollIn="grow">
       <form [formGroup]="loginForm" (submit)="onSubmit()">
         <h4>Melde Dich in Deinem Konto an</h4>
         <mat-form-field hideRequiredMarker>
@@ -17,17 +17,18 @@
         </mat-form-field>
         <mat-error class="mb-4" *ngIf="showError">Username oder Passwort ist falsch!</mat-error>
 <!--        <button mat-flat-button color="warn">Passwort vergessen?</button>-->
-              <div class="d-flex flex-row mb-2">
+<!--              <div class="d-flex flex-row mb-2">-->
                 <button mat-button type="button" (click)="register()">Passwort vergessen?</button>
-                <div class="flex-grow-1"></div>
-        <button mat-flat-button color="primary">Anmelden</button>
-              </div>
+<!--                <div class="flex-grow-1"></div>-->
+        <button mat-raised-button class="register-button" color="primary">Anmelden</button>
+<!--              </div>-->
       </form>
-      <div class="vl"></div>
+      <div class="hl"></div>
+<!--      <div class="vl"></div>-->
       <div class="buttons">
         <h4 style="margin-bottom: 0;">Noch kein Konto?</h4>
-        <i class="fas fa-bath fa-6x m-auto"></i>
-        <a mat-flat-button color="primary" class="mb-2 mx-auto" routerLink="/register">Kostenlos registrieren</a>
+<!--        <i class="fas fa-bath fa-6x m-auto"></i>-->
+        <a mat-raised-button color="primary" class="mb-2 register-button" routerLink="/register">Kostenlos registrieren</a>
 <!--        <button class="reset-password-button" mat-raised-button color="warn">Passwort vergessen?</button>-->
       </div>
     </div>

@@ -58,7 +58,10 @@ body {
 //  width: initial !important;
 //  overflow-y: inherit !important;
 //}
-
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: white;
+  border-radius: 5px;
+}
 .overview-text {
   width: 70%;
   margin: auto;
@@ -123,7 +126,11 @@ mat-form-field {
 
 .mat-app-background {
   background: white;
-  overflow-x: hidden;
+  //overflow-x: hidden;
+}
+
+.mat-drawer-content {
+  overflow: initial !important;
 }
 
 .title-row {

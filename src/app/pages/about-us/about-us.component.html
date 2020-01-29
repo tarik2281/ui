@@ -198,34 +198,34 @@
 
   <div class="people-container">
 <!--    <div class="content-row">-->
-      <h1 appScrollIn="slideTop" class="content-1">Unser Team</h1>
+<!--      <h1 appScrollIn="slideTop" class="content-1 text-white">Unser Team</h1>-->
 <!--    </div>-->
 <!--    <div class="content-row" [@crossfade]="fadeState" (@crossfade.done)="animationDone()">-->
       <!--      <div class="col-3">-->
 <!--    <div [@crossfade]="fadeState" (@crossfade.done)="animationDone()">-->
-      <img #testImg [@crossfade]="fadeState" appScrollIn="slideLeft" class="person-image mat-elevation-z16 content-2" [src]="person.img" (@crossfade.done)="animationDone()">
+      <img #testImg [@crossfade]="fadeState" appScrollIn="slideLeft" class="person-image content-2" [src]="person.img" (@crossfade.done)="animationDone()">
       <!--      </div>-->
 <!--      <div class="navigation-buttons">-->
 <!--        <i class="content-4 material-icons circled-icon circled-icon-hover" (click)="cycle(-1)">arrow_back</i>-->
 <!--        <i class="content-5 material-icons circled-icon circled-icon-hover" (click)="cycle(1)">arrow_forward</i>-->
 <!--      </div>-->
 
-      <div appScrollIn="slideRight" class="text-block content-3">
+      <div appScrollIn="slideRight" class="big-paragraph-light content-3">
         <h6>{{person.position}}</h6>
         <h3>{{person.name}}</h3>
         <p>{{person.description}}</p>
       </div>
 <!--    </div>-->
 <!--    </div>-->
-    <div class="content-row content-4" >
-      <div *ngFor="let person of allPeople; let i = index"
-           class="thumbnail-container"
-           [class.thumbnail-container-active]="isThumbnailActive(i)"
-           (click)="setNextPerson(i)" >
-        <img class="thumbnail-image mat-elevation-z4" [src]="person.img">
-        <span>{{person.name}}</span>
-      </div>
-    </div>
+<!--    <div class="content-row content-4" >-->
+<!--      <div *ngFor="let person of allPeople; let i = index"-->
+<!--           class="thumbnail-container"-->
+<!--           [class.thumbnail-container-active]="isThumbnailActive(i)"-->
+<!--           (click)="setNextPerson(i)" >-->
+<!--        <img class="thumbnail-image mat-elevation-z4" [src]="person.img">-->
+<!--        <span>{{person.name}}</span>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
   <div class="page-container-flex-column">
         <div class="content-row">

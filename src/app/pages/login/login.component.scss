@@ -16,14 +16,26 @@
   background-position-y: center;
 }
 
+.wave-bottom {
+   background-image: url("src/assets/wave.svg");
+   background-size: cover;
+   background-position: center;
+ }
+
 h4 {
   text-align: center;
   margin-top: 20px;
   margin-bottom: 50px;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+}
+
 .login-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   background-color: white;
   border-radius: 10px;
@@ -34,9 +46,34 @@ h4 {
   box-shadow: 0px 27px 55px -15px rgba(0,0,0,0.37);
 }
 
+.separator {
+  color: $dark-dividers;
+}
+
+.register-button {
+
+  margin-top: 30px;
+  //padding: 5px 30px;
+
+  //color: white;
+  //background-color: var(--primary-color);
+  //border-radius: 5px;
+  font-size: 1em;
+  //font-weight: 500;
+  padding: 5px 0;
+  //text-align: center;
+  //display: block;
+  //border-width: 0;
+}
+
 .vl {
   margin: 0 40px;
   border-right: 1px solid $dark-dividers;
+}
+
+.hl {
+  margin: 40px 0;
+  border-bottom: 1px solid $dark-dividers;
 }
 
 .buttons {
