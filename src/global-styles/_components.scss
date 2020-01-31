@@ -1,5 +1,18 @@
 @import "variables";
 
+@mixin make-fancy-header-image($url, $pos-y: 88%, $min-height: 100vh) {
+  .fancy-header {
+    background-image: url("src/assets/overlay.PNG"), url($url);
+    background-size: cover;
+    background-position-y: $pos-y;
+    min-height: $min-height;
+  }
+}
+
+@mixin make-title-header() {
+
+}
+
 @mixin make-circled-icon {
   font-size: 2em !important;
   display: inline-block;
@@ -12,6 +25,134 @@
   height: 54px;
   text-align: center;
   user-select: none;
+}
+
+@mixin make-small-paragraph($title-color, $text-color) {
+  margin: 0 10px;
+  max-width: 400px;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $title-color;
+    text-align: left;
+  }
+
+  p {
+    color: $text-color;
+    text-align: justify;
+
+    @media (min-width: $breakpoint-single-column-small) {
+      text-align: left;
+    }
+  }
+}
+
+@mixin make-large-paragraph($title-color, $text-color) {
+  margin: 0 10px;
+  max-width: 550px;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $title-color;
+    text-align: center;
+  }
+
+  h5 {
+    display: block;
+  }
+
+  h6 {
+    display: none;
+  }
+
+  p {
+    text-align: justify;
+    color: $text-color;
+  }
+}
+
+@mixin make-card-background($use-wave: true) {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 27px 55px -15px rgba(0,0,0,0.37);
+
+  @if $use-wave {
+    background-image: url("src/assets/wave.svg");
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.card-background {
+  @include make-card-background;
+}
+
+
+@media (min-width: $breakpoint-single-column-small) {
+  .small-paragraph {
+    p {
+      text-align: left;
+    }
+  }
+
+  .small-paragraph-light {
+    p {
+      text-align: left;
+    }
+  }
+
+  .big-paragraph, .big-paragraph-light {
+    h1, h2, h3, h4, h5, h6 {
+      text-align: left;
+    }
+
+    h5 {
+      display: none;
+    }
+
+    h6 {
+      display: block;
+    }
+
+    p {
+      text-align: left;
+      font-size: 120%;
+    }
+  }
+
+  .icon-small-paragraph {
+    span {
+      text-align: left;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-multi-column-small) {
+  .big-paragraph, .big-paragraph-light {
+
+    h1, h2, h3, h4, h5, h6 {
+      text-align: left;
+    }
+
+    p {
+      text-align: left;
+    }
+  }
+}
+
+@mixin make-paragraph($class-name, $title-color, $text-color, $max-width, ) {
+  .#{$class-name} {
+    margin: 0 10px;
+    max-width: $max-width;
+
+    h1, h2, h3, h4, h5, h6 {
+      color: $title-color;
+      text-align: center;
+    }
+
+    p {
+      text-align: justify;
+      color: $text-color;
+    }
+  }
 }
 
 .small-paragraph {

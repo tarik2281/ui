@@ -122,6 +122,26 @@ background-image: url("src/assets/overlay.PNG"), url("src/assets/Headquarter.jpg
 }
 
 
+.fuck {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.person-block {
+  text-align: center;
+
+  h6 {
+    margin-top: 20px;
+  }
+
+  cursor: pointer;
+}
+
+.person-block:hover .triangle {
+  opacity: 0.5;
+}
+
 .people-container {
 //  @include page-container-grid(4, 2);
 //
@@ -133,20 +153,75 @@ background-image: url("src/assets/overlay.PNG"), url("src/assets/Headquarter.jpg
 //    "content-4 content-2 content-3 content-5"
 //    //"content-4 content-4 content-4 content-4"
 //;
-  @include page-container-grid(4, 3, 1fr, 1fr);
+//  @include page-container-grid(4, 3, 1fr, 1fr);
 
-  grid-template-areas:
-    row(2, 2, 3, 3)
-    row(2, 2, 3, 3)
-    row(2, 2, 4, 5)
+  //grid-template-areas:
+  //  row(2, 2, 3, 3)
+  //  row(2, 2, 3, 3)
+  //  row(2, 2, 4, 5)
     //"content-1 content-1"
     //"content-4 content-4"
-;
+//;
+  //background-color: #333;
+
+  //min-height: 10vh;
+  //padding-top: 0;
+
+
+  @include page-container-grid(4, 1, 1fr);
+  grid-template-columns: 10% 1fr 1fr 1fr 1fr 10%;
+  grid-template-areas: row(8, 1, 2, 3, 4, 9) row(5, 5,5,5,5, 5);
+  align-content: center;
+  justify-items: stretch;
+  min-height: 0 !important;
+}
+
+.info-row {
+  width: 100%;
   background-color: #333;
+  color: white;
+  //padding: 100px;
+  overflow-y: hidden;
+  //min-height: 368px;
+}
 
-  min-height: 10vh;
-  padding-top: 0;
+//.person-block:hover .triangle {
+//  border-bottom-color: #333;
+//}
 
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 35px solid transparent;
+  border-right: 35px solid transparent;
+  border-bottom: 50px solid #333;
+  margin: auto;
+  opacity: 0;
+  transition: .5s;
+}
+
+.triangle-active {
+  opacity: 1 !important;
+}
+
+//.info-row:before {
+//  content: "";
+//  position: absolute;
+//
+//}
+
+i.content-4 {
+  font-size: 3em;
+  justify-self: end;
+  color: white;
+  margin-right: 40px;
+}
+
+i.content-5 {
+  font-size: 3em;
+  justify-self: start;
+  color: white;
+  margin-left: 40px;
 }
 
 .hq-text-block {

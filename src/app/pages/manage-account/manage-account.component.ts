@@ -65,4 +65,12 @@ export class ManageAccountComponent implements OnInit {
 
   }
 
+  logout() {
+    this.authenticationService.logout().subscribe(result => {
+      this.snackBar.open('Erfolgreich abgemeldet!', null, {
+        duration: 2000
+      });
+      location.reload();
+    });
+  }
 }

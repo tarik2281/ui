@@ -203,18 +203,25 @@
 <!--    <div class="content-row" [@crossfade]="fadeState" (@crossfade.done)="animationDone()">-->
       <!--      <div class="col-3">-->
 <!--    <div [@crossfade]="fadeState" (@crossfade.done)="animationDone()">-->
-      <img #testImg [@crossfade]="fadeState" appScrollIn="slideLeft" class="person-image content-2" [src]="person.img" (@crossfade.done)="animationDone()">
+<!--      <img #testImg [@crossfade]="fadeState" appScrollIn="slideLeft" class="person-image content-2" [src]="person.img" (@crossfade.done)="animationDone()">-->
       <!--      </div>-->
 <!--      <div class="navigation-buttons">-->
 <!--        <i class="content-4 material-icons circled-icon circled-icon-hover" (click)="cycle(-1)">arrow_back</i>-->
 <!--        <i class="content-5 material-icons circled-icon circled-icon-hover" (click)="cycle(1)">arrow_forward</i>-->
 <!--      </div>-->
 
-      <div appScrollIn="slideRight" class="big-paragraph-light content-3">
+      <div  appScrollIn="fade" class="person-block" *ngFor="let person of allPeople; let i = index" (click)="setNextPerson(i)" [ngStyle]="{ gridColumnStart: 2+i}">
+        <img class="fuck mat-elevation-z4" [src]="person.img">
         <h6>{{person.position}}</h6>
-        <h3>{{person.name}}</h3>
-        <p>{{person.description}}</p>
+        <h4>{{person.name}}</h4>
+<!--        <p>{{person.description}}</p>-->
+        <div [class.triangle-active]="isThumbnailActive(i)" class="triangle"></div>
       </div>
+
+
+
+<!--      <i class="material-icons content-4">arrow_back</i>-->
+<!--      <i class="material-icons content-5">arrow_forward</i>-->
 <!--    </div>-->
 <!--    </div>-->
 <!--    <div class="content-row content-4" >-->
@@ -226,11 +233,13 @@
 <!--        <span>{{person.name}}</span>-->
 <!--      </div>-->
 <!--    </div>-->
-  </div>
+  </div><div appScrollIn="expand" class="content-5 info-row">
+  <p style="max-width: 500px; margin: 100px auto;">{{person.description}}</p>
+</div>
   <div class="page-container-flex-column">
         <div class="content-row">
 <!--          <img appScrollIn="slideLeft" class="hq-image mat-elevation-z6 content-2" src="assets/Headquarter.jpg">-->
-          <div appScrollIn="slideTop" class="big-paragraph content-2">
+          <div appScrollIn="slideTop" animationDelay="0.5s" class="big-paragraph content-2">
             <h3>Gründungsgeschichte</h3>
             <p>
               Die SmarTIIS GmbH hat sich vor vier Jahren gegründet und besteht aus insgesamt 50 Mitarbeitern.

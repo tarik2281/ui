@@ -7,7 +7,6 @@ import {RegisterUserComponent} from 'src/app/pages/register-user/register-user.c
 import {ManageAccountComponent} from 'src/app/pages/manage-account/manage-account.component';
 import {AuthGuard} from 'src/app/services/auth-guard.service';
 import {FaqComponent} from 'src/app/pages/faq/faq.component';
-import {ProductViewComponent} from 'src/app/components/product-view/product-view.component';
 import {AllProductsComponent} from 'src/app/pages/all-products/all-products.component';
 import {ProductDetailComponent} from 'src/app/pages/product-detail/product-detail.component';
 import {ShoppingCartComponent} from 'src/app/pages/shopping-cart/shopping-cart.component';
@@ -46,7 +45,7 @@ const routes: Routes = [
   {
     path: 'manage-account',
     component: ManageAccountComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'change-password',

@@ -42,10 +42,9 @@
           <app-route-button routerLink="/products">Produkte</app-route-button>
           <app-route-button routerLink="/faq">FAQ</app-route-button>
           <app-route-button routerLink="/about-us">Über uns</app-route-button>
-          <app-route-button routerLink="/about-us">Kontakt</app-route-button>
         </div>
         <div class="flex-grow-1"></div>
-        <a mat-button *ngIf="user" [matMenuTriggerFor]="userMenu">Hallo, {{user.firstName}}!</a>
+        <a mat-button routerLink="/manage-account" *ngIf="user" >Hallo, {{user.firstName}}!</a>
         <mat-menu #userMenu="matMenu">
           <a mat-menu-item routerLink="/manage-account">Persönliche Daten bearbeiten</a>
           <a mat-menu-item routerLink="/change-password">Passwort ändern</a>

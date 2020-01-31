@@ -70,6 +70,16 @@ const PEOPLE: Person[] = [
       transition('hidden <=> visible', [
         animate('0.2s')
       ])]),
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('.5s ease', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        style({ opacity: 1 }),
+        animate('.5s ease', style({ opacity: 0 }))
+      ])
+    ])
     // trigger('listAnimation', [
     //   transition(':enter', [
     //     query('*', [
@@ -122,10 +132,11 @@ export class AboutUsComponent implements OnInit, AfterViewInit {
 
   setNextPerson(index: number) {
     console.log('nextPerson', index);
-    if (this.personIndex !== index) {
-      this.nextPersonIndex = index;
-      this.fadeState = 'hidden';
-    }
+    this.personIndex = index;
+    // if (this.personIndex !== index) {
+    //   this.nextPersonIndex = index;
+    //   this.fadeState = 'hidden';
+    // }
   }
 
   isThumbnailActive(index: number) {
