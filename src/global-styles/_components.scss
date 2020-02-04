@@ -71,13 +71,53 @@
 
 @mixin make-card-background($use-wave: true) {
   background-color: white;
-  border-radius: 10px;
+  border-radius: $border-radius;
   box-shadow: 0px 27px 55px -15px rgba(0,0,0,0.37);
 
   @if $use-wave {
-    background-image: url("src/assets/wave.svg");
+    background-image: $url-wave;
     background-size: cover;
     background-position: center;
+  }
+}
+
+@mixin make-card-container() {
+
+}
+
+.button-group {
+
+  button {
+    width: 100%;
+    background: unset;
+    border: 0;
+    border-bottom: 1px solid $color-border-light;
+    padding: 20px 0;
+    transition: $transition-duration;
+  }
+
+  button:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  button:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-width: 0;
+  }
+
+  button:hover {
+    background: $color-border-light;
+  }
+
+  button:focus {
+    outline: 0;
+  }
+
+  button.active {
+    background: $color-primary !important;
+    color: white;
   }
 }
 

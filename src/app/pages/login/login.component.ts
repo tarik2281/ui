@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     }
 
     this.loginForm.disable();
-    this.showError = false;
+    // this.showError = false;
 
     const username = this.loginForm.controls.username.value;
     const password = this.loginForm.controls.password.value;
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
     }, error => {
       console.error(error);
 
-      this.showError = true;
+      // this.showError = true;
       this.loginForm.enable();
     });
   }

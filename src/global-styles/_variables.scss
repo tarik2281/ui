@@ -1,4 +1,20 @@
 
+$url-wave: url("src/assets/wave.svg");
+
+$transition-duration: .2s;
+
+$color-primary: var(--primary-color);
+$color-background-light: white;
+$color-background-dark: #333;
+$color-border-light: #d8d8d8;
+$color-title-light: rgba(0, 0, 0, 0.87);
+$color-title-dark: white;
+$color-paragraph-light: #c3c3c3;
+$color-paragraph-dark: #676767;
+
+$padding-card: 40px;
+$border-radius: 10px;
+
 $big-app-logo-height: 192px;
 $image-header-height: 100vh;
 $toolbar-height: 64px;
