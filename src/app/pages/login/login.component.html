@@ -1,41 +1,28 @@
-<!--<div class="big-container">-->
 
 <div class="page-container-flex-row fancy-header">
   <div class="content-row">
-    <div class="login-container wave-bottom" appScrollIn="grow">
+    <div class="login-container card-container bg-wave" appScrollIn="grow">
       <form [formGroup]="loginForm" (submit)="onSubmit()">
-        <h4>Melde Dich in Deinem Konto an</h4>
+        <h4 class="mb-4">Melde Dich in Deinem Konto an</h4>
         <mat-form-field hideRequiredMarker>
-                  <mat-label>Email-Adresse</mat-label>
-          <input matInput formControlName="username"
-                 autocomplete="username">
+          <mat-label>Email-Adresse</mat-label>
+          <input matInput formControlName="username" autocomplete="username">
         </mat-form-field>
         <mat-form-field hideRequiredMarker>
-                  <mat-label>Passwort</mat-label>
-          <input matInput type="password"
-                 formControlName="password" autocomplete="current-password">
+          <mat-label>Passwort</mat-label>
+          <input matInput type="password" formControlName="password" autocomplete="current-password">
         </mat-form-field>
-        <mat-error class="mb-4" *ngIf="showError">Username oder Passwort ist falsch!</mat-error>
-<!--        <button mat-flat-button color="warn">Passwort vergessen?</button>-->
-<!--              <div class="d-flex flex-row mb-2">-->
-        <button mat-raised-button class="register-button" color="primary">Anmelden</button>
-                <button mat-button type="button" (click)="register()">Passwort vergessen?</button>
-<!--                <div class="flex-grow-1"></div>-->
-<!--              </div>-->
+<!--        <mat-error class="mb-4" *ngIf="showError">Username oder Passwort ist falsch!</mat-error>-->
+        <button mat-flat-button class="large mb-4" color="primary">Anmelden</button>
+        <button mat-button type="button">Passwort vergessen?</button>
       </form>
-      <div class="hl"></div>
-<!--      <div class="vl"></div>-->
+      <div class="line-h"></div>
       <div class="buttons">
-        <h4 style="margin-bottom: 0;">Noch kein Konto?</h4>
-<!--        <i class="fas fa-bath fa-6x m-auto"></i>-->
-        <a mat-raised-button color="primary" class="mb-2 register-button" routerLink="/register">Kostenlos registrieren</a>
-<!--        <button class="reset-password-button" mat-raised-button color="warn">Passwort vergessen?</button>-->
+        <h4 class="mb-4">Noch kein Konto?</h4>
+        <button mat-flat-button color="primary" class="mb-2 large" routerLink="/register">
+          Kostenlos registrieren
+        </button>
       </div>
     </div>
   </div>
-<!--  <div class="content-row">-->
-
-<!--    <button mat-raised-button color="accent">Noch kein Konto? Jetzt registrieren</button>-->
-<!--  </div>-->
 </div>
-<!--</div>-->

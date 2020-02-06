@@ -1,4 +1,5 @@
 @import "variables";
+@import "src/theme";
 
 @mixin make-fancy-header-image($url, $pos-y: 88%, $min-height: 100vh) {
   .fancy-header {
@@ -83,6 +84,35 @@
 
 @mixin make-card-container() {
 
+}
+
+.line-v {
+  margin: 0 $spacing-element;
+  border-right: 1px solid $color-border-light;
+}
+
+.line-h {
+  margin: $spacing-element 0;
+  border-bottom: 1px solid $color-border-light;
+}
+
+.card-container {
+  padding: $padding-card;
+  border-radius: $border-radius;
+  background: $color-background-light;
+  @include mat-elevation(16);
+}
+
+.card-container.bg-wave {
+  background-image: $url-wave;
+  background-size: cover;
+  background-position: center;
+}
+
+.mat-button-base.large {
+  font-size: 1em !important;
+  padding: 6px 32px !important;
+  margin: 0 !important;
 }
 
 .button-group {
