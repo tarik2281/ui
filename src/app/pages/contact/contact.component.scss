@@ -1,0 +1,22 @@
+@import "src/global-styles/layout";
+
+.big-container {
+  padding-top: 64px;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  row-gap: 100px;
+  grid-template-areas: row(1, 1, 1) row(2, 2, 2) row(3, 4, 5);
+  justify-items: center;
+  padding: 100px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-form {
+  max-width: 700px;
+  width: 100%;
+}

@@ -11,6 +11,7 @@ import {ProductDetailComponent} from 'src/app/pages/product-detail/product-detai
 import {ShoppingCartComponent} from 'src/app/pages/shopping-cart/shopping-cart.component';
 import { NotFoundComponent } from 'src/app/pages/not-found/not-found.component';
 import { LoginComponent } from 'src/app/pages/login/login.component';
+import { ContactComponent } from 'src/app/pages/contact/contact.component';
 
 
 const routes: Routes = [
@@ -65,6 +66,10 @@ const routes: Routes = [
   {
     path: 'cart',
     component: ShoppingCartComponent
+  },
+  {
+    path: 'contact',
+    component: ContactComponent
   },
   {
     path: '**',

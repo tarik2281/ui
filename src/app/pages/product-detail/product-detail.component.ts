@@ -24,26 +24,27 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productId = +this.route.snapshot.paramMap.get('id');
-
-    this.productService.getProductById(this.productId).subscribe(data => {
-      this.product = data;
-    });
-
-    console.log('requested product id', this.productId);
+    // this.productId = +this.route.snapshot.paramMap.get('id');
+    //
+    // this.productService.getProductById(this.productId).subscribe(data => {
+    //   this.product = data;
+    // });
+    //
+    // console.log('requested product id', this.productId);
   }
 
   isInCart() {
-    return this.cartService.isInCart(this.product);
+    return this.addedToCart;
+    // return this.cartService.isInCart(this.product);
   }
 
   addToCart() {
     if (!this.addedToCart) {
       this.addedToCart = true;
-      this.cartService.addProduct(this.product);
-      this.snackBar.open('Artikel zum Warenkorb hinzugefügt!', null, {
-        duration: 2000
-      });
+      // this.cartService.addProduct(this.product);
+      // this.snackBar.open('Artikel zum Warenkorb hinzugefügt!', null, {
+      //   duration: 2000
+      // });
     }
   }
 }

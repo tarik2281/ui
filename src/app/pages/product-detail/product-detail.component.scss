@@ -1,3 +1,6 @@
+@import "src/global-styles/variables";
+@import "src/global-styles/layout";
+
 .product-image {
   width: auto;
   height: 300px;
@@ -38,4 +41,82 @@
 .additional-info-row {
   margin-top: 20px;
   text-align: justify;
+}
+
+.big-container {
+  padding-top: $toolbar-height;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas: row(1, 2, 3) row(6, 5, 5);
+  align-items: center;
+  justify-items: start;
+  padding: 125px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  //row-gap: 100px;
+
+  .content-5 {
+    margin: 30px;
+    max-width: 800px;
+    justify-self: center;
+  }
+
+  .content-3 {
+    align-self: center;
+  }
+}
+
+.main-image {
+  width: 500px;
+  height: 500px;
+  object-fit: contain;
+  margin: 30px;
+}
+
+.thumbnail-container {
+  display: flex;
+  flex-direction: column;
+
+  img {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+  }
+}
+
+.order-button {
+  margin: 20px 0px 20px 40px !important;
+  justify-self: start !important;
+}
+
+.description-container {
+  display: grid;
+  //width: 100%;
+  //flex-direction: column;
+  justify-self: stretch;
+  //text-align: left;
+  //justify-content: center;
+  justify-items: center;
+  align-items: center;
+
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas: row(1,1) row(2,2) row(3,3) row(4,5);
+
+  h1, p, ul {
+    justify-self: stretch;
+  }
+
+  span {
+    font-size: 130%;
+    font-weight: 500;
+    justify-self: end;
+  }
+
+  button {
+  }
 }

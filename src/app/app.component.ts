@@ -73,11 +73,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnChanges {
     this.authenticationService.me();
 
     this.intersectionObserver = new IntersectionObserver((entries, observer) => {
-      if (entries[0].isIntersecting) {
-        this.isAdded = false;
-      } else {
-        this.isAdded = true;
-      }
+      this.isAdded = !entries[0].isIntersecting;
     });
   }
 
@@ -95,7 +91,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnChanges {
   ngAfterViewInit(): void {
 
     // !!!!!
-    this.sidenavContainer.nativeElement.classList.remove('mat-drawer-container');
+    // this.sidenavContainer.nativeElement.classList.remove('mat-drawer-container');
 
 
 
@@ -106,9 +102,17 @@ export class AppComponent implements OnInit, AfterViewInit, OnChanges {
   onActivate(event) {
     this.intersectionObserver.disconnect();
 
-    this.intersectionObserver.observe(document.querySelector('.fancy-header'));
+    const fancyHeaderElement = document.querySelector('.fancy-header');
+    if (fancyHeaderElement) {
+      this.intersectionObserver.observe(fancyHeaderElement);
+    }
+    else {
+      this.isAdded = true;
+    }
 
-    console.log(document.querySelector('.fancy-header'));
+    // this.intersectionObserver.observe(document.querySelector('.fancy-header'));
+
+    // console.log(document.querySelector('.fancy-header'));
 
     if (this.firstActivation) {
       this.firstActivation = false;
@@ -117,7 +121,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnChanges {
 
     console.log(event);
     if (!this.isAdded) {
-      this.contentDiv.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+      this.contentDiv.nativeElement.scrollIntoView({ behavior: 'auto', block: 'start', inline: 'nearest' });
       // window.scrollTo({ behavior: 'smooth', top: 384 });
     } else {
       // this.contentDiv.nativeElement.scrollIntoView({ behavior})

@@ -41,16 +41,17 @@
           </app-route-button>
           <app-route-button routerLink="/products">Produkte</app-route-button>
           <app-route-button routerLink="/faq">FAQ</app-route-button>
+          <app-route-button routerLink="/contact">Kontakt</app-route-button>
           <app-route-button routerLink="/about-us">Über uns</app-route-button>
         </div>
         <div class="flex-grow-1"></div>
         <a mat-button routerLink="/manage-account" *ngIf="user" >Hallo, {{user.firstName}}!</a>
-        <mat-menu #userMenu="matMenu">
-          <a mat-menu-item routerLink="/manage-account">Persönliche Daten bearbeiten</a>
-          <a mat-menu-item routerLink="/change-password">Passwort ändern</a>
-          <a mat-menu-item>Meine Bestellungen</a>
-          <a mat-menu-item (click)="onLogout()">Abmelden</a>
-        </mat-menu>
+<!--        <mat-menu #userMenu="matMenu">-->
+<!--          <a mat-menu-item routerLink="/manage-account">Persönliche Daten bearbeiten</a>-->
+<!--          <a mat-menu-item routerLink="/change-password">Passwort ändern</a>-->
+<!--          <a mat-menu-item>Meine Bestellungen</a>-->
+<!--          <a mat-menu-item (click)="onLogout()">Abmelden</a>-->
+<!--        </mat-menu>-->
         <a mat-stroked-button *ngIf="!user" routerLink="login">Anmelden</a>
       </ng-container>
 

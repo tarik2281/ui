@@ -1,51 +1,68 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <h1 class="app-content-title">Häufig gestellte Fragen</h1>
+<div class="big-container">
+  <div class="main-container">
+    <h1>Häufig gestellte Fragen</h1>
+  <div *ngFor="let category of categories">
+    <h4 class="title-with-icon" (click)="category.expanded=!category.expanded"><span>{{category.title}}</span><mat-icon [class.expanded-icon]="category.expanded">expand_more</mat-icon></h4>
+    <div class="question-container" *ngIf="category.expanded" @autoExpand>
+      <div class="text-block" *ngFor="let question of category.questions">
+        <h6 class="title-with-icon" (click)="question.expanded=!question.expanded"><span>{{question.title}}</span><mat-icon [class.expanded-icon]="question.expanded">expand_more</mat-icon></h6>
+        <p @autoExpand *ngIf="question.expanded">
+          {{question.answer}}
+        </p>
+      </div>
     </div>
   </div>
-  <div class="row">
-<!--    <div class="col-2"></div>-->
-    <div class="col-12">
-      <div class="text-block">
-        <h6 class="title-with-icon" (click)="toggle()"><span>fasdfasdf</span><mat-icon [class.expanded-icon]="state==='expanded'">expand_more</mat-icon></h6>
-        <p @autoExpand (@autoExpand.start)="onAnimationStart($event)" (@autoExpand.done)="onAnimationEnd($event)" *ngIf="state==='expanded'">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-          clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-          consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua.
-        </p>
-      </div>
-
-      <div class="text-block">
-        <h6 class="title-with-icon" (click)="toggle()"><span>fasdfasdf</span><mat-icon [class.expanded-icon]="state==='expanded'">expand_more</mat-icon></h6>
-        <p @autoExpand (@autoExpand.start)="onAnimationStart($event)" (@autoExpand.done)="onAnimationEnd($event)" *ngIf="state==='expanded'">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-          clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-          consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua.
-        </p>
-      </div>
-      <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-        <!-- This is the tree node template for leaf nodes -->
-        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-          <!-- use a disabled button to provide padding for tree leaf -->
-          <button mat-icon-button disabled></button>
-          {{node.name}}
-        </mat-tree-node>
-        <!-- This is the tree node template for expandable nodes -->
-        <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
-          <button mat-icon-button matTreeNodeToggle
-                  [attr.aria-label]="'toggle ' + node.name">
-            <mat-icon class="mat-icon-rtl-mirror">
-              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-            </mat-icon>
-          </button>
-          {{node.name}}
-        </mat-tree-node>
-      </mat-tree>
-    </div>
   </div>
 </div>
+
+<!--<div class="container">-->
+<!--  <div class="row">-->
+<!--    <div class="col-12">-->
+<!--      <h1 class="app-content-title">Häufig gestellte Fragen</h1>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="row">-->
+<!--&lt;!&ndash;    <div class="col-2"></div>&ndash;&gt;-->
+<!--    <div class="col-12">-->
+<!--      <div class="text-block">-->
+<!--        <h6 class="title-with-icon" (click)="toggle()"><span>fasdfasdf</span><mat-icon [class.expanded-icon]="state==='expanded'">expand_more</mat-icon></h6>-->
+<!--        <p @autoExpand (@autoExpand.start)="onAnimationStart($event)" (@autoExpand.done)="onAnimationEnd($event)" *ngIf="state==='expanded'">-->
+<!--          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et-->
+<!--          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet-->
+<!--          clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,-->
+<!--          consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,-->
+<!--          sed diam voluptua.-->
+<!--        </p>-->
+<!--      </div>-->
+
+<!--      <div class="text-block">-->
+<!--        <h6 class="title-with-icon" (click)="toggle()"><span>fasdfasdf</span><mat-icon [class.expanded-icon]="state==='expanded'">expand_more</mat-icon></h6>-->
+<!--        <p @autoExpand (@autoExpand.start)="onAnimationStart($event)" (@autoExpand.done)="onAnimationEnd($event)" *ngIf="state==='expanded'">-->
+<!--          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et-->
+<!--          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet-->
+<!--          clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,-->
+<!--          consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,-->
+<!--          sed diam voluptua.-->
+<!--        </p>-->
+<!--      </div>-->
+<!--      <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">-->
+<!--        &lt;!&ndash; This is the tree node template for leaf nodes &ndash;&gt;-->
+<!--        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>-->
+<!--          &lt;!&ndash; use a disabled button to provide padding for tree leaf &ndash;&gt;-->
+<!--          <button mat-icon-button disabled></button>-->
+<!--          {{node.name}}-->
+<!--        </mat-tree-node>-->
+<!--        &lt;!&ndash; This is the tree node template for expandable nodes &ndash;&gt;-->
+<!--        <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>-->
+<!--          <button mat-icon-button matTreeNodeToggle-->
+<!--                  [attr.aria-label]="'toggle ' + node.name">-->
+<!--            <mat-icon class="mat-icon-rtl-mirror">-->
+<!--              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}-->
+<!--            </mat-icon>-->
+<!--          </button>-->
+<!--          {{node.name}}-->
+<!--        </mat-tree-node>-->
+<!--      </mat-tree>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

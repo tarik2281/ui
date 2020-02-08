@@ -12,6 +12,47 @@ interface DataNode {
   children?: DataNode[];
 }
 
+interface Question {
+  title: string;
+  answer: string;
+  expanded?: boolean;
+}
+
+interface QuestionCategory {
+  title: string;
+  expanded?: boolean;
+  questions: Question[];
+}
+
+const categories: QuestionCategory[] = [{
+  title: 'Bedienung',
+  questions: [
+    {
+      title: 'Wie wähle ich einen Badezusatz aus?',
+      answer: 'afawefwef'
+    }
+  ]
+},
+  {
+    title: 'Bedienung',
+    questions: [
+      {
+        title: 'Wie wähle ich einen Badezusatz aus?',
+        answer: 'afawefwef'
+      }
+    ]
+  },
+  {
+    title: 'Bedienung',
+    questions: [
+      {
+        title: 'Wie wähle ich einen Badezusatz aus?',
+        answer: 'afawefwef'
+      }
+    ]
+  }];
+
+
 const QUESTION_DATA: DataNode[] = [
   {
     name: 'Allgemein',
@@ -83,7 +124,9 @@ export class FaqComponent implements OnInit {
   transitioning = false;
 
   toggle() {
-    if (this.transitioning) return;
+    if (this.transitioning) {
+      return;
+    }
 
     if (this.state === 'collapsed') {
       this.state = 'expanded';
@@ -115,6 +158,10 @@ export class FaqComponent implements OnInit {
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
   ngOnInit() {
+  }
+
+  get categories() {
+    return categories;
   }
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;

@@ -5,12 +5,17 @@ mat-tree {
 .text-block {
   overflow: hidden;
   //max-height: 5000px;
+
+  p {
+    margin-left: 70px;
+  }
 }
 
 .title-with-icon {
   display: flex;
   align-items: center;
   cursor: pointer;
+  padding: 20px;
 
   span {
     margin-right: 10px;
@@ -32,4 +37,20 @@ mat-tree {
 .expanded-icon {
   transform: rotate(180deg) !important;
   opacity: 1 !important;
+}
+
+.big-container {
+  padding-top: 64px;
+  min-height: 100vh;
+}
+
+.question-container {
+  overflow: hidden;
+  margin-left: 70px;
+}
+
+.main-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 100px 0;
 }

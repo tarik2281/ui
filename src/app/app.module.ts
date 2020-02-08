@@ -49,6 +49,7 @@ import { BlockScrollStrategy, NoopScrollStrategy, Overlay } from '@angular/cdk/o
 import { LoginComponent } from './pages/login/login.component';
 import { ManageAccountModule } from 'src/app/manage-account/manage-account.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ContactComponent } from './pages/contact/contact.component';
 
 registerLocaleData(localeDe);
 
@@ -73,7 +74,8 @@ export function scrollFactory(overlay: Overlay): () => NoopScrollStrategy {
     TosDialogComponent,
     NotFoundComponent,
     LinesPipe,
-    LoginComponent
+    LoginComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
