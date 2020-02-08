@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { matchValidator } from 'src/app/validators/match-validator';
+import { matchValidator } from 'src/app/shared/validators/match-validator';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';

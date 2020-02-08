@@ -24,35 +24,31 @@ import { OverviewAppComponent } from './pages/overview-app/overview-app.componen
 import { OverviewSmarttubComponent } from './pages/overview-smarttub/overview-smarttub.component';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 import {
-    MAT_DATE_LOCALE, MAT_DIALOG_SCROLL_STRATEGY, MAT_FORM_FIELD_DEFAULT_OPTIONS,
-    MatBadgeModule, MatButtonToggleModule,
-    MatCheckboxModule,
-    MatDialogModule, MatExpansionModule,
-    MatNativeDateModule,
-    MatSnackBarModule, MatTooltipModule, MatTreeModule
+  MAT_DATE_LOCALE, MAT_DIALOG_SCROLL_STRATEGY, MAT_FORM_FIELD_DEFAULT_OPTIONS,
+  MatBadgeModule, MatButtonToggleModule,
+  MatCheckboxModule,
+  MatDialogModule, MatExpansionModule,
+  MatNativeDateModule,
+  MatSnackBarModule, MatTooltipModule, MatTreeModule
 } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterUserComponent } from './pages/register-user/register-user.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { ManageAccountComponent } from './pages/manage-account/manage-account.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { RouterModule } from '@angular/router';
 import { RouteButtonComponent } from './components/route-button/route-button.component';
 import { AllProductsComponent } from './pages/all-products/all-products.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
-import { HoverClassDirective } from './directives/hover-class.directive';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { TosDialogComponent } from './components/tos-dialog/tos-dialog.component';
-import { ChangePasswordComponent } from './pages/change-password/change-password.component';
-import { PasswordToggleDirective } from './directives/password-toggle.directive';
-import { DeleteAccountComponent } from './pages/delete-account/delete-account.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import { LinesPipe } from 'src/app/pipes/lines.pipe';
-import {BlockScrollStrategy, NoopScrollStrategy, Overlay} from '@angular/cdk/overlay';
-import { ScrollInDirective } from 'src/app/directives/scroll-in.directive';
+import { BlockScrollStrategy, NoopScrollStrategy, Overlay } from '@angular/cdk/overlay';
 import { LoginComponent } from './pages/login/login.component';
+import { ManageAccountModule } from 'src/app/manage-account/manage-account.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 registerLocaleData(localeDe);
 
@@ -69,54 +65,50 @@ export function scrollFactory(overlay: Overlay): () => NoopScrollStrategy {
     OverviewSmarttubComponent,
     LoginDialogComponent,
     RegisterUserComponent,
-    ManageAccountComponent,
     FaqComponent,
     RouteButtonComponent,
     AllProductsComponent,
     ProductDetailComponent,
-    HoverClassDirective,
     ShoppingCartComponent,
     TosDialogComponent,
-    ChangePasswordComponent,
-    PasswordToggleDirective,
-    DeleteAccountComponent,
     NotFoundComponent,
     LinesPipe,
-    ScrollInDirective,
     LoginComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        LayoutModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatSidenavModule,
-        MatIconModule,
-        MatListModule,
-        MatGridListModule,
-        MatCardModule,
-        MatMenuModule,
-        MatInputModule,
-        MatSelectModule,
-        MatRadioModule,
-        ReactiveFormsModule,
-        FlexLayoutModule,
-        MatDialogModule,
-        HttpClientModule,
-        MatSnackBarModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatCheckboxModule,
-        MatBadgeModule,
-        MatTreeModule,
-        RouterModule,
-        MatTooltipModule,
-        FormsModule,
-        MatExpansionModule,
-        MatButtonToggleModule
-    ],
+  imports: [
+    BrowserModule,
+    ManageAccountModule,
+    SharedModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
+    MatDialogModule,
+    HttpClientModule,
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
+    MatBadgeModule,
+    MatTreeModule,
+    RouterModule,
+    MatTooltipModule,
+    FormsModule,
+    MatExpansionModule,
+    MatButtonToggleModule
+  ],
   providers: [
     { provide: LOCALE_ID, useValue: 'de' },
     // { provide: MAT_DIALOG_SCROLL_STRATEGY, useFactory: scrollFactory, deps: [Overlay] },

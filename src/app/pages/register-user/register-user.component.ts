@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {AuthenticationService} from 'src/app/services/authentication.service';
 import {TosDialogComponent} from 'src/app/components/tos-dialog/tos-dialog.component';
-import {matchValidator} from 'src/app/validators/match-validator';
+import {matchValidator} from 'src/app/shared/validators/match-validator';
 
 @Component({
   selector: 'app-register-user',

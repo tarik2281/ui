@@ -3,7 +3,7 @@
 
     <mat-toolbar color="accent">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/overview-smarttub">SmartTub</a>
+      <a mat-list-item routerLink="/">SmartTub</a>
       <a mat-list-item routerLink="/overview-app">SmarTIIS App</a>
       <a mat-list-item routerLink="/products">Produkte</a>
       <a mat-list-item routerLink="/faq">FAQ</a>
@@ -36,7 +36,7 @@
       <div class="flex-grow-1"></div>
       <ng-container *ngIf="(isSmall$ | async) === false">
         <div class="navigation-wrapper">
-          <app-route-button routerLink="/overview-smarttub">SmartTub</app-route-button>
+          <app-route-button routerLink="/">SmartTub</app-route-button>
           <app-route-button routerLink="/overview-app" (click)="scrollToContent(content)">SmarTIIS App
           </app-route-button>
           <app-route-button routerLink="/products">Produkte</app-route-button>

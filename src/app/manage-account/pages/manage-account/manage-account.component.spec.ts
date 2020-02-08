@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManageAccountComponent } from './manage-account.component';
+import { ManageAccountComponent } from 'src/app/manage-account/pages/manage-account/manage-account.component';
 
 describe('ManageAccountComponent', () => {
   let component: ManageAccountComponent;

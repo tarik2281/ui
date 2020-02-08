@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChangePasswordComponent } from './change-password.component';
+import { ChangePasswordComponent } from 'src/app/manage-account/pages/change-password/change-password.component';
 
 describe('ChangePasswordComponent', () => {
   let component: ChangePasswordComponent;

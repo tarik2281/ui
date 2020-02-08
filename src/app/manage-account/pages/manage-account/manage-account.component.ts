@@ -1,10 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthenticationService} from 'src/app/services/authentication.service';
-import {User} from 'src/app/model/user';
-import {UserService} from 'src/app/services/user.service';
-import {Router} from '@angular/router';
-import {MatSnackBar} from '@angular/material';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { User } from 'src/app/model/user';
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
+
+interface RouteButton {
+  readonly link: string;
+  readonly label: string;
+}
 
 @Component({
   selector: 'app-manage-account',
@@ -15,6 +20,29 @@ export class ManageAccountComponent implements OnInit {
 
   user: User;
   updateForm: FormGroup;
+
+  routes: RouteButton[] = [
+    {
+      link: '.',
+      label: 'Persönliche Daten'
+    },
+    {
+      link: 'payments',
+      label: 'Zahlungsinformationen'
+    },
+    {
+      link: 'orders',
+      label: 'Meine Bestellungen'
+    },
+    {
+      link: 'delete-account',
+      label: 'Konto löschen'
+    },
+    {
+      link: 'change-password',
+      label: 'Passwort ändern'
+    }
+  ];
 
   constructor(private authenticationService: AuthenticationService,
               private userService: UserService,
