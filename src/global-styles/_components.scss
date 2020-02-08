@@ -28,6 +28,11 @@
   user-select: none;
 }
 
+.hl {
+  margin: 40px 0;
+  border-bottom: 1px solid $dark-dividers;
+}
+
 @mixin make-small-paragraph($title-color, $text-color) {
   margin: 0 10px;
   max-width: 400px;
