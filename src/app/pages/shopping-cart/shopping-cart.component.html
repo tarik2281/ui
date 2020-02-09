@@ -14,7 +14,7 @@
         <h3 class="content-2">{{ product.product.cartTitle }}</h3>
         <p class="content-3">{{product.product.price | currency:'EUR'}}</p>
         <button mat-button (click)="cartService.removeProduct(product.product)">Vom Warenkorb entfernen</button>
-        <select class="content-5" [(ngModel)]="product.amount">
+        <select class="content-5" [(ngModel)]="product.amount" (ngModelChange)="cartService.saveInStorage()">
           <option>1</option>
           <option>2</option>
           <option>3</option>
