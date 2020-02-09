@@ -73,7 +73,7 @@
 .main-image {
   width: 500px;
   height: 500px;
-  object-fit: contain;
+  object-fit: scale-down;
   margin: 30px;
 }
 
@@ -104,8 +104,8 @@
   align-items: center;
 
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: auto auto auto auto;
-  grid-template-areas: row(1,1) row(2,2) row(3,3) row(4,5);
+  grid-template-rows: auto auto auto auto auto;
+  grid-template-areas: row(1,1) row(2,2) row(3,3) row(6, 6) row(4,5);
 
   h1, p, ul {
     justify-self: stretch;
@@ -119,4 +119,15 @@
 
   button {
   }
+
+  .content-6 {
+    margin: 20px;
+    max-width: 200px;
+  }
 }
+
+//.small-image {
+//  max-width: 200px;
+//  max-height: 200px;
+//  margin: 180px;
+//}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from 'src/app/model/product';
+import { Product, ProductVariant } from 'src/app/model/product';
 import { ProductService } from 'src/app/services/product.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 
@@ -12,10 +12,18 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 })
 export class ProductDetailComponent implements OnInit {
 
-  addedToCart = false;
-  productId = 0;
+  // addedToCart = false;
+  productId: string;
 
   product: Product;
+  currentVariantIndex = 0;
+  // currentVariant: ProductVariant;
+  currentImage: string;
+  smallImage = false;
+
+  get currentVariant() {
+    return this.product.variants[this.currentVariantIndex];
+  }
 
   constructor(private snackBar: MatSnackBar,
               private route: ActivatedRoute,
@@ -24,27 +32,54 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.productId = +this.route.snapshot.paramMap.get('id');
+    this.productId = this.route.snapshot.paramMap.get('id');
     //
-    // this.productService.getProductById(this.productId).subscribe(data => {
-    //   this.product = data;
-    // });
+    this.productService.getProductById(this.productId).subscribe(data => {
+      this.product = data;
+      // this.currentVariant = data.variants[0];
+      this.currentImage = this.currentVariant.images[0];
+
+      console.log(this.product);
+      console.log(this.currentVariant);
+    });
     //
     // console.log('requested product id', this.productId);
   }
 
+  setImage(img: HTMLImageElement) {
+    this.smallImage = this.shouldMakeSmall(img);
+    this.currentImage = img.src;
+  }
+
+  imageLoaded(img: HTMLImageElement) {
+    this.smallImage = this.shouldMakeSmall(img);
+    console.log('image loaded')
+  }
+
+  updateVariant(event) {
+    // console.log(event);
+    this.currentImage = this.currentVariant.images[0];
+    // this.setImage(this.currentVariant.images[0]);
+  }
+
   isInCart() {
-    return this.addedToCart;
+    return this.cartService.isInCart(this.currentVariant);
+    // return this.addedToCart;
     // return this.cartService.isInCart(this.product);
   }
 
   addToCart() {
-    if (!this.addedToCart) {
-      this.addedToCart = true;
-      // this.cartService.addProduct(this.product);
-      // this.snackBar.open('Artikel zum Warenkorb hinzugefügt!', null, {
-      //   duration: 2000
-      // });
-    }
+    // if (!this.addedToCart) {
+    //   this.addedToCart = true;
+      this.cartService.addProduct(this.currentVariant);
+      this.snackBar.open('Artikel zum Warenkorb hinzugefügt!', null, {
+        duration: 2000
+      });
+    // }
+  }
+
+  shouldMakeSmall(image: HTMLImageElement) {
+    const max = Math.max(image.naturalWidth, image.naturalHeight);
+    return max <= 200;
   }
 }

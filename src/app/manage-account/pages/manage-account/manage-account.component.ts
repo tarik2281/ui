@@ -24,7 +24,7 @@ export class ManageAccountComponent implements OnInit {
   routes: RouteButton[] = [
     {
       link: '.',
-      label: 'Persönliche Daten'
+      label: 'Kontodaten'
     },
     {
       link: 'payments',

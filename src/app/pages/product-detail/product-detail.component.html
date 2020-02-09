@@ -1,65 +1,66 @@
 <div class="big-container">
 
   <div class="main-container">
-    <div class="thumbnail-container content-1">
-      <img #thumb1 (click)="bigImage.src = thumb1.src" src="assets/WerbephotoSmartTub.png">
-      <img #thumb2 (click)="bigImage.src = thumb2.src" src="assets/Funktionsbeschreibung1.PNG">
-      <img #thumb3 (click)="bigImage.src = thumb3.src" src="assets/Funktionsbeschreibung2 (alt2).PNG">
-      <img #thumb4 (click)="bigImage.src = thumb4.src" src="assets/Funktionsbeschreibung3.PNG">
+    <div class="thumbnail-container content-1" *ngIf="currentVariant.images.length > 1">
+      <img #imageElement *ngFor="let image of currentVariant.images" (click)="setImage(imageElement)" [src]="image">
+<!--      <img #thumb1 (click)="bigImage.src = thumb1.src" src="assets/WerbephotoSmartTub.png">-->
+<!--      <img #thumb2 (click)="bigImage.src = thumb2.src" src="assets/Funktionsbeschreibung1.PNG">-->
+<!--      <img #thumb3 (click)="bigImage.src = thumb3.src" src="assets/Funktionsbeschreibung2 (alt2).PNG">-->
+<!--      <img #thumb4 (click)="bigImage.src = thumb4.src" src="assets/Funktionsbeschreibung3.PNG">-->
     </div>
 
-    <img #bigImage class="content-2 main-image" src="assets/WerbephotoSmartTub.png" />
+    <img #mainImage class="content-2 main-image" [src]="currentImage" [class.small-image]="smallImage" (load)="imageLoaded(mainImage)"/>
     <div class="content-3 description-container">
-      <h1 class="content-1">SmartTub</h1>
+      <h1 class="content-1">{{ product?.title }}</h1>
       <p class="content-2">
-        Die intelligente Badewannenarmatur bietet zahlreiche Features
+        {{ currentVariant?.shortDescription }}
       </p>
-      <ul class="content-3">
-        <li>Bedienung per Touch</li>
-        <li>Fernsteuerung per App</li>
-        <li>Integrierte wasserdichte Lautsprecher (IP-67)</li>
-        <li>Bluetooth zur Musikwiedergabe</li>
-        <li>Nachfüllfunktion für Badezusätze</li>
-        <li>Automatische Badewannenablauf</li>
-        <li>Einstellbare Bedeprogramme</li>
-        <li>Integrierte Uhr</li>
+      <ul class="content-3" *ngIf="currentVariant?.features.length > 0">
+        <li *ngFor="let feature of currentVariant.features">{{ feature }}</li>
       </ul>
-      <span class="content-4">49,99 €</span>
+      <select class="form-control content-6" *ngIf="product?.variants.length > 1" [(ngModel)]="currentVariantIndex" (ngModelChange)="updateVariant($event)">
+        <option *ngFor="let variant of product.variants; let i = index" [value]="i">{{variant.title}}</option>
+      </select>
+      <span class="content-4">{{ currentVariant?.price | currency:'EUR' }}</span>
       <button mat-raised-button class="large order-button content-5" color="primary" (click)="addToCart()" [disabled]="isInCart()"><mat-icon class="mr-3">shopping_cart</mat-icon> {{ isInCart() ? 'Im Warenkorb' : 'In den Warenkorb' }}</button>
     </div>
 <!--     <h1 class="content-3">SmartTub</h1>-->
 <!--    <p class="content-4">Description</p>-->
-    <div class="content-5 py-5 my-5">
-      <h4>Duschfunktion</h4>
-      <p>
-        Da die SmartTub jedoch physisch an die Badewanne installiert werden muss und somit die gesamte
-        Armatur ersetzt, ist ebenfalls eine Duschfunktion vorhanden, sowie die Möglichkeit einfach kaltes
-        Wasser aus Duschkopf oder Badezulauf laufen zu lassen
-      </p>
-      <h4>Funktionale Armatur</h4>
-      <p>
-        Die SmartTub besteht aus einer Armatur, in welcher mehrere Funktionen vereint sind.
-        Oben links ist die Temperaturanzeige der auszugebenen
-        Wassertemperatur, welche mit den Pfeilen nach oben und
-        nach unten in halben Grad Celsius-Schritten verändert
-        werden kann.
-      </p>
-      <p>
-        Die Temperatur wird immer dann angezeigt, wenn ein
-        Nutzer den Wasserzufluss über den Duschkopf oder den
-        Badewanneneinlass anschaltet. Läuft gerade kein Wasser, so
-        wird an der Stelle die aktuelle Uhrzeit angezeigt. Die Funktionen
-        zum Einstellen der Wassertemperatur, sowie zum Start des
-        Wasserzulaufs in die Badewanne, können ebenfalls über
-        die Smart-Home-App gesteuert werden.
-      </p>
-      <h4>Lautsprecher</h4>
-      <p>
-        Zu jeder Seite des SmartTub sind zusätzlich wasserdichte Lautsprecher installiert, sodass der Nutzer
-        bei Bedarf Musik während des Badens hören kann. Die Musikauswahl erfolgt dabei über das
-        Smartphone. Darüber hinaus können die Lautsprecher auch einfach per Bluetooth mit jedem anderen
-        Ausgabegerät gekoppelt werden.
-      </p>
+    <div class="content-5 py-5 my-5" *ngIf="currentVariant?.longDescription.length > 0">
+      <ng-container *ngFor="let description of currentVariant.longDescription">
+        <h4>{{description.title}}</h4>
+        <p>{{description.content}}</p>
+      </ng-container>
+<!--      <h4>Duschfunktion</h4>-->
+<!--      <p>-->
+<!--        Da die SmartTub jedoch physisch an die Badewanne installiert werden muss und somit die gesamte-->
+<!--        Armatur ersetzt, ist ebenfalls eine Duschfunktion vorhanden, sowie die Möglichkeit einfach kaltes-->
+<!--        Wasser aus Duschkopf oder Badezulauf laufen zu lassen-->
+<!--      </p>-->
+<!--      <h4>Funktionale Armatur</h4>-->
+<!--      <p>-->
+<!--        Die SmartTub besteht aus einer Armatur, in welcher mehrere Funktionen vereint sind.-->
+<!--        Oben links ist die Temperaturanzeige der auszugebenen-->
+<!--        Wassertemperatur, welche mit den Pfeilen nach oben und-->
+<!--        nach unten in halben Grad Celsius-Schritten verändert-->
+<!--        werden kann.-->
+<!--      </p>-->
+<!--      <p>-->
+<!--        Die Temperatur wird immer dann angezeigt, wenn ein-->
+<!--        Nutzer den Wasserzufluss über den Duschkopf oder den-->
+<!--        Badewanneneinlass anschaltet. Läuft gerade kein Wasser, so-->
+<!--        wird an der Stelle die aktuelle Uhrzeit angezeigt. Die Funktionen-->
+<!--        zum Einstellen der Wassertemperatur, sowie zum Start des-->
+<!--        Wasserzulaufs in die Badewanne, können ebenfalls über-->
+<!--        die Smart-Home-App gesteuert werden.-->
+<!--      </p>-->
+<!--      <h4>Lautsprecher</h4>-->
+<!--      <p>-->
+<!--        Zu jeder Seite des SmartTub sind zusätzlich wasserdichte Lautsprecher installiert, sodass der Nutzer-->
+<!--        bei Bedarf Musik während des Badens hören kann. Die Musikauswahl erfolgt dabei über das-->
+<!--        Smartphone. Darüber hinaus können die Lautsprecher auch einfach per Bluetooth mit jedem anderen-->
+<!--        Ausgabegerät gekoppelt werden.-->
+<!--      </p>-->
     </div>
   </div>
 

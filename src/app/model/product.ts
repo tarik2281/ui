@@ -3,28 +3,21 @@ export interface DescriptionParagraph {
   content: string;
 }
 
-export interface ProductBackend {
+export interface Product {
   idString: string;
   title: string;
+  overviewImage: string;
   overviewDescription: string;
-  shortDescription: string;
-  features: string;
-  longDescription: string;
-  price: number;
-  images: string;
+  variants: ProductVariant[];
 }
 
-export interface Product {
+export interface ProductVariant {
   id: number;
-  idTitle: string;
   title: string;
-  // thumbnailUrl: string;
-  // shortDescription: string;
-  // longDescription: string;
-  price: number;
+  cartTitle: string;
   images: string[];
-  overviewDescription: string;
+  price: number;
   shortDescription: string;
-  featuresDescription: string[];
+  features: string[];
   longDescription: DescriptionParagraph[];
 }
