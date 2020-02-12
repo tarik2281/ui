@@ -1,0 +1,64 @@
+<div class="big-container">
+  <div class="main-container">
+    <div class="contact-info-container content-1">
+      <h6>Kontaktinformationen <a routerLink="/order-enter-data" [queryParams]="{edit: true}" class="ml-5">Ändern</a></h6>
+      <p>{{contact.firstName}} {{contact.lastName}}<br/>{{contact.emailAddress}}<br/>{{contact.phoneNumber}}</p>
+    </div>
+    <div class="address-info-container content-3">
+      <h6>Lieferadresse <a routerLink="/order-enter-data" [queryParams]="{edit: true}" class="ml-5">Ändern</a></h6>
+      <p>{{shippingAddress.street}}<br/>{{shippingAddress.postalCode}} {{shippingAddress.city}}<br/>{{shippingAddress.country}}</p>
+    </div>
+    <div class="address-info-container content-4">
+      <h6>Rechnungsadresse <a routerLink="/order-enter-data" [queryParams]="{edit: true}" class="ml-5">Ändern</a></h6>
+      <p>{{billingAddress.street}}<br/>{{billingAddress.postalCode}} {{billingAddress.city}}<br/>{{billingAddress.country}}</p>
+    </div>
+    <div class="payments-info-container content-2">
+      <h6>Zahlungsinformationen <a routerLink="/order-enter-data" [queryParams]="{edit: true}" class="ml-5">Ändern</a></h6>
+      <h6>MasterCard</h6>
+      <p>Tarik Karaca<br/>1549 1465 1254 4589 1486<br/>Geheimzahl: 789</p>
+    </div>
+    <div class="content-5 test-container">
+      <table mat-table [dataSource]="cartService.shoppingCart.products" class="table-container">
+        <ng-container matColumnDef="image">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element"><img [src]="element.product.images[0]" class="product-image"></td>
+        </ng-container>
+
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef>Produkt</th>
+          <td mat-cell *matCellDef="let element"><h6>{{element.product.cartTitle}}</h6></td>
+        </ng-container>
+
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef>Anzahl</th>
+          <td mat-cell *matCellDef="let element"><p>{{element.amount}}</p></td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef>Preis</th>
+          <td mat-cell *matCellDef="let element"><p>{{element.product.price |currency:'EUR'}}</p></td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['image', 'title', 'quantity', 'price']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['image', 'title', 'quantity', 'price']"></tr>
+        <!--        <tr mat-row *matRowDef="let row; columns: ['image', 'title', 'quantity', 'price']"></tr>-->
+      </table>
+
+      <!--      <div *ngFor="let product of cartService.shoppingCart.products" class="product-container">-->
+      <!--        <img [src]="product.product.images[0]" class="product-image content-1">-->
+      <!--        <h4 class="content-2">{{ product.product.cartTitle }}</h4>-->
+      <!--        <p class="content-3">{{product.product.price | currency:'EUR'}}</p>-->
+      <!--      </div>-->
+    </div>
+    <div class="content-6">
+
+      <div class="calc-container ">
+        <span></span><h4>Rechnung</h4>
+        <span>Warenkorbsumme</span><span>{{ cartService.calculateProductSum() |currency:'EUR'}}</span>
+        <span>Versandkosten</span><span>{{ cartService.getShippingFee() |currency:'EUR'}}</span>
+        <h6>Gesamtsumme</h6><h6>{{cartService.calculateTotalSum() | currency:'EUR'}}</h6>
+      </div>
+      <button mat-raised-button class="large button-right" color="primary">Bestellung durchführen</button>
+    </div>
+  </div>
+</div>

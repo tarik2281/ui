@@ -4,6 +4,7 @@ import { matchValidator } from 'src/app/shared/validators/match-validator';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NewPasswordFormComponent } from 'src/app/shared/components/new-password-form/new-password-form.component';
 
 @Component({
   selector: 'app-change-password',
@@ -20,9 +21,11 @@ export class ChangePasswordComponent implements OnInit {
   ngOnInit() {
     this.passwordForm = new FormGroup({
       currentPassword: new FormControl('', [Validators.required]),
-      newPassword: new FormControl('', [Validators.required]),
-      confirmNewPassword: new FormControl('', [Validators.required, matchValidator('newPassword')])
+      // newPassword: new FormControl('', [Validators.required]),
+      // confirmNewPassword: new FormControl('', [Validators.required, matchValidator('newPassword')])
     });
+
+    // NewPasswordFormComponent.initFormGroup(this.passwordForm);
   }
 
   updatePassword() {

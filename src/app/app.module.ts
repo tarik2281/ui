@@ -29,7 +29,7 @@ import {
   MatCheckboxModule,
   MatDialogModule, MatExpansionModule,
   MatNativeDateModule,
-  MatSnackBarModule, MatTooltipModule, MatTreeModule
+  MatSnackBarModule, MatTableModule, MatTooltipModule, MatTreeModule
 } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterUserComponent } from './pages/register-user/register-user.component';
@@ -50,6 +50,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { ManageAccountModule } from 'src/app/manage-account/manage-account.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ContactComponent } from './pages/contact/contact.component';
+import { ProcessOrderComponent } from './pages/process-order/process-order.component';
+import { OrderLoginComponent } from './pages/order-login/order-login.component';
+import { OrderEnterDataComponent } from './pages/order-enter-data/order-enter-data.component';
+import { AddressFormComponent } from './components/address-form/address-form.component';
 
 registerLocaleData(localeDe);
 
@@ -75,7 +79,11 @@ export function scrollFactory(overlay: Overlay): () => NoopScrollStrategy {
     NotFoundComponent,
     LinesPipe,
     LoginComponent,
-    ContactComponent
+    ContactComponent,
+    ProcessOrderComponent,
+    OrderLoginComponent,
+    OrderEnterDataComponent,
+    AddressFormComponent
   ],
   imports: [
     BrowserModule,
@@ -109,7 +117,8 @@ export function scrollFactory(overlay: Overlay): () => NoopScrollStrategy {
     MatTooltipModule,
     FormsModule,
     MatExpansionModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatTableModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'de' },

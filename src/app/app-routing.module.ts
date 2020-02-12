@@ -12,6 +12,9 @@ import {ShoppingCartComponent} from 'src/app/pages/shopping-cart/shopping-cart.c
 import { NotFoundComponent } from 'src/app/pages/not-found/not-found.component';
 import { LoginComponent } from 'src/app/pages/login/login.component';
 import { ContactComponent } from 'src/app/pages/contact/contact.component';
+import { ProcessOrderComponent } from 'src/app/pages/process-order/process-order.component';
+import { OrderLoginComponent } from 'src/app/pages/order-login/order-login.component';
+import { OrderEnterDataComponent } from 'src/app/pages/order-enter-data/order-enter-data.component';
 
 
 const routes: Routes = [
@@ -70,6 +73,18 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent
+  },
+  {
+    path: 'process-order',
+    component: ProcessOrderComponent
+  },
+  {
+    path: 'order-login',
+    component: OrderLoginComponent
+  },
+  {
+    path: 'order-enter-data',
+    component: OrderEnterDataComponent
   },
   {
     path: '**',
