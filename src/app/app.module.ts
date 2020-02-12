@@ -53,7 +53,6 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { ProcessOrderComponent } from './pages/process-order/process-order.component';
 import { OrderLoginComponent } from './pages/order-login/order-login.component';
 import { OrderEnterDataComponent } from './pages/order-enter-data/order-enter-data.component';
-import { AddressFormComponent } from './shared/components/address-form/address-form.component';
 
 registerLocaleData(localeDe);
 
@@ -82,8 +81,7 @@ export function scrollFactory(overlay: Overlay): () => NoopScrollStrategy {
     ContactComponent,
     ProcessOrderComponent,
     OrderLoginComponent,
-    OrderEnterDataComponent,
-    AddressFormComponent
+    OrderEnterDataComponent
   ],
   imports: [
     BrowserModule,
