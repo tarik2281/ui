@@ -7,6 +7,7 @@ import { NewPasswordFormComponent } from 'src/app/shared/components/new-password
 import { MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ContactFormComponent } from 'src/app/shared/components/contact-form/contact-form.component';
+import { AddressFormComponent } from 'src/app/shared/components/address-form/address-form.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ContactFormComponent } from 'src/app/shared/components/contact-form/con
     PasswordToggleDirective,
     ScrollInDirective,
     NewPasswordFormComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    AddressFormComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { ContactFormComponent } from 'src/app/shared/components/contact-form/con
     PasswordToggleDirective,
     ScrollInDirective,
     NewPasswordFormComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    AddressFormComponent
   ]
 })
 export class SharedModule {

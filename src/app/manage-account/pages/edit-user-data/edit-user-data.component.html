@@ -3,10 +3,10 @@
     <h5 class="col-12">Kundennummer: 13549846</h5>
   </div>
 
-  <form *ngIf="updateForm" [formGroup]="updateForm">
+  <form *ngIf="user && updateForm" [formGroup]="updateForm">
 
 
-    <app-contact-form [contact]="user$ | async"></app-contact-form>
+    <app-contact-form [contact]="user"></app-contact-form>
 <!--    <div class="row mt-3">-->
 <!--      <div class="col-12">-->
 <!--        <h6>Persönliche Daten</h6>-->

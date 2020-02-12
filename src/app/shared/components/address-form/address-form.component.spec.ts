@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddressFormComponent } from './address-form.component';
+import { AddressFormComponent } from 'src/app/shared/components/address-form/address-form.component';
 
 describe('AddressFormComponent', () => {
   let component: AddressFormComponent;

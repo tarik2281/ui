@@ -58,7 +58,8 @@ export class AuthenticationService {
     if (this.isAuthenticated()) {
       const user = this.userSubject.getValue();
 
-      return user.address && user.postalCode && user.city && user.country;
+      return user.shippingAddress && user.shippingAddress.street &&
+        user.shippingAddress.postalCode && user.shippingAddress.city && user.shippingAddress.country;
     }
 
     return false;

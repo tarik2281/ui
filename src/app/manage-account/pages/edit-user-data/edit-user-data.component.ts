@@ -11,7 +11,6 @@ import { Observable } from 'rxjs';
 })
 export class EditUserDataComponent implements OnInit {
 
-  user$: Observable<User>;
   user: User;
   updateForm: FormGroup;
 
@@ -19,16 +18,14 @@ export class EditUserDataComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user$ = this.authenticationService.me();
     this.authenticationService.me().subscribe(user => {
       this.user = user;
 
       this.updateForm = new FormGroup({
-        address: new FormControl(this.user.address, [Validators.required]),
-        postalCode: new FormControl(this.user.postalCode, [Validators.required]),
-        city: new FormControl(this.user.city, [Validators.required]),
-        country: new FormControl(this.user.country, [Validators.required]),
-        newsletter: new FormControl(this.user.newsletter, [])
+        address: new FormControl(this.user.shippingAddress.street, [Validators.required]),
+        postalCode: new FormControl(this.user.shippingAddress.postalCode, [Validators.required]),
+        city: new FormControl(this.user.shippingAddress.city, [Validators.required]),
+        country: new FormControl(this.user.shippingAddress.country, [Validators.required])
       });
     });
   }
