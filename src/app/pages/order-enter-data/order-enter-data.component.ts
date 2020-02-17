@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { conditionalRequired } from 'src/app/shared/validators/match-validator';
+import { FormGroup } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrderDataService } from 'src/app/services/order-data.service';
@@ -12,8 +11,7 @@ import { OrderDataService } from 'src/app/services/order-data.service';
 })
 export class OrderEnterDataComponent implements OnInit {
 
-  updateForm: FormGroup;
-  billingAddress: FormGroup;
+  updateForm = new FormGroup({ });
   showContactForm = true;
 
   constructor(private authenticationService: AuthenticationService,
@@ -37,45 +35,6 @@ export class OrderEnterDataComponent implements OnInit {
       this.router.navigate(['/process-order']);
       return;
     }
-
-    const useDualAddress = new FormControl(true, []);
-    useDualAddress.valueChanges.subscribe(value => {
-      this.billingAddress.controls.address.setErrors(null);
-      this.billingAddress.controls.postalCode.setErrors(null);
-      this.billingAddress.controls.city.setErrors(null);
-      this.billingAddress.controls.country.setErrors(null);
-    });
-
-    // this.contact = new FormGroup({
-    //   sex: new FormControl('', [Validators.required]),
-    //   firstName: new FormControl('', [Validators.required]),
-    //   lastName: new FormControl('', [Validators.required]),
-    //   birthday: new FormControl('', [Validators.required]),
-    //   phoneNumber: new FormControl('', []),
-    //   emailAddress: new FormControl('', [Validators.required])
-    // });
-
-    this.billingAddress =  new FormGroup({
-      address: new FormControl('', [conditionalRequired(useDualAddress, true)]),
-      postalCode: new FormControl('', [conditionalRequired(useDualAddress, true)]),
-      city: new FormControl('', [conditionalRequired(useDualAddress, true)]),
-      country: new FormControl('', [conditionalRequired(useDualAddress, true)]),
-    });
-
-    this.updateForm = new FormGroup({
-      shippingAddress: new FormGroup({
-        address: new FormControl('', [Validators.required]),
-        postalCode: new FormControl('', [Validators.required]),
-        city: new FormControl('', [Validators.required]),
-        country: new FormControl('', [Validators.required]),
-      }),
-      useDualAddress,
-      billingAddress: this.billingAddress
-    });
-
-    // if (this.showContactForm) {
-    //   this.updateForm.addControl('contact', this.contact);
-    // }
   }
 
   onSubmit() {

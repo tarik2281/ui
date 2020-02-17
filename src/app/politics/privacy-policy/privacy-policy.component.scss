@@ -1,0 +1,7 @@
+@import "../../../global-styles/variables";
+
+.big-container {
+  padding-top: $toolbar-height;
+  max-width: 1000px;
+  margin: 100px auto;
+}

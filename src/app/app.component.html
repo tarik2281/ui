@@ -16,12 +16,6 @@
   </mat-sidenav>
   <mat-sidenav-content>
 
-<!--    <div class="fancy-header">-->
-<!--      <img class="header-app-logo" src="assets/SmarTIIS_logo.png" routerLink="/">-->
-<!--    </div>-->
-
-    <div #stickySentinel class="sticky-toolbar-sentinel"></div>
-
     <mat-toolbar class="sticky-toolbar" [class.shadow-sm]="isAdded" [class.toolbar-stuck]="isAdded">
       <button
         *ngIf="isSmall$ | async"
@@ -31,7 +25,7 @@
         (click)="openDrawer()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <img *ngIf="isAdded" class="toolbar-app-logo" @stickyLogo src="assets/SmarTIIS_logo.png">
+      <img *ngIf="isAdded" class="toolbar-app-logo" @stickyLogo src="assets/SmarTIIS_logo.png" routerLink="/">
 
       <div class="flex-grow-1"></div>
       <ng-container *ngIf="(isSmall$ | async) === false">
@@ -46,12 +40,6 @@
         </div>
         <div class="flex-grow-1"></div>
         <a mat-button routerLink="/manage-account" *ngIf="user" >Hallo, {{user.firstName}}!</a>
-<!--        <mat-menu #userMenu="matMenu">-->
-<!--          <a mat-menu-item routerLink="/manage-account">Persönliche Daten bearbeiten</a>-->
-<!--          <a mat-menu-item routerLink="/change-password">Passwort ändern</a>-->
-<!--          <a mat-menu-item>Meine Bestellungen</a>-->
-<!--          <a mat-menu-item (click)="onLogout()">Abmelden</a>-->
-<!--        </mat-menu>-->
         <a mat-stroked-button *ngIf="!user" routerLink="login">Anmelden</a>
       </ng-container>
 
@@ -74,6 +62,12 @@
         <i class="fab fa-twitter fa-1-5x"></i>
         <i class="fab fa-youtube fa-1-5x"></i>
         <i class="fab fa-facebook-square fa-1-5x"></i>
+      </div>
+      <div class="footer-links">
+        <a routerLink="/contact">Kontakt</a>
+        <a routerLink="/agb">Allgemeine Geschäftsbedingungen</a>
+        <a routerLink="/privacy-policy">Datenschutzerklärung</a>
+        <a routerLink="/impressum">Impressum</a>
       </div>
     </div>
 

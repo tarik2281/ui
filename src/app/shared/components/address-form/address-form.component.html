@@ -1,14 +1,56 @@
-<ng-container [formGroupName]="parentFormName">
+<ng-container formGroupName="shippingAddress">
   <div class="row mt-3">
     <div class="col-12">
-      <h6>{{ label }}</h6>
+      <h6>Lieferadresse</h6>
     </div>
   </div>
   <div class="row mt-3">
     <div class="col-12">
       <mat-form-field>
         <mat-label>Straße</mat-label>
-        <input matInput formControlName="address">
+        <input matInput formControlName="street" autocomplete="address">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Postleitzahl</mat-label>
+        <input matInput formControlName="postalCode" name="postalCode">
+      </mat-form-field>
+    </div>
+    <div class="col-8">
+      <mat-form-field>
+        <mat-label>Ort</mat-label>
+        <input matInput formControlName="city" name="city">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <mat-form-field>
+        <mat-label>Land</mat-label>
+        <input matInput formControlName="country" autocomplete="country-name">
+      </mat-form-field>
+    </div>
+  </div>
+</ng-container>
+<div class="row">
+  <div class="col-12">
+    <mat-checkbox color="primary" formControlName="useDualAddress">Lieferadresse als Rechnungsadresse übernehmen</mat-checkbox>
+  </div>
+</div>
+<ng-container *ngIf="!dualAddressCtrl.value" formGroupName="billingAddress">
+  <div class="row mt-3">
+    <div class="col-12">
+      <h6>Rechnungsadresse</h6>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-12">
+      <mat-form-field>
+        <mat-label>Straße</mat-label>
+        <input matInput formControlName="street" autocomplete="address">
       </mat-form-field>
     </div>
   </div>

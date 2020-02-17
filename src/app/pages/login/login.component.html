@@ -1,7 +1,7 @@
 
 <div class="page-container-flex-row fancy-header">
-  <div class="content-row">
-    <div class="login-container card-container bg-wave" appScrollIn="grow">
+  <div class="content-row" appScrollIn="grow">
+    <div class="login-container card-container bg-wave">
       <form [formGroup]="loginForm" (submit)="onSubmit()">
         <h4 class="mb-4">Melde Dich in Deinem Konto an</h4>
         <mat-form-field hideRequiredMarker>
@@ -12,17 +12,23 @@
           <mat-label>Passwort</mat-label>
           <input matInput type="password" formControlName="password" autocomplete="current-password">
         </mat-form-field>
-<!--        <mat-error class="mb-4" *ngIf="showError">Username oder Passwort ist falsch!</mat-error>-->
+        <mat-error @autoExpand class="mb-4 text-center overflow-hidden" *ngIf="loginForm.hasError('wrong')">Username oder Passwort ist falsch!</mat-error>
         <button mat-flat-button class="large" color="primary">Anmelden</button>
-        <button mat-button type="button" class="mt-4">Passwort vergessen?</button>
+<!--        <button mat-button type="button" class="mt-4">Passwort vergessen?</button>-->
       </form>
       <div class="line-h"></div>
       <div class="buttons">
         <h4 class="mb-4">Noch kein Konto?</h4>
-        <button mat-flat-button color="primary" class="mb-2 large" routerLink="/register">
+        <button mat-flat-button color="primary" class="mb-2 large" routerLink="/register" [queryParams]="proceedToOrder ? {proceedToOrder: true} : null">
           Kostenlos registrieren
         </button>
       </div>
+    </div>
+    <div *ngIf="showGuest" class="login-container card-container bg-wave">
+      <h4 class="mb-4">Als Gast fortfahren</h4>
+      <button mat-flat-button color="primary" class="mb-2 large" routerLink="/order-enter-data">
+        Weiter
+      </button>
     </div>
   </div>
 </div>

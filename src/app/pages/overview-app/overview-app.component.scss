@@ -1,16 +1,31 @@
-
 @import "src/global-styles/layout";
 
 .screen-container {
   @include page-container-grid(1, 2, 1fr, $use-spacing: true);
 
   grid-template-areas: row(2) row(3);
+
+  .content-2 {
+    align-self: end;
+  }
 }
 
 .screen-info-container {
   @include page-container-grid(1, 3, 1fr, $use-spacing: true);
 
   grid-template-areas: row(1) row(2) row(3);
+
+  .big-paragraph {
+    h2 {
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    max-width: 300px;
+  }
 }
 
 .screen-image {
@@ -21,15 +36,9 @@
   display: none;
 }
 
-//.screen-wrapper {
-//  background-size: cover;
-//  background-position: center;
-//  background-image: url("src/assets/blob-shape.svg");
-//}
-
 @media (min-width: $breakpoint-single-column-small) {
   .screen-image {
-    max-width: 270px;
+    max-width: 300px;
   }
 }
 
@@ -43,9 +52,9 @@
   }
 
   .screen-info-container {
-    @include page-container-grid(2, 2, $use-spacing: true);
+    @include page-container-grid(2, 1, $use-spacing: true);
 
-    grid-template-areas: row(1, 3) row(2, 3);
+    grid-template-areas: row(1, 2);
     align-content: center;
   }
 
@@ -58,23 +67,12 @@
 
 @media (min-width: $breakpoint-multi-column-big) {
   .screen-image {
-    max-width: 270px;
+    max-width: 300px;
   }
 }
 
 .badge-container {
-  //display: flex;
-  //justify-content: center;
-  //align-content: center;
-  //align-items: center;
-  //margin-top: 10px;
-  //margin-bottom: 70px;
-  //justify-self: left;
   align-self: start;
-}
-
-.content-2 {
-  align-self: end;
 }
 
 .apple-app-store {
@@ -88,38 +86,4 @@
   width: auto;
   height: 50px;
   margin-left: 50px;
-}
-
-.navigator {
-  position: absolute;
-  bottom: 0;
-  //padding: 20px;
-  //opacity: 0;
-  transition: .2s;
-  text-align: center;
-  left: 0;
-  right: 0;
-  //background-color: rgba(0,0,0,0.5);
-
-  mat-icon {
-    width: 88px;
-    height: 88px;
-    line-height: unset;
-    font-size: 58px;
-    //background-color: rgba(255,0,0,0.5);
-    //font-size: 200%;
-    transform: none;
-    transition: .2s;
-    //padding: 20px;
-    user-select: none;
-    cursor:pointer;
-  }
-
-  mat-icon:hover {
-    transform: translateY(10px);
-  }
-}
-
-.navigator:hover {
-  opacity: 1;
 }

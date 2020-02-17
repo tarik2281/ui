@@ -12,12 +12,10 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 })
 export class ProductDetailComponent implements OnInit {
 
-  // addedToCart = false;
   productId: string;
 
   product: Product;
   currentVariantIndex = 0;
-  // currentVariant: ProductVariant;
   currentImage: string;
   smallImage = false;
 
@@ -33,17 +31,11 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit() {
     this.productId = this.route.snapshot.paramMap.get('id');
-    //
+
     this.productService.getProductById(this.productId).subscribe(data => {
       this.product = data;
-      // this.currentVariant = data.variants[0];
       this.currentImage = this.currentVariant.images[0];
-
-      console.log(this.product);
-      console.log(this.currentVariant);
     });
-    //
-    // console.log('requested product id', this.productId);
   }
 
   setImage(img: HTMLImageElement) {
@@ -53,29 +45,21 @@ export class ProductDetailComponent implements OnInit {
 
   imageLoaded(img: HTMLImageElement) {
     this.smallImage = this.shouldMakeSmall(img);
-    console.log('image loaded')
   }
 
   updateVariant(event) {
-    // console.log(event);
     this.currentImage = this.currentVariant.images[0];
-    // this.setImage(this.currentVariant.images[0]);
   }
 
   isInCart() {
     return this.cartService.isInCart(this.currentVariant);
-    // return this.addedToCart;
-    // return this.cartService.isInCart(this.product);
   }
 
   addToCart() {
-    // if (!this.addedToCart) {
-    //   this.addedToCart = true;
-      this.cartService.addProduct(this.currentVariant);
-      this.snackBar.open('Artikel zum Warenkorb hinzugefügt!', null, {
-        duration: 2000
-      });
-    // }
+    this.cartService.addProduct(this.currentVariant);
+    this.snackBar.open('Artikel zum Warenkorb hinzugefügt!', null, {
+      duration: 2000
+    });
   }
 
   shouldMakeSmall(image: HTMLImageElement) {

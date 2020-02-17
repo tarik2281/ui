@@ -17,19 +17,16 @@
   </div>
   <div class="row my-3">
     <div class="col-12">
-      <form [formGroup]="passwordForm">
-
-        <mat-form-field>
-          <mat-label>Passwort bestätigen</mat-label>
-          <input #passwordInput matInput type="password" disabled>
-<!--          <mat-icon matSuffix class="icon-toggle" (click)="passToggle.toggle()">{{passToggle.getIcon()}}</mat-icon>-->
-        </mat-form-field>
-      </form>
+      <mat-form-field>
+        <mat-label>Passwort bestätigen</mat-label>
+        <input matInput type="password" [formControl]="passwordCtrl">
+        <mat-error *ngIf="passwordCtrl.hasError('wrong')">Das eingegebene Passwort ist falsch</mat-error>
+      </mat-form-field>
     </div>
   </div>
   <div class="row">
     <div class="col-12">
-      <button mat-raised-button color="warn" class="float-right large">Konto löschen</button>
+      <button mat-raised-button color="warn" class="float-right large" (click)="deleteAccount()">Konto löschen</button>
     </div>
   </div>
 </div>

@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {User} from 'src/app/model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +19,9 @@ export class UserService {
 
   public changePassword(data: { currentPassword: string, newPassword: string}) {
     return this.http.post('/api/user/change-password', data);
+  }
+
+  public deleteUser(currentPassword: string) {
+    return this.http.post('/api/user/deleteAccount', currentPassword);
   }
 }

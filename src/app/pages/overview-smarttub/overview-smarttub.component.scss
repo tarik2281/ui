@@ -27,10 +27,24 @@
   //"content-3 content-4 content-5";
 
   //align-content: space-evenly;
-  @include page-container-grid(1, 5, 1fr, $use-spacing: true);
+  //@include page-container-grid(1, 5, 1fr, $use-spacing: true);
 
-  grid-template-areas: row(3) row(4) row(5) row(1) row(2) ;
+  //grid-template-areas: row(3) row(4) row(5) row(1) row(2) ;
 
+}
+
+.screen-info-container {
+  @include page-container-grid(2, 1, $use-spacing: true);
+
+  grid-template-areas: row(1, 2);
+  align-content: center;
+}
+
+.screen-image {
+  width: 100vw;
+  max-width: 300px;
+  margin-top: 50px;
+  filter: drop-shadow(2px 4px 6px black);
 }
 
 .order-button {
@@ -144,15 +158,11 @@
 
 @media (min-width: $breakpoint-multi-column-big) {
   .features-container {
-    @include page-container-grid(3, 2);
+    @include page-container-grid(2, 1);
 
-    //grid-template-columns: repeat(3, max-content);
-    //grid-template-rows: repeat(2, max-content);
-    grid-template-areas: row(1, 1, 2) row(3, 4, 5);
-    //"content-1 content-1 content-2"
-    //"content-3 content-4 content-5";
-
-    //align-content: space-evenly;
+    //grid-template-areas: row(1, 1, 2) row(3, 4, 5);
+    grid-template-areas: row(1, 2);
+    padding: 0;
   }
 
   //.smarttub-container {
@@ -212,28 +222,7 @@
   content: 'smartphone';
 }
 
-.newsletter-container {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto auto auto;
-  grid-template-areas: row(1) row(2) row(3) row(4);
-  align-items: center;
-  justify-items: center;
-  column-gap: 100px;
-  row-gap: 20px;
-  align-content: center;
-  justify-content: center;
-  margin: 100px 0;
 
-  .content-2 {
-    max-width: 400px;
-    text-align: center;
-  }
-
-  .content-3 {
-    min-width: 300px;
-  }
-}
 
 
 .big-icon {

@@ -6,11 +6,13 @@ import { DeleteAccountComponent } from 'src/app/manage-account/pages/delete-acco
 import { EditUserDataComponent } from 'src/app/manage-account/pages/edit-user-data/edit-user-data.component';
 import { OrdersComponent } from 'src/app/manage-account/pages/orders/orders.component';
 import { PaymentsComponent } from 'src/app/manage-account/pages/payments/payments.component';
+import { AuthGuard } from 'src/app/services/auth-guard.service';
 
 const routes: Routes = [
   {
     path: 'manage-account',
     component: ManageAccountComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',

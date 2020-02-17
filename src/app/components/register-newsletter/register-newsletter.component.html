@@ -1,0 +1,11 @@
+<div class="newsletter-container">
+  <h3 class="content-1">Bleib auf dem Laufenden</h3>
+  <p class="content-2">Erhalte die neuesten Updates zu unseren Produkten. Und keine Sorge, wir melden uns nur, wenn wir wirklich was zu sagen haben!</p>
+  <mat-form-field class="content-3">
+    <mat-label>E-Mail-Adresse</mat-label>
+    <input matInput [formControl]="emailAddressCtrl">
+    <mat-error *ngIf="emailAddressCtrl.hasError('email')">Keine gültige E-Mail-Adresse</mat-error>
+    <mat-error *ngIf="emailAddressCtrl.hasError('alreadyRegistered')">Newsletter bereits abonniert</mat-error>
+  </mat-form-field>
+  <button mat-stroked-button class="content-4 large" (click)="registerNewsletter()">Newsletter abonnieren</button>
+</div>

@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatDialog, MatSidenav, MatSnackBar } from '@angular/material';
-import { LoginDialogComponent } from 'src/app/components/login-dialog/login-dialog.component';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { User } from 'src/app/model/user';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
@@ -148,12 +147,6 @@ export class AppComponent implements OnInit, AfterViewInit, OnChanges {
         duration: 2000
       });
       location.reload();
-    });
-  }
-
-  openLoginDialog() {
-    this.dialog.open(LoginDialogComponent, {
-      width: '500px'
     });
   }
 }

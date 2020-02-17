@@ -105,15 +105,31 @@ mat-sidenav-content {
 }
 
 .app-footer {
-  //background-color: #e0e0e0;
-  //background-color: #a7a7a7;
   background-color: rgba(0, 0, 0, 0.07);
   height: 190px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   align-content: center;
   justify-content: center;
-  //align
+
+  .footer-links {
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 30px;
+
+    a {
+      margin: 0 5px;
+      padding-right: 10px;
+      color: $dark-primary-text;
+      border-right-width: 1px;
+      border-right-style: solid;
+    }
+
+    a:last-of-type {
+      border-right-width: 0;
+    }
+  }
 }
 
 .fab {

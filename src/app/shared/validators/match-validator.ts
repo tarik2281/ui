@@ -19,19 +19,19 @@ export function matchValidator(target: string): ValidatorFn {
     }
   };
 }
-
-export function conditionalRequired(target: FormControl, invert: boolean): ValidatorFn {
-  return (c: FormControl): ValidationErrors | null => {
-    // if (formGroup) {
-    //   const targetCtrl = formGroup.controls[target] as FormControl;
-    console.log('check condition', target.value, c.value);
-      if (!target.value) {
-        if (!c.value) {
-          return { required: true };
-        }
-      }
-    // }
-
-    return null;
-  };
-}
+//
+// export function conditionalRequired(target: FormControl, invert: boolean): ValidatorFn {
+//   return (c: FormControl): ValidationErrors | null => {
+//     // if (formGroup) {
+//     //   const targetCtrl = formGroup.controls[target] as FormControl;
+//     console.log('check condition', target.value, c.value);
+//       if (!target.value) {
+//         if (!c.value) {
+//           return { required: true };
+//         }
+//       }
+//     // }
+//
+//     return null;
+//   };
+// }

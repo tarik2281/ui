@@ -12,7 +12,7 @@ import { matchValidator } from 'src/app/shared/validators/match-validator';
 })
 export class NewPasswordFormComponent implements OnInit {
 
-  constructor(private controlContainer: FormGroupDirective) {
+  constructor(public controlContainer: FormGroupDirective) {
   }
 
   ngOnInit() {

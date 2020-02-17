@@ -1,11 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {UserService} from 'src/app/services/user.service';
-import {Router} from '@angular/router';
-import {MatDialog, MatSnackBar} from '@angular/material';
-import {AuthenticationService} from 'src/app/services/authentication.service';
-import {TosDialogComponent} from 'src/app/components/tos-dialog/tos-dialog.component';
-import { NewPasswordFormComponent } from 'src/app/shared/components/new-password-form/new-password-form.component';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { TosDialogComponent } from 'src/app/components/tos-dialog/tos-dialog.component';
 
 @Component({
   selector: 'app-register-user',
@@ -15,29 +14,26 @@ import { NewPasswordFormComponent } from 'src/app/shared/components/new-password
 export class RegisterUserComponent implements OnInit {
 
   registerForm: FormGroup;
+  proceedToOrder = false;
 
-  passwordControl: FormControl;
-  confirmPasswordControl: FormControl;
   confirmTos: FormControl;
-  submitError: string = null;
 
   constructor(private userService: UserService,
               private router: Router,
               private snackBar: MatSnackBar,
               private authenticationService: AuthenticationService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(queryParams => {
+      this.proceedToOrder = !!queryParams.proceedToOrder;
+    });
+
     this.confirmTos = new FormControl(false, [Validators.requiredTrue]);
 
     this.registerForm = new FormGroup({
-      sex: new FormControl('', [Validators.required]),
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
-      birthday: new FormControl('', [Validators.required]),
-      phoneNumber: new FormControl('', []),
-      emailAddress: new FormControl('', [Validators.required, Validators.email]),
       confirmTos: this.confirmTos,
       newsletter: new FormControl(true, [])
     });
@@ -46,8 +42,8 @@ export class RegisterUserComponent implements OnInit {
   registerUser() {
     this.confirmTos.markAsDirty();
 
-    if (this.passwordControl.value !== this.confirmPasswordControl.value) {
-      this.confirmPasswordControl.setErrors({match: {valid: false}});
+    if (this.registerForm.controls.newPassword.value !== this.registerForm.controls.confirmNewPassword.value) {
+      this.registerForm.controls.confirmNewPassword.setErrors({ match: true });
       return;
     }
 
@@ -55,24 +51,36 @@ export class RegisterUserComponent implements OnInit {
       return;
     }
 
-    this.submitError = null;
     this.registerForm.disable();
-    this.userService.register(this.registerForm.value).subscribe(result => {
-      console.log(result);
-      this.router.navigate(['/']);
+
+    const formData = this.registerForm.value;
+
+    this.userService.register(formData).subscribe(result => {
       this.snackBar.open('Konto erfolgreich erstellt!', 'OK', {
         duration: 2000
       });
-      this.authenticationService.login(this.registerForm.controls.emailAddress.value, this.passwordControl.value);
+
+      this.authenticationService.login(formData.emailAddress, formData.newPassword).subscribe(() => {
+        this.proceed();
+      });
     }, error => {
       this.registerForm.enable();
-      console.log(error);
-      this.submitError = error.error.message;
+
+      if (error.error.message === 'email-already-exists') {
+        this.registerForm.controls.emailAddress.setErrors({ alreadyExists: true });
+      }
     });
   }
 
   openTosDialog() {
     this.dialog.open(TosDialogComponent);
-    console.log('open dialog');
+  }
+
+  proceed() {
+    if (this.proceedToOrder) {
+      this.router.navigate(['/order-enter-data']);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 }

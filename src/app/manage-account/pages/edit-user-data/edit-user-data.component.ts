@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { User } from 'src/app/model/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { Observable } from 'rxjs';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-edit-user-data',
@@ -12,22 +12,24 @@ import { Observable } from 'rxjs';
 export class EditUserDataComponent implements OnInit {
 
   user: User;
-  updateForm: FormGroup;
+  updateForm = new FormGroup({});
 
-  constructor(private authenticationService: AuthenticationService) {
+  constructor(private authenticationService: AuthenticationService,
+              private userService: UserService) {
   }
 
   ngOnInit() {
     this.authenticationService.me().subscribe(user => {
       this.user = user;
-
-      this.updateForm = new FormGroup({
-        address: new FormControl(this.user.shippingAddress.street, [Validators.required]),
-        postalCode: new FormControl(this.user.shippingAddress.postalCode, [Validators.required]),
-        city: new FormControl(this.user.shippingAddress.city, [Validators.required]),
-        country: new FormControl(this.user.shippingAddress.country, [Validators.required])
-      });
     });
+  }
+
+  onSubmit() {
+    if (this.updateForm.valid) {
+      this.userService.update(this.updateForm.value).subscribe(result => {
+        console.log(result);
+      });
+    }
   }
 
 }

@@ -19,10 +19,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
-import { ProductViewComponent } from 'src/app/components/product-view/product-view.component';
 import { OverviewAppComponent } from './pages/overview-app/overview-app.component';
 import { OverviewSmarttubComponent } from './pages/overview-smarttub/overview-smarttub.component';
-import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 import {
   MAT_DATE_LOCALE, MAT_DIALOG_SCROLL_STRATEGY, MAT_FORM_FIELD_DEFAULT_OPTIONS,
   MatBadgeModule, MatButtonToggleModule,
@@ -51,8 +49,11 @@ import { ManageAccountModule } from 'src/app/manage-account/manage-account.modul
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ProcessOrderComponent } from './pages/process-order/process-order.component';
-import { OrderLoginComponent } from './pages/order-login/order-login.component';
 import { OrderEnterDataComponent } from './pages/order-enter-data/order-enter-data.component';
+import { RegisterNewsletterComponent } from './components/register-newsletter/register-newsletter.component';
+import { NotificationDialogComponent } from './components/notification-dialog/notification-dialog.component';
+import { TosTextComponent } from './politics/tos-text/tos-text.component';
+import { PoliticsModule } from 'src/app/politics/politics.module';
 
 registerLocaleData(localeDe);
 
@@ -64,10 +65,8 @@ export function scrollFactory(overlay: Overlay): () => NoopScrollStrategy {
   declarations: [
     AppComponent,
     AboutUsComponent,
-    ProductViewComponent,
     OverviewAppComponent,
     OverviewSmarttubComponent,
-    LoginDialogComponent,
     RegisterUserComponent,
     FaqComponent,
     RouteButtonComponent,
@@ -80,12 +79,14 @@ export function scrollFactory(overlay: Overlay): () => NoopScrollStrategy {
     LoginComponent,
     ContactComponent,
     ProcessOrderComponent,
-    OrderLoginComponent,
-    OrderEnterDataComponent
+    OrderEnterDataComponent,
+    RegisterNewsletterComponent,
+    NotificationDialogComponent
   ],
   imports: [
     BrowserModule,
     ManageAccountModule,
+    PoliticsModule,
     SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -125,8 +126,8 @@ export function scrollFactory(overlay: Overlay): () => NoopScrollStrategy {
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }
   ],
   entryComponents: [
-    LoginDialogComponent,
-    TosDialogComponent
+    TosDialogComponent,
+    NotificationDialogComponent
   ],
   bootstrap: [AppComponent]
 })

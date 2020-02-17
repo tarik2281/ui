@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ControlContainer, FormControl, FormGroupDirective, Validators } from '@angular/forms';
+import { ControlContainer, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { Contact } from 'src/app/model/user';
 
 @Component({
@@ -18,6 +18,8 @@ export class ContactFormComponent implements OnInit {
   @Input()
   showPhoneNumber = true;
 
+  formGroup: FormGroup;
+
   constructor(private controlContainer: FormGroupDirective) {
   }
 
@@ -31,8 +33,10 @@ export class ContactFormComponent implements OnInit {
     formGroup.addControl('emailAddress', new FormControl(this.getProperty('emailAddress'), [Validators.required, Validators.email]));
 
     if (this.showPhoneNumber) {
-      formGroup.addControl('phoneNumber', new FormControl(this.getProperty('phoneNumber'), [Validators.required]));
+      formGroup.addControl('phoneNumber', new FormControl(this.getProperty('phoneNumber'), []));
     }
+
+    this.formGroup = formGroup;
   }
 
   getProperty(property: string) {
