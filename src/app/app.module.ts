@@ -52,7 +52,6 @@ import { ProcessOrderComponent } from './pages/process-order/process-order.compo
 import { OrderEnterDataComponent } from './pages/order-enter-data/order-enter-data.component';
 import { RegisterNewsletterComponent } from './components/register-newsletter/register-newsletter.component';
 import { NotificationDialogComponent } from './components/notification-dialog/notification-dialog.component';
-import { TosTextComponent } from './politics/tos-text/tos-text.component';
 import { PoliticsModule } from 'src/app/politics/politics.module';
 import { OrderCompleteDialogComponent } from './components/order-complete-dialog/order-complete-dialog.component';
 

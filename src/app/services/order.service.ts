@@ -18,6 +18,6 @@ export class OrderService {
   }
 
   getOrders() {
-    return this.http.get('/api/orders');
+    return this.http.get<Order[]>('/api/orders');
   }
 }

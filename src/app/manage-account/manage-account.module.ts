@@ -4,12 +4,21 @@ import { ManageAccountRoutingModule } from 'src/app/manage-account/manage-accoun
 import { ManageAccountComponent } from 'src/app/manage-account/pages/manage-account/manage-account.component';
 import { DeleteAccountComponent } from 'src/app/manage-account/pages/delete-account/delete-account.component';
 import { ChangePasswordComponent } from 'src/app/manage-account/pages/change-password/change-password.component';
-import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatSelectModule,
+  MatTableModule
+} from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditUserDataComponent } from './pages/edit-user-data/edit-user-data.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { PaymentsComponent } from './pages/payments/payments.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { OrderCancelDialogComponent } from 'src/app/manage-account/order-cancel-dialog/order-cancel-dialog.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +27,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ChangePasswordComponent,
     EditUserDataComponent,
     OrdersComponent,
-    PaymentsComponent
+    PaymentsComponent,
+    OrderCancelDialogComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +39,12 @@ import { SharedModule } from 'src/app/shared/shared.module';
     MatIconModule,
     MatInputModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    OrderCancelDialogComponent
   ]
 })
 export class ManageAccountModule {

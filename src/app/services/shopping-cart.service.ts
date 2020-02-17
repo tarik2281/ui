@@ -41,6 +41,7 @@ export class ShoppingCartService {
 
   clearCart() {
     this.shoppingCart = { products: [] };
+    this.saveInStorage();
   }
 
   getShippingFee() {
