@@ -8,6 +8,7 @@ export class OrderDataService {
 
   contactInformation: Contact;
   shippingAddress: Address;
+  useDualAddress = true;
   billingAddress: Address;
 
   constructor() { }

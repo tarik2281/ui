@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Bestellung angenommen!</h1>
+<div mat-dialog-content>
+  <p>
+    Deine Bestellung wurde erfolgreich angenommen!<br/>
+    Deine Bestellbestätigung erhältst du in Kürze per E-Mail.
+  </p>
+  <p>
+    Falls Fragen entstehen sollten, kannst du uns jederzeit über das <a routerLink="/contact" [mat-dialog-close]="false">Kontaktformular</a> erreichen.
+  </p>
+  <p>Danke, dass du bei uns eingekauft hast, und viel Spaß beim Baden!</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="true">OK</button>
+</div>

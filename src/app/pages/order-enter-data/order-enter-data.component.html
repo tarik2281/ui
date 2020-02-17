@@ -1,16 +1,21 @@
 <div class="big-container">
-  <div class="container">
+  <div class="fancy-header">
+    <h1 appScrollIn="slideTop">Gib deine Bestellinformationen an</h1>
+  </div>
+  <div class="card-container bg-wave" appScrollIn="grow">
 
-  <form *ngIf="updateForm" [formGroup]="updateForm" (submit)="onSubmit()">
+    <div class="container">
 
+      <form *ngIf="updateForm" [formGroup]="updateForm" (submit)="onSubmit()">
 
-    <app-contact-form *ngIf="showContactForm" [contact]="orderDataService.contactInformation"></app-contact-form>
-    <app-address-form [shippingAddress]="orderDataService.shippingAddress" [billingAddress]="orderDataService.billingAddress"></app-address-form>
-    <div class="row">
-      <div class="col-12">
-        <button mat-raised-button color="primary" class="large float-right">Weiter</button>
-      </div>
+        <app-contact-form *ngIf="showContactForm" [contact]="orderDataService.contactInformation"></app-contact-form>
+        <app-address-form [shippingAddress]="orderDataService.shippingAddress" [useDualAddress]="orderDataService.useDualAddress" [billingAddress]="orderDataService.billingAddress"></app-address-form>
+        <div class="row">
+          <div class="col-12">
+            <button mat-raised-button color="primary" class="large float-right">Weiter</button>
+          </div>
+        </div>
+      </form>
     </div>
-  </form>
   </div>
 </div>

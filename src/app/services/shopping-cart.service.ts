@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product, ProductVariant } from 'src/app/model/product';
 import { ProductService } from 'src/app/services/product.service';
+import { Order } from 'src/app/model/order';
 
 
 interface ProductEntry {
@@ -38,6 +39,10 @@ export class ShoppingCartService {
     return !!this.shoppingCart.products.find(value => value.product.id === product.id);
   }
 
+  clearCart() {
+    this.shoppingCart = { products: [] };
+  }
+
   getShippingFee() {
     return 4.99;
   }
@@ -72,19 +77,11 @@ export class ShoppingCartService {
     this.productService.getAllProducts().subscribe(products => {
       const storageProducts = JSON.parse(localStorage.getItem('shopping_cart'));
 
-      root: for (const storageProduct of storageProducts) {
+      for (const storageProduct of storageProducts) {
 
-        for (const product of products) {
-
-          for (const variant of product.variants) {
-
-            if (variant.id === storageProduct.id) {
-              this.shoppingCart.products.push({ product: variant, amount: storageProduct.amount });
-              continue root;
-            }
-
-          }
-
+        const variant = this.productService.findProductVariant(storageProduct.id);
+        if (variant) {
+          this.shoppingCart.products.push({ product: variant, amount: storageProduct.amount });
         }
 
       }

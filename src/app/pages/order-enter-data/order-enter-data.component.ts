@@ -3,6 +3,9 @@ import { FormGroup } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrderDataService } from 'src/app/services/order-data.service';
+import { UserService } from 'src/app/services/user.service';
+import { first } from 'rxjs/operators';
+import { User } from 'src/app/model/user';
 
 @Component({
   selector: 'app-order-enter-data',
@@ -11,19 +14,27 @@ import { OrderDataService } from 'src/app/services/order-data.service';
 })
 export class OrderEnterDataComponent implements OnInit {
 
-  updateForm = new FormGroup({ });
+  updateForm = new FormGroup({});
   showContactForm = true;
+  forceEdit = false;
+  user: User;
 
   constructor(private authenticationService: AuthenticationService,
               private router: Router,
               private route: ActivatedRoute,
-              public orderDataService: OrderDataService) {
+              public orderDataService: OrderDataService,
+              private userService: UserService) {
   }
 
   ngOnInit() {
+    this.forceEdit = this.route.snapshot.queryParams.edit;
 
-    if (this.authenticationService.isAuthenticated()) {
+    if (this.authenticationService.isAuthenticated() && !this.forceEdit) {
+      this.user = this.authenticationService.getUser();
+
       if (this.authenticationService.hasAddressData()) {
+        this.setContactFromUser();
+        this.setAddressFromUser();
         this.router.navigate(['/process-order']);
         return;
       }
@@ -31,9 +42,31 @@ export class OrderEnterDataComponent implements OnInit {
       this.showContactForm = false;
     }
 
-    if (this.orderDataService.contactInformation && !this.route.snapshot.queryParams.edit) {
+    if (this.orderDataService.contactInformation && !this.forceEdit) {
       this.router.navigate(['/process-order']);
       return;
+    }
+  }
+
+  setContactFromUser() {
+    this.orderDataService.contactInformation = {
+      sex: this.user.sex,
+      firstName: this.user.firstName,
+      lastName: this.user.lastName,
+      birthday: this.user.birthday,
+      emailAddress: this.user.emailAddress,
+      phoneNumber: this.user.phoneNumber
+    };
+  }
+
+  setAddressFromUser() {
+    this.orderDataService.shippingAddress = Object.assign([], this.user.shippingAddress);
+    this.orderDataService.useDualAddress = this.user.useDualAddress;
+
+    if (this.user.useDualAddress) {
+      this.orderDataService.billingAddress = Object.assign([], this.user.shippingAddress);
+    } else {
+      this.orderDataService.billingAddress = Object.assign([], this.user.billingAddress);
     }
   }
 
@@ -53,34 +86,37 @@ export class OrderEnterDataComponent implements OnInit {
           phoneNumber: result.phoneNumber
         };
       } else {
-        this.authenticationService.me().subscribe(user => {
-          this.orderDataService.contactInformation = {
-            sex: user.sex,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            birthday: user.birthday,
-            emailAddress: user.emailAddress,
-            phoneNumber: user.phoneNumber
-          };
-        });
+        this.setContactFromUser();
       }
 
       this.orderDataService.shippingAddress = {
-        street: result.shippingAddress.address,
+        street: result.shippingAddress.street,
         postalCode: result.shippingAddress.postalCode,
         city: result.shippingAddress.city,
         country: result.shippingAddress.country
       };
 
+      this.orderDataService.useDualAddress = result.useDualAddress;
+
       if (result.useDualAddress) {
-        this.orderDataService.billingAddress = this.orderDataService.shippingAddress;
+        this.orderDataService.billingAddress = Object.assign([], this.orderDataService.shippingAddress);
       } else {
         this.orderDataService.billingAddress = {
-          street: result.billingAddress.address,
+          street: result.billingAddress.street,
           postalCode: result.billingAddress.postalCode,
           city: result.billingAddress.city,
           country: result.billingAddress.country
         };
+      }
+
+      if (this.authenticationService.isAuthenticated() && !this.forceEdit) {
+        const newUser = Object.assign({}, this.user);
+        newUser.shippingAddress = Object.assign({}, this.orderDataService.shippingAddress);
+        newUser.useDualAddress = this.orderDataService.useDualAddress;
+        newUser.billingAddress = Object.assign({}, this.orderDataService.billingAddress);
+        this.userService.update(newUser).subscribe(() => {
+          this.authenticationService.refreshMe();
+        });
       }
 
       this.router.navigate(['/process-order']);

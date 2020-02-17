@@ -1,48 +1,14 @@
 <div class="big-container">
   <div class="fancy-header header-grid">
-    <h2 class="content-1 text-white">Entdecke unser Sortiment</h2>
-    <!--    <h4 class="content-2 text-white">Lorem ipsum</h4>-->
+    <h2 class="content-1 text-white" appScrollIn="slideTop">Entdecke unser Sortiment</h2>
   </div>
   <div class="main-content">
-    <div class="product-container" *ngFor="let product of products$ | async">
+    <div class="product-container" *ngFor="let product of products$ | async" appScrollIn="slideTop">
       <img class="content-1" [src]="product.overviewImage">
       <h3 class="content-2">{{ product.title }}</h3>
       <p class="content-3">{{ product.overviewDescription }}</p>
       <button mat-button class="content-4 large" [routerLink]="product.idString">Mehr erfahren</button>
       <button *ngIf="product.variants.length === 1" mat-raised-button color="primary" class="content-5 large" (click)="addToCart(product)" [disabled]="isInCart(product)"><mat-icon class="mr-3">shopping_cart</mat-icon> {{ isInCart(product) ? 'Im Warenkorb' : 'In den Warenkorb' }}</button>
     </div>
-<!--    <div class="product-container">-->
-<!--      <img class="content-1" src="assets/WerbephotoSmartTub2.png">-->
-<!--      <h3 class="content-2">SmartTub</h3>-->
-<!--      <p class="content-3">Die intelligente Badewannenarmatur mit integrierter Badezusatzdosierung und vielen weiteren Features</p>-->
-<!--      <button mat-button class="content-4 large" routerLink="detail">Mehr erfahren</button>-->
-<!--      <button mat-raised-button color="primary" class="content-5 large"><mat-icon class="mr-3">shopping_cart</mat-icon> In den Warenkorb</button>-->
-<!--    </div>-->
-<!--    <div class="hl"></div>-->
-<!--    <div class="product-container">-->
-<!--      <img class="content-1" src="assets/cherry.png">-->
-<!--      <h3 class="content-2">SmarTscent</h3>-->
-<!--      <p class="content-3">Der Badezusatz passend zu deinem SmartTub in verschiedenen Sorten</p>-->
-<!--      <button mat-button class="content-4 large">Mehr erfahren</button>-->
-<!--      <button mat-raised-button color="primary" class="content-5 large"><mat-icon class="mr-3">shopping_cart</mat-icon> In den Warenkorb</button>-->
-<!--    </div>-->
-<!--    <div class="hl"></div>-->
-<!--    <div class="product-container">-->
-<!--      <img class="content-1" src="assets/SmarTIIS Hub_transparent.png">-->
-<!--      <h3 class="content-2">SmarTIIS Hub</h3>-->
-<!--      <p class="content-3">Die Intelligenz hinter deinem SmartHome</p>-->
-<!--      <button mat-button class="content-4 large">Mehr erfahren</button>-->
-<!--      <button mat-raised-button color="primary" class="content-5 large"><mat-icon class="mr-3">shopping_cart</mat-icon> In den Warenkorb</button>-->
-<!--    </div>-->
   </div>
-  <!--  <div class="row">-->
-  <!--    <div class="col-12">-->
-  <!--      <h1 class="app-content-title">Produkte</h1>-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <!--  <div class="row">-->
-  <!--    <div class="col-12">-->
-  <!--      <app-product-view *ngFor="let product of $products | async" [product]="product"></app-product-view>-->
-  <!--    </div>-->
-  <!--  </div>-->
 </div>

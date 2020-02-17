@@ -33,10 +33,22 @@ export class ProductService {
       return of(this.products.find(value => value.idString === id));
     } else {
       return this.getAllProducts().pipe(
-        map(products =>  products.find(value => value.idString === id))
+        map(products => products.find(value => value.idString === id))
       );
     }
 
     // return this.http.get<Product>('/api/products/' + id);
+  }
+
+  findProductVariant(id: number) {
+    for (const product of this.products) {
+      for (const variant of product.variants) {
+        if (variant.id === id) {
+          return variant;
+        }
+      }
+    }
+
+    return undefined;
   }
 }

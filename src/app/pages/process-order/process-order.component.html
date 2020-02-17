@@ -1,23 +1,28 @@
 <div class="big-container">
+  <div class="fancy-header">
+    <h1 appScrollIn="slideTop">Bestellung abschließen</h1>
+  </div>
   <div class="main-container">
-    <div class="contact-info-container content-1">
-      <h6>Kontaktinformationen <a routerLink="/order-enter-data" [queryParams]="{edit: true}" class="ml-5">Ändern</a></h6>
-      <p>{{contact.firstName}} {{contact.lastName}}<br/>{{contact.emailAddress}}<br/>{{contact.phoneNumber}}</p>
+    <div class="content-1 card-container all-info-container" appScrollIn="grow">
+      <div class="contact-info-container content-1">
+        <h6>Kontaktinformationen <a routerLink="/order-enter-data" [queryParams]="{edit: true}" class="ml-5">Ändern</a></h6>
+        <p>{{contact.firstName}} {{contact.lastName}}<br/>{{contact.emailAddress}}<br/>{{contact.phoneNumber}}</p>
+      </div>
+      <div class="address-info-container content-2">
+        <h6>Lieferadresse <a routerLink="/order-enter-data" [queryParams]="{edit: true}" class="ml-5">Ändern</a></h6>
+        <p>{{shippingAddress.street}}<br/>{{shippingAddress.postalCode}} {{shippingAddress.city}}<br/>{{shippingAddress.country}}</p>
+      </div>
+      <div class="address-info-container content-4">
+        <h6>Rechnungsadresse <a routerLink="/order-enter-data" [queryParams]="{edit: true}" class="ml-5">Ändern</a></h6>
+        <p>{{billingAddress.street}}<br/>{{billingAddress.postalCode}} {{billingAddress.city}}<br/>{{billingAddress.country}}</p>
+      </div>
+      <div class="payments-info-container content-3">
+        <h6>Zahlungsinformationen <a routerLink="/order-enter-data" [queryParams]="{edit: true}" class="ml-5">Ändern</a></h6>
+        <h6>PayPal</h6>
+        <p>{{contact.emailAddress}}</p>
+      </div>
     </div>
-    <div class="address-info-container content-3">
-      <h6>Lieferadresse <a routerLink="/order-enter-data" [queryParams]="{edit: true}" class="ml-5">Ändern</a></h6>
-      <p>{{shippingAddress.street}}<br/>{{shippingAddress.postalCode}} {{shippingAddress.city}}<br/>{{shippingAddress.country}}</p>
-    </div>
-    <div class="address-info-container content-4">
-      <h6>Rechnungsadresse <a routerLink="/order-enter-data" [queryParams]="{edit: true}" class="ml-5">Ändern</a></h6>
-      <p>{{billingAddress.street}}<br/>{{billingAddress.postalCode}} {{billingAddress.city}}<br/>{{billingAddress.country}}</p>
-    </div>
-    <div class="payments-info-container content-2">
-      <h6>Zahlungsinformationen <a routerLink="/order-enter-data" [queryParams]="{edit: true}" class="ml-5">Ändern</a></h6>
-      <h6>MasterCard</h6>
-      <p>Tarik Karaca<br/>1549 1465 1254 4589 1486<br/>Geheimzahl: 789</p>
-    </div>
-    <div class="content-5 test-container">
+    <div class="content-5 test-container card-container" appScrollIn="grow">
       <table mat-table [dataSource]="cartService.shoppingCart.products" class="table-container">
         <ng-container matColumnDef="image">
           <th mat-header-cell *matHeaderCellDef></th>
@@ -41,24 +46,39 @@
 
         <tr mat-header-row *matHeaderRowDef="['image', 'title', 'quantity', 'price']"></tr>
         <tr mat-row *matRowDef="let row; columns: ['image', 'title', 'quantity', 'price']"></tr>
-        <!--        <tr mat-row *matRowDef="let row; columns: ['image', 'title', 'quantity', 'price']"></tr>-->
       </table>
-
-      <!--      <div *ngFor="let product of cartService.shoppingCart.products" class="product-container">-->
-      <!--        <img [src]="product.product.images[0]" class="product-image content-1">-->
-      <!--        <h4 class="content-2">{{ product.product.cartTitle }}</h4>-->
-      <!--        <p class="content-3">{{product.product.price | currency:'EUR'}}</p>-->
-      <!--      </div>-->
     </div>
-    <div class="content-6">
-
-      <div class="calc-container ">
-        <span></span><h4>Rechnung</h4>
-        <span>Warenkorbsumme</span><span>{{ cartService.calculateProductSum() |currency:'EUR'}}</span>
-        <span>Versandkosten</span><span>{{ cartService.getShippingFee() |currency:'EUR'}}</span>
-        <h6>Gesamtsumme</h6><h6>{{cartService.calculateTotalSum() | currency:'EUR'}}</h6>
+    <div class="content-6 card-container checkout-container" appScrollIn="grow">
+      <div class="d-flex mb-4">
+        <h5>Rechnung</h5>
       </div>
-      <button mat-raised-button class="large button-right" color="primary">Bestellung durchführen</button>
+      <div class="hl mb-3"></div>
+      <div class="d-flex flex-row mb-3">
+        <span>Zwischensumme:</span>
+        <div class="flex-grow-1"></div>
+        <span>{{ cartService.calculateProductSum() | currency:'EUR' }}</span>
+      </div>
+      <div class="d-flex flex-row mb-3">
+        <span>Versandkosten:</span>
+        <div class="flex-grow-1"></div>
+        <span>{{ cartService.getShippingFee() | currency:'EUR' }}</span>
+      </div>
+      <div class="d-flex flex-row mb-3">
+        <span>Mehrwertsteuer (inkl.):</span>
+        <div class="flex-grow-1"></div>
+        <span>{{ cartService.calculateTaxes() | currency:'EUR' }}</span>
+      </div>
+      <div class="hl mb-4"></div>
+      <div class="d-flex flex-row mb-3">
+        <span class="total-sum">Gesamtsumme:</span>
+        <div class="flex-grow-1"></div>
+        <span class="total-sum">{{ cartService.calculateTotalSum() | currency:'EUR' }}</span>
+      </div>
+      <p>Versand erfolgt in ca. 5 Werktagen</p>
+      <div class="d-flex flex-column">
+        <button class="custom-button" (click)="placeOrder()">Kostenpflichtig bestellen
+        </button>
+      </div>
     </div>
   </div>
 </div>

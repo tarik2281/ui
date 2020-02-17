@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { User } from 'src/app/model/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { UserService } from 'src/app/services/user.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-edit-user-data',
@@ -15,7 +16,8 @@ export class EditUserDataComponent implements OnInit {
   updateForm = new FormGroup({});
 
   constructor(private authenticationService: AuthenticationService,
-              private userService: UserService) {
+              private userService: UserService,
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -27,7 +29,10 @@ export class EditUserDataComponent implements OnInit {
   onSubmit() {
     if (this.updateForm.valid) {
       this.userService.update(this.updateForm.value).subscribe(result => {
-        console.log(result);
+        this.authenticationService.refreshMe();
+        this.snackBar.open('Änderungen erfolgreich gespeichert!', 'OK', {
+          duration: 2000
+        });
       });
     }
   }

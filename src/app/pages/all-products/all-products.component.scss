@@ -1,11 +1,8 @@
 @import "src/global-styles/layout";
 
 .fancy-header {
-  background-image: linear-gradient(to top, #000c, #000c);
-  background-position-y: center;
   min-height: 40vh !important;
 }
-
 
 .header-grid {
   @include page-container-grid(1, 2);

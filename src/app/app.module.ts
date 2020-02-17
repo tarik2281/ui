@@ -54,6 +54,7 @@ import { RegisterNewsletterComponent } from './components/register-newsletter/re
 import { NotificationDialogComponent } from './components/notification-dialog/notification-dialog.component';
 import { TosTextComponent } from './politics/tos-text/tos-text.component';
 import { PoliticsModule } from 'src/app/politics/politics.module';
+import { OrderCompleteDialogComponent } from './components/order-complete-dialog/order-complete-dialog.component';
 
 registerLocaleData(localeDe);
 
@@ -81,7 +82,8 @@ export function scrollFactory(overlay: Overlay): () => NoopScrollStrategy {
     ProcessOrderComponent,
     OrderEnterDataComponent,
     RegisterNewsletterComponent,
-    NotificationDialogComponent
+    NotificationDialogComponent,
+    OrderCompleteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -127,7 +129,8 @@ export function scrollFactory(overlay: Overlay): () => NoopScrollStrategy {
   ],
   entryComponents: [
     TosDialogComponent,
-    NotificationDialogComponent
+    NotificationDialogComponent,
+    OrderCompleteDialogComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -64,12 +64,9 @@ export class AppComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngOnInit() {
-    this.authenticationService.user.subscribe(user => {
-      console.log('setting user', user);
+    this.authenticationService.me().subscribe(user => {
       this.user = user;
     });
-
-    this.authenticationService.me();
 
     this.intersectionObserver = new IntersectionObserver((entries, observer) => {
       this.isAdded = !entries[0].isIntersecting;

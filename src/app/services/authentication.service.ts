@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from 'src/app/model/user';
+import { first } from 'rxjs/operators';
 
 function delete_cookie(name) {
   document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
@@ -51,7 +52,27 @@ export class AuthenticationService {
         });
       }
     }
-    return this.user;
+    return this.userSubject;
+  }
+
+  public getUser() {
+    return this.userSubject.getValue();
+  }
+
+  public refreshMe(): Observable<User> {
+    if (!this.meRequestObservable) {
+      this.meRequestObservable = this.http.get<User>('/api/user/me');
+      this.meRequestObservable.subscribe(user => {
+        console.log('got user', user);
+        this.userSubject.next(user);
+        this.meRequestObservable = null;
+      }, () => {
+        this.userSubject.next(null);
+        this.meRequestObservable = null;
+      });
+    }
+
+    return this.meRequestObservable;
   }
 
   public hasAddressData() {

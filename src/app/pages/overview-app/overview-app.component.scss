@@ -10,6 +10,10 @@
   }
 }
 
+.fancy-header {
+  background-image: url("src/assets/overlay.PNG"), url("src/assets/image_38906.jpg");
+}
+
 .screen-info-container {
   @include page-container-grid(1, 3, 1fr, $use-spacing: true);
 
